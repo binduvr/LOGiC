@@ -84,7 +84,7 @@ def get_result(session_id=None):
         abort(500)
 
 
-@offgrid_simulator.route('/get_time_series/<session_id>/<series_type>')
+@offgrid_simulator.route('/daily_time_series/<session_id>/<series_type>')
 def get_daily_time_series(session_id, series_type):
     """Retrives a certain time series for 1 day."""
 
@@ -111,8 +111,22 @@ def get_daily_time_series(session_id, series_type):
         response = make_response(day_series.to_json())
         return jsonify(response.get_json(force=True))
 
-# @offgrid_simulator.route('/get_time_series/<session_id>/<series_type>')
-# def
+# @offgrid_simulator.route('/monthly_time_series/<session_id>')
+# def get_monthly_time_series(session_id):
+#     """Retrives monthly time series' for 12 months."""
+
+#     relevant_columns = ['Demand', 'PV generation', 'Wind generation',
+#         'Excess generation', 'Storage charge', 'Storage discharge',
+#         'Genset generation']
+
+#     time_series = pd.read_csv('data/outputs/' + session_id \
+#         + '/electricity_mg/electricity_mg.csv', usecols=relevant_columns)
+
+#     month_series = time_series[time_series_types[series_type]:\
+#         time_series_types[series_type] + 24]
+
+#     response = make_response(day_series.to_json())
+#     return jsonify(response.get_json(force=True))
 
 
 # FIXME:
