@@ -1,0 +1,44 @@
+******************************************************
+2019-10-21 10:14:49,190 - INFO - logger - Path for logging: data/outputs/20191021081439/micro_grid_design_logfile.log
+2019-10-21 10:14:49,190 - INFO - logger - Used oemof version: 0.2.2
+2019-10-21 10:14:49,190 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-10-21 10:14:49,193 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-10-21 10:14:49,195 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-10-21 10:14:49,361 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-10-21 10:14:49,396 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-10-21 10:14:49,399 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 2.5 hrs, blackout frequency 0 per month
+2019-10-21 10:14:49,399 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 0
+2019-10-21 10:14:49,399 - INFO - E_blackouts_central_grid - Grid is not operational for 0 hours, with a reliability of 100.0 percent. 
+
+2019-10-21 10:14:49,401 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-10-21 10:14:49,933 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-10-21 10:14:49,934 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-10-21 10:14:49,934 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-10-21 10:14:49,934 - DEBUG - G1_oemof_create_model - {'case_name': 'hoevelaken', 'filename': 'hoevelaken', 'total_demand_ac': 512.7284923996475, 'total_demand_dc': 0.0, 'peak_demand': 5.382346945312058, 'evaluated_days': 5, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': False, 'storage_fixed_power': False, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': None, 'pcc_feedin_fixed_capacity': None, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-10-21 10:14:49,934 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-10-21 10:14:49,936 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-10-21 10:14:49,937 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-10-21 10:14:49,944 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-10-21 10:14:49,946 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-10-21 10:14:49,948 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-10-21 10:14:49,949 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-10-21 10:14:49,953 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-10-21 10:14:49,953 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-10-21 10:14:49,954 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-10-21 10:14:49,955 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: storage oem
+2019-10-21 10:14:49,956 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-10-21 10:14:49,958 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-10-21 10:14:49,959 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-10-21 10:14:49,959 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-10-21 10:14:49,959 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-10-21 10:14:50,246 - INFO - G1_oemof_create_model - Added constraint: Stability though actual generation of diesel generators and backup through batteries.
+2019-10-21 10:14:50,315 - INFO - G1_oemof_create_model - Simulating...
+2019-10-21 10:14:50,316 - WARNING - solvers - Failed to create solver with name 'cbc':
+signal only works in main thread
