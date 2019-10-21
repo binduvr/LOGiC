@@ -1,4 +1,4 @@
-from flask import Flask, request, Blueprint, abort, jsonify, make_response, Response
+from flask import Flask, request, Blueprint, abort, jsonify, make_response, Response, send_from_directory
 import threading
 import pandas as pd
 import time
@@ -10,6 +10,8 @@ offgrid_simulator = Blueprint('offgrid_simulator', __name__)
 
 # TODO: Store file names and directories in config file or smth
 def process_request(input_dict, session_id):
+    """Run the simulation with the given data."""
+
     # TODO: Fix solver multithreading problem
     # x = threading.Thread(target=processor.generate_simulation_results,
     #    args=(input_dict, session_id))
@@ -18,6 +20,7 @@ def process_request(input_dict, session_id):
 
 @offgrid_simulator.route('/')
 def handle_request():
+    """Runs a simulation using supplied values."""
 
     # Testing #######################
     input_dict = {
@@ -55,6 +58,8 @@ def handle_request():
 
 @offgrid_simulator.route('/get_result/<session_id>')
 def get_result(session_id=None):
+    """Retrieves simulation results using session ID."""
+
     file_path = 'data/outputs/' + session_id + '/test_results.csv'
     results = pd.read_csv(file_path)
     try:
@@ -79,44 +84,43 @@ def get_result(session_id=None):
         abort(500)
 
 
+@offgrid_simulator.route('/get_time_series/<session_id>/<series_type>')
+def get_daily_time_series(session_id, series_type):
+    """Retrives a certain time series for 1 day."""
+
+    # Type of day time series and hour of year they start
+    time_series_types = {
+        # FIXME: Find the right values
+        'mid_summer': 4105, # 21 June
+        'mid_winter': 8497, # 21 December
+        'spring_equinox': 1898, # 21 March
+        'autumn_equinox': 6313 # 21 March
+    }
+
+    relevant_columns = ['Demand', 'PV generation', 'Wind generation',
+        'Excess generation', 'Storage charge', 'Storage discharge',
+        'Genset generation']
+
+    if series_type in time_series_types.keys():
+        time_series = pd.read_csv('data/outputs/' + session_id \
+            + '/electricity_mg/electricity_mg.csv', usecols=relevant_columns)
+
+        day_series = time_series[time_series_types[series_type]:\
+            time_series_types[series_type] + 24]
+
+        response = make_response(day_series.to_json())
+        return jsonify(response.get_json(force=True))
+
 # @offgrid_simulator.route('/get_time_series/<session_id>/<series_type>')
-# def get_time_series(session_id, series_type):
-#     # time_series_types = [
-#     #     'midsummer', 'midwinter', 'equator_spring', 'equator_autumn'
-#     # ]
-
-#     # Type of day time series and hour of year they start
-#     time_series_types = {
-#         'midsummer': 3767,
-#         'midwinter': 407,
-#         # FIXME: Ask marien what the hours are for equators
-#         'equator_spring': 0,
-#         'equator_autumn': 0
-#     }
-
-#     relevant_columns = ['Demand', 'PV generation', 'Wind generation',
-#         'Excess generation', 'Storage charge', 'Storage discharge',
-#         'Genset generation']
-
-#     if series_type in time_series_types.keys():
-#         time_series = pd.read_csv('data/outputs/' + session_id \
-#             + '/electricity_mg/electricity_mg.csv', usecols=relevant_columns)
-
-#         day_series = time_series[time_series_types[series_type]:time_series_types[series_type] + 24]
-
-#         response = make_response(day_series.to_json())
-#         response.headers['Content-Type'] = 'text/json'
-#         return Response(response)
+# def
 
 
-        # # pp.pprint(day_series.to_json())
-        # return day_series.to_json()
-
-
+# FIXME:
 @offgrid_simulator.route('/get_image/<session_id>/<file>')
 def get_image(session_id=None, file=None):
+    """Retrieves a specific image from a specific simulation."""
 
-    file_path = 'data/outputs/'+id
+    file_path = 'data/outputs/'+session_id+'/inputs'
 
     try:
         return send_from_directory(file_path, filename=file, as_attachment=True)

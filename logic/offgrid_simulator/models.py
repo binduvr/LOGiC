@@ -158,7 +158,7 @@ SETTINGS = {'restore_oemof_if_existant': False,
     'results_annuities': True,
     'results_costs': True,
     'necessity_for_blackout_timeseries_generation': True,
-    'evaluated_days': 14}
+    'evaluated_days': 365}
 
 
 class ProjectSite:
