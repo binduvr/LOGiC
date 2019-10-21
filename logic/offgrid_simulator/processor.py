@@ -31,21 +31,8 @@ def generate_simulation_results(input_dict, session_id):
 
     output_data = generate_webpage_output(results, session_id)
 
-    # START WORKING ON REPORT GENERATION ROUTE
-    # GET FLASK STRUCTURE ON POINT
+    # TODO: Report generation
 
-    # if 'reportstuff' in output_dict:
-    #     from C4_reportgenerator import repgen, repcompile, removejunk
-    #     repgen(output_dict, input_dict, results, preprocessed_data)
-    #     repcompile(input_dict, output_dict)
-    #     #following lines are under construction and thus commented
-    #     from C5_sendreport import mailreport
-    #     mailreport(input_dict,output_dict)
-    #     #send(output_dict, input_dict, results, preprocessed_data)
-
-    #     #removejunk(input_dict, output_dict)
-    # os.chdir(endwd)
-    # print('ending working dir: ' + os.getcwd())
     return output_data
 
 
@@ -84,6 +71,8 @@ def generate_input(input_dict, session_id):
 
     for folder in folder_list:
         os.mkdir(output_directory + folder)
+
+    # TODO: Implement surface roughness functionality
 
     # Configure the project site
     project_site = models.ProjectSite(country_code, latitude, longitude, demands)
