@@ -7,7 +7,7 @@ INPUT_DIRECTORY = "data/inputs/"
 DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
 
-# Day values for different days of the year
+# Type of day time series and hour of year they start
 # FIXME: Find the right days (no weekends)
 TYPICAL_DAYS = {
     'mid_summer': "2019-06-21 00:00:00",
