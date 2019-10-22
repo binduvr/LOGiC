@@ -1,0 +1,148 @@
+******************************************************
+2019-10-22 11:43:04,074 - INFO - logger - Path for logging: data/outputs/20191022094251\micro_grid_design_logfile.log
+2019-10-22 11:43:04,074 - INFO - logger - Used oemof version: 0.2.2
+2019-10-22 11:43:04,074 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-10-22 11:43:04,076 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-10-22 11:43:04,112 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-10-22 11:43:04,271 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-10-22 11:43:04,304 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-10-22 11:43:04,365 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 2.5 hrs, blackout frequency 0 per month
+2019-10-22 11:43:04,369 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 0
+2019-10-22 11:43:04,372 - INFO - E_blackouts_central_grid - Grid is not operational for 0 hours, with a reliability of 100.0 percent. 
+
+2019-10-22 11:43:04,406 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-10-22 11:43:04,504 - DEBUG - core - Creating PluginEnvironment 'pca'
+2019-10-22 11:43:04,505 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-10-22 11:43:04,853 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-10-22 11:43:04,884 - DEBUG - core - Popping environment 'pca' from the PluginGlobals stack
+2019-10-22 11:43:04,886 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-10-22 11:43:07,046 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-10-22 11:43:07,046 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-10-22 11:43:07,046 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-10-22 11:43:07,047 - DEBUG - G1_oemof_create_model - {'case_name': 'hoevelaken', 'filename': 'hoevelaken', 'total_demand_ac': 35000.00000000003, 'total_demand_dc': 0.0, 'peak_demand': 5.665948672643064, 'evaluated_days': 365, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': False, 'storage_fixed_power': False, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': None, 'pcc_feedin_fixed_capacity': None, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-10-22 11:43:07,047 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-10-22 11:43:07,048 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-10-22 11:43:07,048 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-10-22 11:43:07,053 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-10-22 11:43:07,054 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-10-22 11:43:07,055 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-10-22 11:43:07,057 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-10-22 11:43:07,059 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-10-22 11:43:07,059 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-10-22 11:43:07,060 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-10-22 11:43:07,060 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: storage oem
+2019-10-22 11:43:07,061 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-10-22 11:43:07,062 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-10-22 11:43:07,062 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-10-22 11:43:07,063 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-10-22 11:43:07,063 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-10-22 11:43:25,689 - INFO - G1_oemof_create_model - Added constraint: Stability though actual generation of diesel generators and backup through batteries.
+2019-10-22 11:43:30,718 - INFO - G1_oemof_create_model - Simulating...
+2019-10-22 11:44:25,484 - INFO - models - Optimization successful...
+2019-10-22 11:44:25,505 - DEBUG - G1_oemof_create_model - Problem solved
+2019-10-22 11:44:29,861 - DEBUG - energy_system - Attributes dumped to: data/outputs/20191022094251/oemof\hoevelaken.oemof
+2019-10-22 11:44:29,861 - DEBUG - G1_oemof_create_model - Stored results in data/outputs/20191022094251/oemof/hoevelaken.oemof
+2019-10-22 11:44:29,861 - DEBUG - G1_oemof_create_model - Restore the energy system and the results.
+2019-10-22 11:44:29,862 - INFO - energy_system - Restoring attributes will overwrite existing attributes.
+2019-10-22 11:44:29,900 - DEBUG - energy_system - Attributes restored from: data/outputs/20191022094251/oemof\hoevelaken.oemof
+2019-10-22 11:44:29,906 - DEBUG - G3_oemof_evaluate - Evaluate flow: demand
+2019-10-22 11:44:29,922 - DEBUG - G3_oemof_evaluate - Evaluate flow: shortage
+2019-10-22 11:44:29,937 - DEBUG - G3_oemof_evaluate - Evaluate excess: 
+2019-10-22 11:44:29,950 - DEBUG - G3_oemof_evaluate - Evaluate flow: fuel
+2019-10-22 11:44:29,952 - DEBUG - G3_oemof_evaluate - Evaluate flow: genset
+2019-10-22 11:44:29,957 - DEBUG - G3_oemof_evaluate - Evaluate flow: main grid
+2019-10-22 11:44:29,971 - DEBUG - G3_oemof_evaluate - Evaluate flow: wind
+2019-10-22 11:44:29,973 - DEBUG - G3_oemof_evaluate - Evaluate flow: pv
+2019-10-22 11:44:29,976 - DEBUG - G3_oemof_evaluate - Evaluate flow: storage
+2019-10-22 11:44:29,992 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-10-22 11:44:29,998 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-10-22 11:44:30,002 - DEBUG - G3_oemof_evaluate - Evaluate: res share
+2019-10-22 11:44:30,002 - DEBUG - G3b_plausability_tests - Plausibility test: Charge/Discharge
+2019-10-22 11:44:30,096 - DEBUG - G3b_plausability_tests - Plausibility test: Demand/Supply/Shortage
+2019-10-22 11:44:30,315 - DEBUG - G3b_plausability_tests - Plausibility test: Feedin/Consumption
+2019-10-22 11:44:30,315 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability consumption
+2019-10-22 11:44:30,315 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability/Feedin
+2019-10-22 11:44:30,315 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/shortage
+2019-10-22 11:44:30,315 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/Feedin
+2019-10-22 11:44:31,751 - WARNING - G2b_constraints_custom - Stability criterion is strictly not fullfilled, but deviation is less then e6.
+2019-10-22 11:44:31,752 - DEBUG - G4_output_functions - Saving flows MG.
+2019-10-22 11:44:32,542 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:32,642 - DEBUG - font_manager - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('C:\\Users\\bindu\\AppData\\Roaming\\Python\\Python36\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000.
+2019-10-22 11:44:32,665 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:32,783 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:32,845 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:32,966 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,039 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,152 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,359 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,811 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,857 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,897 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,916 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,955 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,976 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:33,993 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:34,045 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:34,160 - DEBUG - G4_output_functions - Saving flows storage.
+2019-10-22 11:44:34,558 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:34,737 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:34,832 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:34,872 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:35,218 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:35,288 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:35,318 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:35,335 - DEBUG - _base - update_title_pos
+2019-10-22 11:44:35,474 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating investment costs over analysed timeframe.
+2019-10-22 11:44:35,474 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating O&M costs over analysed timeframe.
+2019-10-22 11:44:35,474 - DEBUG - G3a_economic_evaluation - Economic evaluation. Scaling investment costs and O&M to year.
+2019-10-22 11:44:35,474 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating present costs.
+2019-10-22 11:44:35,475 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating fuel consumption and expenditures.
+2019-10-22 11:44:35,475 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating shortage and expenditures.
+2019-10-22 11:44:35,475 - INFO - G0_oemof_simulate - Simulation of case "hoevelaken" resulted in : 
+                  0.433 currency/kWh, at a renewable share of 79.17 percent with a reliability of 100.0 percent
+2019-10-22 11:44:35,475 - INFO - G0_oemof_simulate -     Initial simulation time (s): 38.02 / Actual evaluation time (s): 88.43
+2019-10-22 11:44:35,475 - DEBUG - G0_oemof_simulate -     Exact OEM results of case "hoevelaken" : 
+                  8.274 kWh battery, 0.0 kWp PV, 21.269 kW wind, 3.542 kW genset at a renewable share of 79.17 percent with a reliability of 100.0 percent
+2019-10-22 11:44:35,475 - DEBUG - G0_oemof_simulate -     Simulation of case hoevelaken complete.
+2019-10-22 11:44:35,475 - DEBUG - G0_oemof_simulate - 
+
+2019-10-22 11:44:35,618 - INFO - A_offgridders_wrapper -     Estimated simulation time left: 0.0 minutes.
+2019-10-22 11:44:35,618 - INFO - A_offgridders_wrapper - 
+ Simulation complete. Resulting parameters saved in "results.csv". 
+ Overview over results:
+2019-10-22 11:44:57,733 - INFO - _internal - 127.0.0.1 - - [22/Oct/2019 11:44:57] "GET /offgrid_simulator/get_result/20191022094251 HTTP/1.1" 200 -
+2019-10-22 11:45:05,130 - INFO - _internal - 127.0.0.1 - - [22/Oct/2019 11:45:05] "GET /offgrid_simulator/monthly_time_series/20191022094251 HTTP/1.1" 500 -
+2019-10-22 11:45:05,135 - ERROR - _internal - Error on request:
+Traceback (most recent call last):
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\werkzeug\serving.py", line 303, in run_wsgi
+    execute(self.server.app)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\werkzeug\serving.py", line 291, in execute
+    application_iter = app(environ, start_response)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 2463, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 2449, in wsgi_app
+    response = self.handle_exception(e)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask_cors\extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 1866, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "D:\Downloads\Anaconda\Anaconda3\envs\logic-fork\lib\site-packages\flask\app.py", line 2097, in make_response
+    "The view function did not return a valid response. The"
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2019-10-22 11:45:09,936 - INFO - _internal - 127.0.0.1 - - [22/Oct/2019 11:45:09] "GET /offgrid_simulator/daily_time_series/20191022094251 HTTP/1.1" 404 -
+2019-10-22 11:45:27,911 - INFO - _internal - 127.0.0.1 - - [22/Oct/2019 11:45:27] "GET /offgrid_simulator/daily_time_series/20191022094251/mid_summer HTTP/1.1" 200 -

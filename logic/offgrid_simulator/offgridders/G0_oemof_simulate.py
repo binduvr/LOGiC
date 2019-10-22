@@ -12,6 +12,10 @@ new cases can easily be added.
 import os.path
 import timeit
 
+# NOTE: This ensures the "multithreading" is possible
+import pyutilib.subprocess.GlobalData
+pyutilib.subprocess.GlobalData.DEFINE_SIGNAL_HANDLERS_DEFAULT = False
+
 # Logging of info
 import logging
 import oemof.outputlib as outputlib

@@ -13,8 +13,10 @@ import logic.offgrid_simulator.weather as weather
 
 # MAKE OUTPUT INCLUDE HOW MANY SOLAR PANELS AND TYPE ETC AND WIND TURBINES AND COSTS
 
-# SHOW CO2 REDUCTION BY USING THIS SYSTEM
+# Send outputs in readable form to wim
+# Put picture of location in report
 
+# SHOW CO2 REDUCTION BY USING THIS SYSTEM
 
 # IMPORT TAX OVER THE MACHINARY ORDERED OR SOMETHING remove tax for now
 
