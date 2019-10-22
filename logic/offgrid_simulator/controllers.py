@@ -87,26 +87,17 @@ def get_daily_time_series(session_id, series_type):
     """Retrieves a certain time series for 1 day."""
 
     # Type of day time series and hour of year they start
-    time_series_types = {
-        # FIXME: Find the right days (no weekends)
-        'mid_summer': "2019-06-21 00:00:00",
-        'mid_winter': "2019-12-21 00:00:00",
-        'spring_equinox': "2019-03-21 00:00:00",
-        'autumn_equinox': "2019-09-21 00:00:00"
-    }
+    typical_days = settings.TYPICAL_DAYS
 
-    relevant_columns = ['Demand', 'PV generation', 'Wind generation',
-        'Excess generation', 'Storage charge', 'Storage discharge',
-        'Genset generation']
-
-    if series_type in time_series_types.keys():
+    # TODO: Use same method as monthly time series
+    if series_type in typical_days.keys():
         time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
             + '/electricity_mg/electricity_mg.csv')
 
         start_index = time_series.loc[time_series['timestep'] == \
-            time_series_types[series_type]].index[0]
+            typical_days[series_type]].index[0]
 
-        relevant_data = time_series[relevant_columns].copy()
+        relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
 
         day_series = relevant_data[start_index:start_index + 24]
 
@@ -119,10 +110,6 @@ def get_daily_time_series(session_id, series_type):
 @offgrid_simulator.route('/monthly_time_series/<session_id>', methods=['GET'])
 def get_monthly_time_series(session_id):
     """Retrieves monthly totals time series' for 12 months."""
-
-    relevant_columns = ['Demand', 'PV generation', 'Wind generation',
-        'Excess generation', 'Storage charge', 'Storage discharge',
-        'Genset generation']
 
     time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
         + '/electricity_mg/electricity_mg.csv')
@@ -139,7 +126,7 @@ def get_monthly_time_series(session_id):
     # Dope one liner ayy lmao
     # month_list = [time_series.loc[(time_series['timestep'].dt.month == i)].sum() for i in range(1, 13)]
 
-    monthly_dataframe = pd.DataFrame(month_list, columns=relevant_columns)
+    monthly_dataframe = pd.DataFrame(month_list, columns=settings.RELEVANT_COLUMNS)
 
     response = flask.make_response(monthly_dataframe.reset_index().to_json())
     return flask.jsonify(response.get_json(force=True))
