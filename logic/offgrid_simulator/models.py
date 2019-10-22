@@ -1,9 +1,7 @@
-import datetime
 import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
-import pprint as pp
 
 import logic.offgrid_simulator.profiles as profiles
 import logic.offgrid_simulator.weather as weather
@@ -12,7 +10,7 @@ import logic.settings as settings
 class ProjectSite:
     """A project site to be used in Offgridders.
 
-    Objects of this class are used as an attribute in OESMOTInput
+    Objects of this class are used as an attribute in OffgriddersInput
     objects and determine the demand profiles and per unit power
     generation of wind and solar generators
 
@@ -74,14 +72,12 @@ class ProjectSite:
             evaluated_days)
         # NOTE: Rough estimate
         wind_generation = wind_speed / 24
-
         return wind_generation
 
     def set_pv_generation(self, latitude, longitude, evaluated_days):
         typicalpv = weather.get_solar_standard_year(latitude, longitude, evaluated_days)
         # NOTE: This is a rough estimate and is not accurate
         solar_generation = typicalpv['pvaverage']/1000
-
         return solar_generation
 
     def plot_data(self, directory):
@@ -144,13 +140,17 @@ class OffgriddersInput:
     ----------
     project_name: str
         Name of the simulation case.
-    case_definitions: dictionary
-    parameters_constant_values:
-    settings:
-    input_excel_file:
-    parameters_sensitivity:
-    project_site_s:
-    blackouts:
+    case_definition: dictionary
+        A dictionary defining the test case
+    parameters_constant_values: dictionary
+        Addictional variables to be used in simulation
+    settings: dictionary
+        Simulation settings
+    parameters_sensitivity: dictionary
+        Additional parameters for the sensitivity experiment
+    project_site: ProjectSite
+        Object containing various demand and generation data
+
     """
 
     def __init__(self, project_name, project_site, active_components,
@@ -180,20 +180,15 @@ class OffgriddersInput:
         if not active_components['grid_connection']:
             case_definition['capacity_pcc_consumption_kW'] = 'None'
             case_definition['capacity_pcc_feedin_kW'] = 'None'
-
         return case_definition
 
 
     def to_dict(self):
         offgridders_data = {
-           # 'totalperkwpPV' = sum(self.solargen),
-           # 'totalperkwwind' = sum(self.windgen),
-           # 'blackoutdf': self.blackouts,
            'case_definition': self.case_definition,
            'parameters_constant_values': self.parameters_constant_values,
            'parameters_sensitivity': self.parameters_sensitivity,
            'project_site_s': self.project_site.to_dict(),
            'settings': self.settings
         }
-
         return offgridders_data

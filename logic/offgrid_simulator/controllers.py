@@ -9,7 +9,6 @@ import logic.offgrid_simulator.processor as processor
 
 offgrid_simulator = flask.Blueprint('offgrid_simulator', __name__)
 
-# TODO: Store file names and directories in config file or smth
 def process_request(input_dict, session_id):
     """Run the simulation with the given data."""
 
@@ -17,7 +16,7 @@ def process_request(input_dict, session_id):
        args=(input_dict, session_id))
     x.start()
 
-@offgrid_simulator.route('/simulate')
+@offgrid_simulator.route('/simulate', methods=['POST'])
 def handle_request():
     """Runs a simulation using supplied values."""
 
@@ -49,13 +48,13 @@ def handle_request():
 
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
 
-    # input_dict = request.args.to_dict()
+    # input_dict = request.get_json(force=True)
 
     process_request(input_dict, session_id)
     return session_id
 
 
-@offgrid_simulator.route('/get_result/<session_id>')
+@offgrid_simulator.route('/get_result/<session_id>', methods=['GET'])
 def get_result(session_id=None):
     """Retrieves simulation results using session ID."""
 
@@ -83,7 +82,7 @@ def get_result(session_id=None):
         flask.abort(500)
 
 
-@offgrid_simulator.route('/daily_time_series/<session_id>/<series_type>')
+@offgrid_simulator.route('/daily_time_series/<session_id>/<series_type>', methods=['GET'])
 def get_daily_time_series(session_id, series_type):
     """Retrieves a certain time series for 1 day."""
 
@@ -117,7 +116,7 @@ def get_daily_time_series(session_id, series_type):
         flask.abort(404)
 
 
-@offgrid_simulator.route('/monthly_time_series/<session_id>')
+@offgrid_simulator.route('/monthly_time_series/<session_id>', methods=['GET'])
 def get_monthly_time_series(session_id):
     """Retrieves monthly totals time series' for 12 months."""
 
@@ -147,7 +146,7 @@ def get_monthly_time_series(session_id):
 
 
 # FIXME: Time series instead of ugly pics
-@offgrid_simulator.route('/get_image/<session_id>/<file>')
+@offgrid_simulator.route('/get_image/<session_id>/<file>', methods=['GET'])
 def get_image(session_id=None, file=None):
     """Retrieves a specific image from a specific simulation."""
 
