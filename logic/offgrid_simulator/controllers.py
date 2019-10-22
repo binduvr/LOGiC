@@ -130,42 +130,22 @@ def get_monthly_time_series(session_id):
     time_series = pd.read_csv('data/outputs/' + session_id \
         + '/electricity_mg/electricity_mg.csv')
 
-    monthly_dataframe = pd.DataFrame(columns=relevant_columns)
+    time_series['timestep'] = pd.to_datetime(time_series['timestep'], errors='coerce')
+
+    month_list = []
 
     # Loop through each month
     for i in range(1, 13):
-        month = f"{i:02d}"
-        start_date = "2019-{}-01 00:00:00".format(month)
+        month_series = time_series.loc[(time_series['timestep'].dt.month == i)].sum()
+        month_list.append(month_series)
 
-        start_index = time_series.loc[time_series['timestep'] == \
-            start_date].index[0]
+    # Dope one liner ayy lmao
+    # month_list = [time_series.loc[(time_series['timestep'].dt.month == i)].sum() for i in range(1, 13)]
 
-        end_index = time_series.loc[time_series['timestep'] == \
-            end_date].index[0]
+    monthly_dataframe = pd.DataFrame(month_list, columns=relevant_columns)
 
-        relevant_data = time_series[relevant_columns].copy()
-
-        # if i == 2:
-        month_df = relevant_data[start_index:end_index]
-
-        month_series = month_df.sum(axis = 0, skipna = True)
-        print(month_series)
-        monthly_dataframe.append(month_series)
-
-    print(monthly_dataframe)
-    # SKDFJGSDLKFJGS;LFKHGS;FKLDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD
-
-    response = flask.make_response(month_series.reset_index().to_json())
+    response = flask.make_response(monthly_dataframe.reset_index().to_json())
     return flask.jsonify(response.get_json(force=True))
-
-    # time_series = pd.read_csv('data/outputs/' + session_id \
-    #     + '/electricity_mg/electricity_mg.csv', usecols=relevant_columns)
-
-    # month_series = time_series[time_series_types[series_type]:\
-    #     time_series_types[series_type] + 24]
-
-    # response = make_response(day_series.to_json())
-    # return jsonify(response.get_json(force=True))
 
 
 # FIXME: Time series instead of ugly pics
@@ -180,3 +160,4 @@ def get_image(session_id=None, file=None):
             as_attachment=True)
     except FileNotFoundError:
         flask.abort(404)
+
