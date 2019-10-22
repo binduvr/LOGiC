@@ -7,6 +7,7 @@ import pprint as pp
 import logic.offgrid_simulator.offgridders.A_offgridders_wrapper as og
 import logic.offgrid_simulator.models as models
 import logic.offgrid_simulator.weather as weather
+import logic.settings as settings
 
 # TODO:
 # MONTHLY TOTALS TIME SERIES OF ALL RESULTS AS OUTPUT TO BE USED IN GRAPH
@@ -53,7 +54,7 @@ def generate_input(input_dict, session_id):
     additional_parameters = input_dict['additional_parameters']
 
     # Make directory for the ID of this simulation
-    output_directory = 'data/outputs/'+session_id
+    output_directory = settings.OUTPUT_DIRECTORY + session_id
     os.mkdir(output_directory)
 
     # Dump input json to the directory for analysis at later stage

@@ -3,7 +3,7 @@ import requests as req
 import threading
 import io
 
-COUNTRY_DATA = 'data/inputs/country_db_v1.1.csv'
+import logic.settings as settings
 
 class Country:
     """A country to be used as input for OESMOT.
@@ -29,7 +29,7 @@ class Country:
         """Sets all attributes which are stored locally in the csv"""
 
         # Read country database csv file
-        df = pd.read_csv(COUNTRY_DATA)
+        df = pd.read_csv(settings.COUNTRY_DB)
         # Retrieve series of values for country code
         result_series = df.query('country_code == @self.country_code')
         # Assign attributes

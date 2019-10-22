@@ -1,7 +1,8 @@
-from flask import Flask, request, Blueprint, abort, jsonify
+# from flask import Flask, request, Blueprint, abort, jsonify
+import flask
 import logic.location_data.models as models
 
-location_data = Blueprint('location_data', __name__)
+location_data = flask.Blueprint('location_data', __name__)
 
 @location_data.route('/oesmot_data/<country_code>', methods=['GET'])
 def get_oesmot_data(country_code):
@@ -23,6 +24,6 @@ def get_oesmot_data(country_code):
         country = models.Country(country_code.upper())
         return country.to_dict()
     else:
-        abort(404)
+        flask.abort(404)
 
 

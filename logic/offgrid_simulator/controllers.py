@@ -4,6 +4,7 @@ import pandas as pd
 import time
 import pprint as pp
 
+import logic.settings as settings
 import logic.offgrid_simulator.processor as processor
 
 offgrid_simulator = flask.Blueprint('offgrid_simulator', __name__)
@@ -12,11 +13,9 @@ offgrid_simulator = flask.Blueprint('offgrid_simulator', __name__)
 def process_request(input_dict, session_id):
     """Run the simulation with the given data."""
 
-    # TODO: Fix solver multithreading problem
     x = threading.Thread(target=processor.generate_simulation_results,
        args=(input_dict, session_id))
     x.start()
-    # processor.generate_simulation_results(input_dict, session_id)
 
 @offgrid_simulator.route('/simulate')
 def handle_request():
@@ -60,7 +59,7 @@ def handle_request():
 def get_result(session_id=None):
     """Retrieves simulation results using session ID."""
 
-    file_path = 'data/outputs/' + session_id + '/test_results.csv'
+    file_path = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
     results = pd.read_csv(file_path)
     try:
         webpage_output = {
@@ -102,7 +101,7 @@ def get_daily_time_series(session_id, series_type):
         'Genset generation']
 
     if series_type in time_series_types.keys():
-        time_series = pd.read_csv('data/outputs/' + session_id \
+        time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
             + '/electricity_mg/electricity_mg.csv')
 
         start_index = time_series.loc[time_series['timestep'] == \
@@ -122,22 +121,21 @@ def get_daily_time_series(session_id, series_type):
 def get_monthly_time_series(session_id):
     """Retrieves monthly totals time series' for 12 months."""
 
-    # TODO: Get monthly totals
     relevant_columns = ['Demand', 'PV generation', 'Wind generation',
         'Excess generation', 'Storage charge', 'Storage discharge',
         'Genset generation']
 
-    time_series = pd.read_csv('data/outputs/' + session_id \
+    time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
         + '/electricity_mg/electricity_mg.csv')
 
-    time_series['timestep'] = pd.to_datetime(time_series['timestep'], errors='coerce')
+    time_series['timestep'] = pd.to_datetime(time_series['timestep'],
+        errors='coerce')
 
     month_list = []
 
-    # Loop through each month
     for i in range(1, 13):
-        month_series = time_series.loc[(time_series['timestep'].dt.month == i)].sum()
-        month_list.append(month_series)
+        month_series = time_series.loc[(time_series['timestep'].dt.month == i)]
+        month_list.append(month_series.sum())
 
     # Dope one liner ayy lmao
     # month_list = [time_series.loc[(time_series['timestep'].dt.month == i)].sum() for i in range(1, 13)]
@@ -153,7 +151,7 @@ def get_monthly_time_series(session_id):
 def get_image(session_id=None, file=None):
     """Retrieves a specific image from a specific simulation."""
 
-    file_path = 'data/outputs/'+session_id+'/inputs'
+    file_path = settings.OUTPUT_DIRECTORY + session_id + '/inputs'
 
     try:
         return flask.send_from_directory(file_path, filename=file,
