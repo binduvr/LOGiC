@@ -16,7 +16,8 @@ def process_request(input_dict, session_id):
        args=(input_dict, session_id))
     x.start()
 
-@offgrid_simulator.route('/simulate', methods=['POST'])
+# @offgrid_simulator.route('/simulate', methods=['POST'])
+@offgrid_simulator.route('/simulate')
 def handle_request():
     """Runs a simulation using supplied values."""
 
