@@ -86,7 +86,6 @@ def get_result(session_id=None):
 def get_daily_time_series(session_id, series_type):
     """Retrieves a certain time series for 1 day."""
 
-    # Type of day time series and hour of year they start
     typical_days = settings.TYPICAL_DAYS
 
     # TODO: Use same method as monthly time series
