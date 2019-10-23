@@ -81,7 +81,7 @@ class ProjectSite:
         return solar_generation
 
     def plot_data(self, directory):
-        """Plots a figure of the variable to the given file"""
+        """Generates csv of the variables to the given directory and plots"""
 
         plot_name_list = [(self.pv_generation_per_kWp, 'per_unit_pv_generation'),
             (self.wind_generation_per_kW, 'per_unit_wind_generation'),
@@ -89,6 +89,16 @@ class ProjectSite:
             (self.commercial_demand, 'commercial_demand'),
             (self.industrial_demand, 'industrial_demand')]
 
+        df = pd.DataFrame({'per_unit_pv_generation': list(self.pv_generation_per_kWp),
+                'per_unit_wind_generation': list(self.wind_generation_per_kW),
+                'residential_demand': list(self.residential_demand),
+                'commercial_demand': list(self.commercial_demand),
+                'industrial_demand': list(self.industrial_demand)
+            })
+
+        df.to_csv(directory + '/demands.csv')
+
+        # TODO: Remove double work
         for variable_tuple in plot_name_list:
             plot_variable = variable_tuple[0]
             plot_name = variable_tuple[1]

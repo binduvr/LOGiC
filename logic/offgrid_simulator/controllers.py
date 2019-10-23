@@ -131,6 +131,19 @@ def get_monthly_time_series(session_id):
     return flask.jsonify(response.get_json(force=True))
 
 
+@offgrid_simulator.route('/demand_series/<session_id>', methods=['GET'])
+def get_input_series(session_id=None, file=None):
+    """Retrieves demand and generation profiles from a specific simulation."""
+
+    file_path = settings.OUTPUT_DIRECTORY + session_id \
+        + '/inputs/demands.csv'
+
+    demand_dataframe = pd.read_csv(file_path)
+
+    response = flask.make_response(demand_dataframe.to_json())
+    return flask.jsonify(response.get_json(force=True))
+
+
 # FIXME: Time series instead of ugly pics
 @offgrid_simulator.route('/get_image/<session_id>/<file>', methods=['GET'])
 def get_image(session_id=None, file=None):
