@@ -1,13 +1,27 @@
 
 import datetime
 
+# Directories and file locations
 OUTPUT_DIRECTORY = "data/outputs/"
 INPUT_DIRECTORY = "data/inputs/"
-
 DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
 
+# Type of day time series and hour of year they start
+# FIXME: Find the right days (no weekends)
+TYPICAL_DAYS = {
+    'mid_summer': "2019-06-21 00:00:00",
+    'mid_winter': "2019-12-21 00:00:00",
+    'spring_equinox': "2019-03-21 00:00:00",
+    'autumn_equinox': "2019-09-21 00:00:00"
+}
 
+# Relevant output from test_results.csv to be used in time series
+RELEVANT_COLUMNS = ['Demand', 'PV generation', 'Wind generation',
+    'Excess generation', 'Storage charge', 'Storage discharge',
+    'Genset generation']
+
+# Default values for the Offgridders tool
 CASE_DEFINITION = {'perform_simulation': True,
     'based_on_case': True,
     'capacity_pv_kWp': 'oem',
