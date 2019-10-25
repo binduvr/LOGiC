@@ -1,7 +1,7 @@
 enter = '/r/n'
 import os
 
-def qualitativeproperties(output_dict, input_dict, results, preprocessed_data):
+def qualitativeproperties(reportdict):
 	qual = '\\section*{Societal environment}' + enter + \
 	'Apart from the quantitative factors tht determine the sizing of the system ' +\
 	'in the technical sense, there are also societal, quantitative factors that ' +\
