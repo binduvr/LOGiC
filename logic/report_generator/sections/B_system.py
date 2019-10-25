@@ -1,9 +1,9 @@
 
 enter = '/r/n'
 import os
-from L_tablemaker import centertable
+from logic.report_genertor.functions.L_tablemaker import centertable as table
 def systemlayout(reportdict):
-    layouttable = centertable(reportdict['systemtable'],'|l|r|c|', 'systemlayout','Sizing of the main components of the system')
+    layouttable = table(reportdict['systemtable'],'|l|r|c|', 'systemlayout','Sizing of the main components of the system')
     sys = '\\section*{System sizing}' + enter + \
     'The calculation described above has resulted in the following system:' + enter +\
     layouttable+enter+\
