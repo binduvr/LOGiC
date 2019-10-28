@@ -8,7 +8,7 @@ def qualitativeproperties(reportdict):
 	'should be taken into account when making investment decisions regarding the ' +\
 	'installation of an (off-grid) microgrid. This section gives some important '+\
 	'societal factors.'+enter+\
-	'\\subsection{first}'+enter+\
+	'\\subsection*{first}'+enter+\
 	'first societal factor'
 
 
