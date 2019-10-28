@@ -1,4 +1,4 @@
-
+enter =  '/r/n'
 
 def figure(figurepath, caption ,label):
     figurecode = \

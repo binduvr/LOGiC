@@ -5,7 +5,7 @@ a LaTeX compiler should be installed (error message to be programmed)
 '''
 from shutil import copyfile
 import numpy as np
-import logic.settings as settings
+from logic import settings
 import time
 import os
 from logic.report_generator.sections.A_introduction import introduction, generalinfo
@@ -16,26 +16,27 @@ from logic.report_generator.sections.E_conclusion import conclusion
 from logic.report_generator.sections.F_appendix import appendix
 
 def generator (session_id, reportdict):
-    enter = '/r/n'
-    f = open('logic/report_generator/latex_template/preamble.tex', 'r') # is this still valid in the new structure? @Bindu waar kom ik nu uit?
+    enter = '\r\n'
+    f = open('logic/report_generator/latex_template/preamble.tex', 'r')
     preamble = f.read()
     f.close()
 
     # make introduction string from output data
     intro = introduction(reportdict)
     gen = generalinfo(reportdict)
-    
+
     sys = systemlayout(reportdict)
 
     econ = systemeconomics(reportdict)
 
     qual = qualitativeproperties(reportdict)
-    
+
     con = conclusion(reportdict)
 
     apps = appendix(reportdict)
 
-    f = open(settings.OUTPUT_DIRECTIORY+session_id+'/'+reportdict['reportname']+'.tex', 'w+')
+
+    f = open(settings.OUTPUT_DIRECTORY+session_id+'/report/'+reportdict['reportname']+'.tex', 'w+')
     f.write(preamble)
     f.write(enter)
     f.write(intro)
@@ -58,17 +59,3 @@ def generator (session_id, reportdict):
     f.write('\\end{document}')
 
     f.close
-
-def repcompile (session_id):	
-    copyfile('logic/report_generator/latex_template/logo.jpg', settings.OUTPUT_DIRECTORY+session_id+'/logo.jpg')
-    os.system('pdflatex '+ settings.OUTPUT_DIRECTORY+session_id+'/'+reportdict['reportname'] + '.tex')  
-    os.system('pdflatex '+ settings.OUTPUT_DIRECTORY+session_id+'/'+reportdict['reportname'] + '.tex')  
-
-def removejunk(session_id):
-    folder = settings.OUTPUT_DIRECTORY+session_id+'/'
-    filenames = ['',''] #insert names of junkfiles that occur when compiling the pdf (logging stuff)
-	
-    for name in filenames:
-        path = folder+name
-    
-    os.remove(path)

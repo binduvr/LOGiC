@@ -9,6 +9,9 @@ import logic.offgrid_simulator.models as models
 import logic.offgrid_simulator.weather as weather
 import logic.settings as settings
 
+from logic.report_generator.importer import importer
+from logic.report_generator.generator import generator
+from logic.report_generator.compiler import compiler
 # TODO:
 
 # MAKE OUTPUT INCLUDE HOW MANY SOLAR PANELS AND TYPE ETC AND WIND TURBINES AND COSTS
@@ -23,7 +26,9 @@ def generate_simulation_results(input_dict, session_id):
     offgridders_input = generate_input(input_dict, session_id)
 
     results = og.run_simulation(offgridders_input)
-
+    reportdict = importer(session_id)
+    generator(session_id,reportdict)
+    compiler(session_id,reportdict)
 
 def generate_input(input_dict, session_id):
     """This function gets the input ready to be run through OESMOT"""
@@ -54,7 +59,7 @@ def generate_input(input_dict, session_id):
     df.to_csv(output_directory + '/test_results.csv', index=False)
 
     # Create folders for OESMOT output
-    folder_list = ['/lp_files', '/storage', '/electricity_mg', '/inputs', '/oemof']
+    folder_list = ['/lp_files', '/storage', '/electricity_mg', '/inputs', '/oemof','/report']
 
     for folder in folder_list:
         os.mkdir(output_directory + folder)

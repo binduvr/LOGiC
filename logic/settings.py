@@ -4,6 +4,7 @@ import datetime
 # Directories and file locations
 OUTPUT_DIRECTORY = "data/outputs/"
 INPUT_DIRECTORY = "data/inputs/"
+
 DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
 
@@ -172,5 +173,4 @@ OFFGRIDDERS_SETTINGS = {'restore_oemof_if_existant': False,
     'results_annuities': True,
     'results_costs': True,
     'necessity_for_blackout_timeseries_generation': True,
-    'evaluated_days': 365}
-
+    'evaluated_days': 5}

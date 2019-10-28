@@ -1,10 +1,10 @@
 from unidecode import unidecode as udec
 import os
-enter = '/r/n'
+enter = '\r\n'
 
 
 def introduction(reportdict):
-	dom = str(reportdict['domestic_demand'])
+	res = str(reportdict['residential_demand'])
 	intro = 'This document shortly reports the results of the use of the LOGiC ' + \
 	'sizing tool. This introduction describes the input values used to perform the calculations.' + \
 	'The system is assumed to be located at or close to ' + udec(reportdict['address']) + '.'
@@ -45,10 +45,10 @@ def generalinfo(reportdict):
     'being completely isolated (off-grid microgrids). The microgrid '+\
     'considered in this assessment is a ' + griddescription +\
     'There multpile possible reasons to apply a microgrid: '+\
-    '\\begin{itemize}'+enter+\
-    '\\item No grid is available (remote location) \\\ ' + enter +\
-    '\\item There is a grid availble, but is is not reliable (enough) \\\ ' + enter +\
-    '\\item The wish to generate the own energy locally as a takeholder or a community \\\ ' + enter +\
+    '\\begin{itemize}'+enter+' '+\
+    '\\item No grid is available (remote location) ' + enter +\
+    '\\item There is a grid availble, but is is not reliable (enough)  ' + enter +\
+    '\\item The wish to generate the own energy locally as a stakeholder or a community ' + enter +\
     '\\end{itemize}' + enter +\
     'In all cases renewable sources are often considered as a possible source '+\
     'of energy for the microgrid, either from an economic or a sustainable driver. ' +\

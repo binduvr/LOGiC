@@ -1,12 +1,12 @@
 '''
 makes a table from an ented dataframe
-columns should be string in the format of latex code (ie. 'c|rr|l' for centered, right right and left aligned columns 
+columns should be string in the format of latex code (ie. 'c|rr|l' for centered, right right and left aligned columns
 with vertical line after first and third column (number of columns must be equal to dataframe columns)
 '''
 ent = '\r\n'
 
 def table(data,columns,label,caption):
-    
+
     NR = len(data[data.columns[0]])
     NC = len(data.columns)
     #title row
@@ -16,12 +16,12 @@ def table(data,columns,label,caption):
     title = title[0:(len(title)-1)] + '\\\ \hline '
 
     body = ''
-    
+
     for r in range(NR):
         for c in range(NC):
             body = body+str(data[data.columns[c]][r])+'&'
         body = body[0:(len(body)-1)] + '\\\ '+ ent
-    
+
     tab = \
     '\\begin{table}[h]'+ent+\
     '\\centering'+ent+\
@@ -32,11 +32,11 @@ def table(data,columns,label,caption):
     '\\label{tab:'+label+'}'+ent+\
     '\\caption{'+caption+'}'+ent+\
     '\\end{table}'
-    
+
     return tab
 
 def centertable(data,columns,label,caption):
-    
+
     NR = len(data[data.columns[0]])
     NC = len(data.columns)
     #title row
@@ -46,25 +46,26 @@ def centertable(data,columns,label,caption):
     title = title[0:(len(title)-1)] + '\\\ \hline '
 
     body = ''
-    
+
     for r in range(NR):
         for c in range(NC):
             body = body+str(data[data.columns[c]][r])+'&'
         body = body[0:(len(body)-1)] + '\\\ '+ ent
-    
+
     tab = \
     '\\begin{center}'+ent+\
     '\\begin{tabular}{'+ columns +'}'+ent+\
-    title   +ent+\
+    '\\hline '+ title   +ent+\
     body +\
+    '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
     '\\end{center}'+ent+\
     '\\captionof{table}{'+caption+'}'+ent+\
-    '\\vspace(2.5mm)'
+    '\\vspace{2.5mm}'
     return tab
 
-#only two columned tables. 
+#only two columned tables.
 #\usepackage{currency}
 #\DefineCurrency{EUR}{name={euro},plural={euros},symbol={\euro},iso={EUR},kind=iso,base=2}
 
@@ -72,7 +73,7 @@ def centertable(data,columns,label,caption):
 moneycolumn is the index of the column in the df that contains the money; default the second column
 '''
 def centermoneytable(data,columns,label,caption,moneycolumn=1):
-    
+
     NR = len(data[data.columns[0]])
     NC = len(data.columns)
     #title row
@@ -82,7 +83,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
     title = title[0:(len(title)-1)] + '\\\ \hline '
 
     body = ''
-    
+
     for r in range(NR):
         for c in range(NC):
             if c == moneycolumn:
@@ -90,7 +91,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
             else:
                 body = body+str(data[data.columns[c]][r])+'&'
         body = body[0:(len(body)-1)] + '\\\ '+ ent
-    
+
     tab = \
     '\\begin{center}'+ent+\
     '\\begin{tabular}{'+ columns +'}'+ent+\
@@ -114,12 +115,12 @@ def moneytable(data,label,caption):
     title = title[0:(len(title)-1)] + '\\\ \hline '
 
     body = ''
-    
+
     for r in range(NR):
         for c in range(NC):
             body = body+str(data[data.columns[c]][r])+'&'
         body = body[0:(len(body)-1)] + '\\\ '+ ent
-    
+
     tab = \
     '\\begin{table}[h]'+ent+\
     '\\centering'+ent+\
@@ -130,5 +131,5 @@ def moneytable(data,label,caption):
     '\\label{tab:'+label+'}'+ent+\
     '\\caption{'+caption+'}'+ent+\
     '\\end{table}'
-    
+
     return tab

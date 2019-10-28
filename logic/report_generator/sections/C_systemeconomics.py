@@ -1,9 +1,9 @@
-enter ='/r/n'
+enter ='\r\n'
 import os
 from logic.report_generator.functions.L_tablemaker import centertable as table
 def systemeconomics(reportdict):
     investtable = table(reportdict['investtable'],'|l|r|c|', 'investtable','Investment cost of the system')
-    opextable = table(reportdict['opextable'],'|l|r|c|', 'opextable','Operational expenditure of the main components of the system')
+    opextable = table(reportdict['opexinputtable'],'|l|r|c|', 'opextable','Operational expenditure of the main components of the system')
     econinputtable = table(reportdict['econinputtable'], '|l|r|c|', 'econinputtable', 'Economic input variables')
 
 	# actual string concatenation
@@ -14,7 +14,7 @@ def systemeconomics(reportdict):
     'Based on these the investment costs of the main components of the system are estimated as:'+enter+\
     investtable+enter+\
     'The operational expenditure is estimated as:'+ enter+\
-    opextable+enter+\
+    opextable+enter
     #'\\begin{center}'+enter+\
     #'\\begin{tabular}{r|c}'+enter+\
     #'Investments                & Cost   \\\ \hline '+enter+\

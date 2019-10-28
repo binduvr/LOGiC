@@ -18,4 +18,3 @@ app.config.from_object('logic.config.TestingConfig')
 app.register_blueprint(location_data, url_prefix='/location_data')
 app.register_blueprint(offgrid_simulator, url_prefix='/offgrid_simulator')
 app.register_blueprint(report_generator, url_prefix='/report_generator')
-

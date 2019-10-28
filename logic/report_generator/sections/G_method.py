@@ -1,4 +1,4 @@
-enter = 'r/n'
+enter = '\r\n'
 import os
 def method(reportdict):
 	meth = '\\section*{Method}' + \
