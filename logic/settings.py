@@ -173,4 +173,4 @@ OFFGRIDDERS_SETTINGS = {'restore_oemof_if_existant': False,
     'results_annuities': True,
     'results_costs': True,
     'necessity_for_blackout_timeseries_generation': True,
-    'evaluated_days': 5}
+    'evaluated_days': 365}

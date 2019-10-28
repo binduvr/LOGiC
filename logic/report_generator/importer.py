@@ -9,7 +9,7 @@ import numpy as np
 import json
 from logic import settings
 from logic.report_generator.functions.makedftable import maketable, selectvariables, selectunits
-def importer(session_id):
+def import_data(session_id):
 
     folder = 'data/outputs/'+session_id #for local use
     reportdict = {'folder' : folder}
