@@ -37,8 +37,8 @@ def handle_request():
             'wind': True,
             'solar': True,
             'storage': True,
-            'dieselgen': False,
-            'grid_connection': False
+            'dieselgen': True,
+            'grid_connection': True
         },
         'additional_parameters': {'blackout_frequency': 0}
     }
@@ -143,4 +143,3 @@ def get_image(session_id=None, file=None):
             as_attachment=True)
     except FileNotFoundError:
         flask.abort(404)
-

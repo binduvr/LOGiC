@@ -17,34 +17,45 @@ def importer(session_id):
     sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/input.json'))['additional_parameters']}
     with open(folder+'/input.json') as file: inputs = json.load(file)
     active_components = inputs['active_components']
+
+    # make percentages from fractions
+    list = ['tax', 'wacc','blackout_frequency_std_deviation', 'blackout_duration_std_deviation', 'maingrid_renewable_share']
+    for key in list:
+        sets[key] = sets[key]*100
+    del list
+
     # MAKE TECHNICAL INPUT TABLE
     names = []
     keys  = []
     titles = ['Property','Value']
     techinputtable = maketable(names,keys,titles,sets)
-
+    techinputtable['Value'] = techinputtable['Value'].map('{:,.2f}'.format)
+    del names, keys, titles
     # MAKE ECONOMIC ENVIRONMENTAL INPUT TABLE
     namelist = ['Maingrid electricity price', 'Maingrid feedin tariff', 'Fuel price', 'Annual change in fuel price', 'Import tax', 'WACC']
     keylist = ['maingrid_electricity_price','maingrid_feedin_tariff','fuel_price','fuel_price_change_annual','tax','wacc']
-    titles = ['Parameter', 'Value']
+    titles = ['Variable', 'Value']
     #convert wacc and tax to percent
-    unitlist = ['\\euro per kWh','\\euro per kWh','\\euro per liter','\\euro per liter','\\%','\\%']
+    unitlist = ['\\euro /kWh','\\euro /kWh','\\euro /liter','\\euro /liter','\\%','\\%']
     it = ['grid_connection','grid_connection','dieselgen','dieselgen','dieselgen','dieselgen']
 
     units = selectunits(unitlist,it,active_components)
     names,keys = selectvariables(namelist,keylist,it,active_components)
     econinputtable = maketable(names,keys,titles,sets)
-    econinputtable['Units'] = units
+    econinputtable['Unit'] = units
+    econinputtable['Value'] = econinputtable['Value'].map('{:,.2f}'.format)
     del namelist,keylist,titles,unitlist,names,keys,units
 
     # MAKE MAIN GRID TABLE
     if active_components['grid_connection']:
         names = ['Average blackout duration', 'Blackout duration standard deviation', 'Blackout frequency', 'Blackout frequency standard devation', 'Main grid renewable energy share', 'Distance to main grid']
-        keys = ['blackout_duration','blackout_duration_std_deviation','blackout_frequency','blackout_frequency_std_deviation']
+        keys = ['blackout_duration','blackout_duration_std_deviation','blackout_frequency','blackout_frequency_std_deviation', 'maingrid_renewable_share', 'maingrid_distance']
         units = ['Hours','\%','per month','\%','\%','km']
 
+        titles = ['Property', 'Value']
         gridpropertytable = maketable(names,keys,titles,sets)
-        gridpropertytable['Units'] = Units
+        gridpropertytable['Value'].map('{:,.2f}'.format)
+        gridpropertytable['Unit'] = units
         del names,keys,units
 
     # MAKE INVESTMENT INPUT TABLE check order
@@ -61,8 +72,8 @@ def importer(session_id):
 
     titles = ['Component', 'Investment costs']
     investinputtable = maketable(names,keys,titles,sets)
-    investinputtable['Units'] = units
-    investinputtable['Investment costs'] = round(investinputtable['Investment costs'],2)
+    investinputtable['Unit'] = units
+    investinputtable['Investment costs'].map('{:,.2f}'.format)
 
     del names, keys, titles, units
 
@@ -84,8 +95,8 @@ def importer(session_id):
     #units = units.append('Total')
     titles = ['Component', 'Annual pu OPEX']
     opexinputtable = maketable(names,keys,titles, sets)
-    opexinputtable['Units'] = units
-    opexinputtable['Annual pu OPEX']=round(opexinputtable['Annual pu OPEX'],2)
+    opexinputtable['Unit'] = units
+    opexinputtable['Annual pu OPEX'] = opexinputtable['Annual pu OPEX'].map('{:,.2f}'.format)
     del names, keys, titles
 
     # MAKE VAR COST INPUT TABLE check order,
@@ -102,7 +113,8 @@ def importer(session_id):
 
     titles = ['Component', 'Per unit variable cost']
     varinputtable = maketable(names,keys,titles,sets)
-    varinputtable['Units'] = units
+    varinputtable['Unit'] = units
+    varinputtable['Per unit variable cost'] = varinputtable['Per unit variable cost'].map('{:,.2f}'.format)
     del names, keys, titles
 
     # MAKE REQUIREMENT TABLE
@@ -111,7 +123,7 @@ def importer(session_id):
     units = []
     titles = ['Requirement','Value']
     requirementtable = maketable(names,keys,titles,sets)
-    requirementtable['Units'] = units
+    requirementtable['Unit'] = units
     ##########################################
     #  OUTPUT VALUE TABLES
     ##########################################
@@ -134,9 +146,9 @@ def importer(session_id):
     titles = ['Component','Capacity']
     systemtable = maketable(names,keys,titles,results)
     del names,keys,titles
-    #systemtable['Capacity'] = round(systemtable['Capacity'],0)
-    #systemtable['Capacity'] = round(systemtable['Capacity'],0)
-    #systemtable = str(systemtable)
+    systemtable['Capacity'] = systemtable['Capacity'].map('{:,.2f}'.format)
+    systemtable['Unit'] = units
+
 
     # MAKE INVEST TABLE
     namelist = ['Solar modules','Wind turbines', 'Backup generator', 'Storage facility', 'Main grid extension']
@@ -144,7 +156,12 @@ def importer(session_id):
     it = ['solar','wind','dieselgen', 'storage','grid_connection']
     names,keys = selectvariables(namelist,keylist, it, active_components)
     titles = ['Component', 'Investment cost']
-    investtable = maketable(names,keys,titles,results)
+    investtable = maketable(names,keys,titles,results,True)
+    investtable['Investment cost'] = investtable['Investment cost'].map('{:,.2f}'.format)
+
+    ################################
+    # order all the report stuff in the report dictionary
+    ################################
 
     ## PUT TABLES IN THE REPORTDICT
     reportdict['techinputtable'] = techinputtable # as centertable
@@ -152,6 +169,8 @@ def importer(session_id):
     reportdict['opexinputtable'] = opexinputtable # as moneytable
     reportdict['systemtable'] = systemtable # as centertable
     reportdict['investtable'] = investtable # as centermoneytable
+    reportdict['varinputtable'] = varinputtable # as centermoneytable
+    reportdict['investinputtable'] = investinputtable #as centermoneytable
     ## PUT OTHER VALUES IN REPORTDICT
     reportdict['residential_demand'] = inputs['demands']['residential_demand']
     reportdict['commercial_demand'] = inputs['demands']['commercial_demand']
@@ -165,8 +184,8 @@ def importer(session_id):
     reportdict['PVprod'] = 900
     reportdict['windprod'] = 2100
 
-    reportdict['lcoe'] = round(results['lcoe'],2)
-    reportdict['res_share'] = round(results['res_share']/100,2)
+    reportdict['lcoe'] = float("%.2f" % results['lcoe'])
+    reportdict['res_share'] = float("%.2f" % (results['res_share']*100))
 
     reportdict['reportname'] = 'DUM_REPORTNAME'
     return reportdict

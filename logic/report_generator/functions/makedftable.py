@@ -17,10 +17,13 @@ def selectunits(unitlist,it, active_components):
             units.append(unitlist[n])
     return units
 
-def maketable(names, keys, titles, settings):
+def maketable(names, keys, titles, settings,investtable = False):
     vals = list()
     for key in keys:
         vals.append(settings[key])
+    if investtable:
+        vals.append(sum(vals))
+        names.append('Total')
     t = pd.DataFrame({'1':names, '2':vals})
     t.columns = titles
 

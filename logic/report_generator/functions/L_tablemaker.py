@@ -5,36 +5,6 @@ with vertical line after first and third column (number of columns must be equal
 '''
 ent = '\r\n'
 
-def table(data,columns,label,caption):
-
-    NR = len(data[data.columns[0]])
-    NC = len(data.columns)
-    #title row
-    title = ''
-    for head in data.columns:
-        title = title + head + '&'
-    title = title[0:(len(title)-1)] + '\\\ \hline '
-
-    body = ''
-
-    for r in range(NR):
-        for c in range(NC):
-            body = body+str(data[data.columns[c]][r])+'&'
-        body = body[0:(len(body)-1)] + '\\\ '+ ent
-
-    tab = \
-    '\\begin{table}[h]'+ent+\
-    '\\centering'+ent+\
-    '\\begin{tabular}{'+ columns +'}'+ent+\
-    title   +ent+\
-    body +\
-    '\\end{tabular}'+ent+\
-    '\\label{tab:'+label+'}'+ent+\
-    '\\caption{'+caption+'}'+ent+\
-    '\\end{table}'
-
-    return tab
-
 def centertable(data,columns,label,caption):
 
     NR = len(data[data.columns[0]])
@@ -60,9 +30,9 @@ def centertable(data,columns,label,caption):
     '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
-    '\\end{center}'+ent+\
-    '\\captionof{table}{'+caption+'}'+ent+\
-    '\\vspace{2.5mm}'
+    '\\captionof{table}{'+caption+'}'+\
+    '\\end{center}'+\
+    '\\vspace{0.5mm}'
     return tab
 
 #only two columned tables.
@@ -87,49 +57,20 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
     for r in range(NR):
         for c in range(NC):
             if c == moneycolumn:
-                body = body+'\\texteuro '+str(data[data.columns[c]][r])+'&'
+                body = body+'\\texteuro \\hfill'+str(data[data.columns[c]][r])+'&'
             else:
                 body = body+str(data[data.columns[c]][r])+'&'
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{center}'+ent+\
-    '\\begin{tabular}{'+ columns +'}'+ent+\
-    title   +ent+\
+    '\\begin{center}'+\
+    '\\begin{tabular}{'+ columns +'}'+\
+    '\\hline '+ title+ent+\
     body +\
+    '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
-    '\\end{center}'+ent+\
-    '\\captionof{table}{'+caption+'}'+ent+\
-    '\\vspace(2.5mm)'
-    return tab
-def moneytable(data,label,caption):
-
-
-    NR = len(data[data.columns[0]])
-    NC = len(data.columns)
-    #title row
-    title = ''
-    for head in data.columns:
-        title = title + head + '&'
-    title = title[0:(len(title)-1)] + '\\\ \hline '
-
-    body = ''
-
-    for r in range(NR):
-        for c in range(NC):
-            body = body+str(data[data.columns[c]][r])+'&'
-        body = body[0:(len(body)-1)] + '\\\ '+ ent
-
-    tab = \
-    '\\begin{table}[h]'+ent+\
-    '\\centering'+ent+\
-    '\\begin{tabular}{'+ columns +'}'+ent+\
-    title   +ent+\
-    body +\
-    '\\end{tabular}'+ent+\
-    '\\label{tab:'+label+'}'+ent+\
-    '\\caption{'+caption+'}'+ent+\
-    '\\end{table}'
-
+    '\\captionof{table}{'+caption+'}'+\
+    '\\end{center}'+\
+    '\\vspace{0.5mm}'
     return tab
