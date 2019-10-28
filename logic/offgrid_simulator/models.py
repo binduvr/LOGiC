@@ -81,22 +81,25 @@ class ProjectSite:
         return solar_generation
 
     def plot_data(self, directory):
-        """Plots a figure of the variable to the given file"""
+        """Generates csv of the variables to the given directory and plots"""
 
-        plot_name_list = [(self.pv_generation_per_kWp, 'per_unit_pv_generation'),
-            (self.wind_generation_per_kW, 'per_unit_wind_generation'),
-            (self.residential_demand, 'residential_demand'),
-            (self.commercial_demand, 'commercial_demand'),
-            (self.industrial_demand, 'industrial_demand')]
+        df = pd.DataFrame({'per_unit_pv_generation': list(self.pv_generation_per_kWp),
+                'per_unit_wind_generation': list(self.wind_generation_per_kW),
+                'residential_demand': list(self.residential_demand),
+                'commercial_demand': list(self.commercial_demand),
+                'industrial_demand': list(self.industrial_demand)
+            })
 
-        for variable_tuple in plot_name_list:
-            plot_variable = variable_tuple[0]
-            plot_name = variable_tuple[1]
+        df.to_csv(directory + '/demands.csv')
+
+        # TODO: Add actual time to axis instead of index
+        for column in df:
             fig = plt.figure()
             ax = fig.add_subplot(111)
-            ax.plot(plot_variable)
-            plt.savefig(directory + '/' + plot_name)
+            ax.plot(df[column])
+            plt.savefig(directory + '/' + column)
             plt.close(fig)
+
 
     def to_dict(self):
 

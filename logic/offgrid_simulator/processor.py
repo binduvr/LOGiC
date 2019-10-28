@@ -48,10 +48,6 @@ def generate_input(input_dict, session_id):
     output_directory = settings.OUTPUT_DIRECTORY + session_id
     os.mkdir(output_directory)
 
-    # Dump input json to the directory for analysis at later stage
-    with open(output_directory + os.sep + 'input.json', 'w') as fp:
-        json.dump(input_dict, fp)
-
     # Get optimal panel configuration for location
     # TODO: Do this in OSELC app
     optimal_slope, optimal_azimuth = weather.get_optimal_panel_config(latitude, longitude)
@@ -65,6 +61,10 @@ def generate_input(input_dict, session_id):
 
     for folder in folder_list:
         os.mkdir(output_directory + folder)
+
+    # Dump input json to the directory for analysis at later stage
+    with open(output_directory + '/inputs/input.json', 'w') as fp:
+        json.dump(input_dict, fp)
 
     # TODO: Implement surface roughness functionality
     # Configure the project site

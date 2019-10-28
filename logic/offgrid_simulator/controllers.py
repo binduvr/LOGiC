@@ -102,6 +102,7 @@ def get_daily_time_series(session_id, series_type):
 
         response = flask.make_response(day_series.reset_index().to_json())
         return flask.jsonify(response.get_json(force=True))
+
     else:
         flask.abort(404)
 
@@ -131,16 +132,14 @@ def get_monthly_time_series(session_id):
     return flask.jsonify(response.get_json(force=True))
 
 
-# FIXME: Time series instead of ugly pics
-@offgrid_simulator.route('/get_image/<session_id>/<file>', methods=['GET'])
-def get_image(session_id=None, file=None):
-    """Retrieves a specific image from a specific simulation."""
+@offgrid_simulator.route('/demand_series/<session_id>', methods=['GET'])
+def get_input_series(session_id=None, file=None):
+    """Retrieves demand and generation profiles from a specific simulation."""
 
-    file_path = settings.OUTPUT_DIRECTORY + session_id + '/inputs'
+    file_path = settings.OUTPUT_DIRECTORY + session_id \
+        + '/inputs/demands.csv'
 
-    try:
-        return flask.send_from_directory(file_path, filename=file,
-            as_attachment=True)
-    except FileNotFoundError:
-        flask.abort(404)
+    demand_dataframe = pd.read_csv(file_path)
 
+    response = flask.make_response(demand_dataframe.to_json())
+    return flask.jsonify(response.get_json(force=True))
