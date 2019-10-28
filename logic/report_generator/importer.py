@@ -7,15 +7,16 @@ data. Then organizes the data required in dataframes (for tables) and values or 
 import pandas as pd
 import numpy as np
 import json
-from logic import settings
+import logic.settings as settings
 from logic.report_generator.functions.makedftable import maketable, selectvariables, selectunits
 def import_data(session_id):
 
-    folder = 'data/outputs/'+session_id #for local use
+    folder = settings.OUTPUT_DIRECTORY + session_id #for local use
     reportdict = {'folder' : folder}
 
-    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/input.json'))['additional_parameters']}
-    with open(folder+'/input.json') as file: inputs = json.load(file)
+    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/inputs/input.json'))['additional_parameters']}
+    with open(folder+'/inputs/input.json') as file:
+        inputs = json.load(file)
     active_components = inputs['active_components']
     # MAKE TECHNICAL INPUT TABLE
     names = []
@@ -168,5 +169,5 @@ def import_data(session_id):
     reportdict['lcoe'] = round(results['lcoe'],2)
     reportdict['res_share'] = round(results['res_share']/100,2)
 
-    reportdict['reportname'] = 'DUM_REPORTNAME'
+    reportdict['reportname'] = settings.REPORT_NAME
     return reportdict
