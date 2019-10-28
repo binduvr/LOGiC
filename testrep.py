@@ -1,9 +1,10 @@
 
 from logic.report_generator.importer import importer
-from logic.report_generator.generator import generator
-from logic.report_generator.compiler import compiler
+from logic.report_generator.generator import generator as gen
+from logic.report_generator.generator import repcompile as comp
 
-session_id = '20191028144259'
-reportdict = importer(session_id)
-generator(session_id,reportdict)
-compiler(session_id,reportdict)
+def gener(session_id):
+  reportdict = importer(session_id)
+  z = gen(session_id,reportdict)
+  z = comp(session_id)
+  return 0
