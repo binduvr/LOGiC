@@ -1,7 +1,7 @@
 from shutil import copyfile
 from logic import settings
 import os
-def compiler(session_id,reportdict):
+def compile(session_id,reportdict):
     copyfile('logic/report_generator/latex_template/logo.png', settings.OUTPUT_DIRECTORY+session_id+'/report/logo.png')
     copyfile('data/outputs/'+session_id+'/inputs/per_unit_pv_generation.png', settings.OUTPUT_DIRECTORY+session_id+'/report/per_unit_pv_generation.png')
     copyfile('data/outputs/'+session_id+'/inputs/per_unit_wind_generation.png', settings.OUTPUT_DIRECTORY+session_id+'/report/per_unit_wind_generation.png')

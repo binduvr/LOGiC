@@ -15,7 +15,7 @@ from logic.report_generator.sections.D_qualitativesection import qualitativeprop
 from logic.report_generator.sections.E_conclusion import conclusion
 from logic.report_generator.sections.F_appendix import appendix
 
-def generator (session_id, reportdict):
+def generate_report(session_id, reportdict):
     enter = '\r\n'
     f = open('logic/report_generator/latex_template/preamble.tex', 'r')
     preamble = f.read()

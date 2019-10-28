@@ -1,9 +1,9 @@
 import flask
 
 import logic.settings as settings
-from logic.report_generator.importer import importer
-from logic.report_generator.generator import generator
-from logic.report_generator.compiler import compiler
+# import logic.report_generator.importer as importer
+# from logic.report_generator.generator import generator
+# from logic.report_generator.compiler import compiler
 from logic.report_generator.mailer import mailreport
 
 
