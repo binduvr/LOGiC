@@ -45,7 +45,7 @@ def generate_input(input_dict, session_id):
     additional_parameters = input_dict['additional_parameters']
 
     # Make directory for the ID of this simulation
-    output_directory = settings.OUTPUT_DIRECTORY + session_id
+    output_directory = settings.OUTPUT_DIRECTORY + session_id + '/'
     os.mkdir(output_directory)
 
     # Get optimal panel configuration for location
@@ -63,7 +63,7 @@ def generate_input(input_dict, session_id):
         os.mkdir(output_directory + folder)
 
     # Dump input json to the directory for analysis at later stage
-    with open(output_directory + '/inputs/input.json', 'w') as fp:
+    with open(output_directory + 'inputs/input.json', 'w') as fp:
         json.dump(input_dict, fp)
 
     # TODO: Implement surface roughness functionality

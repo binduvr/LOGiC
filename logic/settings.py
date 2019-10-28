@@ -4,6 +4,7 @@ import datetime
 # Directories and file locations
 OUTPUT_DIRECTORY = "data/outputs/"
 INPUT_DIRECTORY = "data/inputs/"
+REPORT_NAME = "OGTC_Simulation_Results"
 
 DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
