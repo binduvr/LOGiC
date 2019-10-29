@@ -41,12 +41,14 @@ pip install -r requirements.txt
 
 ## Running the application
 To run the application:
-1. Run run.py to start the web server
+1. Change the values in admin_settings.ini to suit your needs.
+
+2. Run run.py to start the web server
 ```
 python run.py
 ```
 
-2. The server is now running.
+3. The server is now running.
 
 ### Routes
 The application has various routes (or URLs) which have different functions. All URLs for the development version have the prefix *http://localhost:5000/* which is to be placed before the following routes. These routes return output in JSON format.
