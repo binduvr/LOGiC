@@ -118,7 +118,8 @@ def test_application():
     demand_time_series = test_demand_series(session_id)
     print(demand_time_series)
 
-    email = "b.j.vanraak@gmail.com"
+    # ENTER EMAIL HERE
+    email = "test@gmail.com"
     email_status = test_email_report(session_id, email)
     print(email_status)
 
