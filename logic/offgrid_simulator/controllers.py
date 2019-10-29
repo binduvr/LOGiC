@@ -16,40 +16,40 @@ def process_request(input_dict, session_id):
        args=(input_dict, session_id))
     x.start()
 
-# @offgrid_simulator.route('/simulate', methods=['POST'])
-@offgrid_simulator.route('/simulate')
+@offgrid_simulator.route('/simulate', methods=['POST'])
+# @offgrid_simulator.route('/simulate')
 def handle_request():
     """Runs a simulation using supplied values."""
 
     # Testing #######################
-    input_dict = {
-        'project_name': 'hoevelaken',
-        'country_code': 'NL',
-        'address': "some random address",
-        # NOTE: Make sure they are sent as floats.
-        'latitude': 51,
-        'longitude': 5,
-        'demands': {
-            'residential_demand': 35000,
-            'commercial_demand': 0,
-            'industrial_demand': 0
-        },
-        'active_components': {
-            'wind': True,
-            'solar': True,
-            'storage': True,
-            'dieselgen': True,
-            'grid_connection': False
-        },
-        'additional_parameters': {'blackout_frequency': 0}
-    }
+    # input_dict = {
+    #     'project_name': 'hoevelaken',
+    #     'country_code': 'NL',
+    #     'address': "some random address",
+    #     # NOTE: Make sure they are sent as floats.
+    #     'latitude': 51,
+    #     'longitude': 5,
+    #     'demands': {
+    #         'residential_demand': 35000,
+    #         'commercial_demand': 0,
+    #         'industrial_demand': 0
+    #     },
+    #     'active_components': {
+    #         'wind': True,
+    #         'solar': True,
+    #         'storage': True,
+    #         'dieselgen': True,
+    #         'grid_connection': False
+    #     },
+    #     'additional_parameters': {'blackout_frequency': 0}
+    # }
     #######################
 
 
 
 
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
-    # input_dict = request.get_json(force=True)
+    input_dict = flask.request.get_json(force=True)
 
     process_request(input_dict, session_id)
     return session_id
