@@ -3,35 +3,20 @@ import flask
 import logic.settings as settings
 import logic.report_generator.mailer as mailer
 
-
 report_generator = flask.Blueprint('report_generator', __name__)
-
-@report_generator.route('/generate/<session_id>', methods=['GET'])
-def generate_report(session_id):
-    try:
-        reportdict = importer(session_id)
-        generator(session_id,reportdict) #mod from C4 reportgenerator repgen @@Bindu; moeten dit soort functies altijd een 0 returnen?
-        compiler(session_id,reportdict)
-        #TODO post pdf
-    except:
-        flask.abort(404)
 
 # @report_generator.route('/email', methods=['POST'])
 @report_generator.route('/email')
 def email_report():
     """Email a report of the simulation of the session_id."""
 
-    # request_json = request.get_json(force=True)
+    # request_json = flask.request.get_json(force=True)
 
-    # session_id = request_json['session_id']
-    # email = request_json['email']
+    # Testing
+    request_json = flask.request.args.to_dict()
 
-    # Test
-    session_id = "20191028143512"
-    email = "b.j.vanraak@gmail.com"
-    # mailer.email_report(session_id, email)
-
-# STOPPED WORKING FOR SOME REASON
+    session_id = request_json['session_id']
+    email = request_json['email']
 
     try:
         mailer.email_report(session_id, email)
@@ -40,17 +25,22 @@ def email_report():
         flask.abort(404)
 
 # FIXME: Fix this problem
-@report_generator.route('/download', methods=['POST'])
-def download_report(session_id):
+# @report_generator.route('/download', methods=['POST'])
+@report_generator.route('/download')
+def download_report():
     """Download a report of the simulation of the session_id."""
 
-    request_json = request.get_json(force=True)
+    # request_json = request.get_json(force=True)
+
+    # Test
+    request_json = flask.request.args.to_dict()
     session_id = request_json['session_id']
 
     file_path = settings.OUTPUT_DIRECTORY + session_id
-
-    try:
-        return flask.send_from_directory(file_path, filename='report.pdf',
-            as_attachment=True)
-    except FileNotFoundError:
-        flask.abort(404)
+    print(file_path)
+    return flask.send_file(file_path + 'OGTC_Simulation_Results.pdf')
+    # try:
+    #     return flask.send_from_directory(file_path, filename='OGTC_Simulation_Results.pdf',
+    #         as_attachment=True)
+    # except FileNotFoundError:
+    #     flask.abort(404)

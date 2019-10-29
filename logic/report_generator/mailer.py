@@ -7,8 +7,8 @@ import os
 
 import logic.settings as settings
 
-ent = '\r\n'
 def email_report(session_id, to_address):
+	ent = '\r\n'
 	print('mailing working dir: ' + os.getcwd())
 	fromaddr = 'info@offgridtestcenter.nl'
 	# password = input('please type your password: ')# TODO take password from server
