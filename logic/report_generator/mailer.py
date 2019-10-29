@@ -4,15 +4,16 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import os
+import configparser as cp
 
 import logic.settings as settings
 
 def email_report(session_id, to_address):
 	ent = '\r\n'
-	print('mailing working dir: ' + os.getcwd())
-	fromaddr = 'info@offgridtestcenter.nl'
-	# password = input('please type your password: ')# TODO take password from server
-	password = "CPk5hp1s4"
+	cfg = cp.ConfigParser()
+	cfg.read(settings.BASE_DIR + "/" + settings.ADMIN_SETTINGS_FILE)
+	fromaddr = cfg.get('email_login', 'email_address')
+	password = cfg.get('email_login', 'email_password')
 
 	# make mail content
 	subject = 'Report on microgrid sizing assessment'
