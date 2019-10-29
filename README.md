@@ -143,7 +143,7 @@ This URL will retrieve the report in the web browser which was generated for the
 
 ## Testing
 To test the application:
-1. Edit test/tests.py to specify which routes you would like to test
+1. Edit test/tests.py to specify which routes you would like to test. Also change the email to your own email address.
 
 2. Run run.py to start the application
 ```
