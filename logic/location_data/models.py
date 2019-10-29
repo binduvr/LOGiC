@@ -18,6 +18,8 @@ class Country:
         diesel_price: Current cost of diesel in EURO/L
     """
 
+    # TODO: Make diesel price fuel price
+
     def __init__(self, country_code):
         self.country_code = country_code
         self.set_local_attributes()
