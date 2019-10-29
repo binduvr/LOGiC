@@ -4,18 +4,22 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 import os
+import configparser as cp
 
 import logic.settings as settings
 
-ent = '\r\n'
 def email_report(session_id, to_address):
-	print('mailing working dir: ' + os.getcwd())
-	fromaddr = 'info@offgridtestcenter.nl'
-	# password = input('please type your password: ')# TODO take password from server
-	password = "CPk5hp1s4"
+	ent = '\r\n'
+	cfg = cp.ConfigParser()
+	cfg.read(settings.BASE_DIR + "/" + settings.ADMIN_SETTINGS_FILE)
+	fromaddr = cfg.get('email_login', 'email_address')
+	password = cfg.get('email_login', 'email_password')
 
 	# make mail content
 	subject = 'Report on microgrid sizing assessment'
+
+	# body = open(settings.EMAIL_TEXT_FILE, 'r', encoding="utf-8").read()
+	# print(body)
 
 	body = "Dear reader, " + ent + ent +\
 	'This E-mail contains the report of a microgrid sizing using the LOGiC tool by the Offgrid Test Centre. You receive this E-mail ' + \
@@ -28,26 +32,32 @@ def email_report(session_id, to_address):
 
 
 	filepath = settings.OUTPUT_DIRECTORY + session_id + "/report/" + settings.REPORT_NAME + ".pdf"
-	attachment = open(filepath, "rb")
-	p = MIMEBase('application', 'octet-stream')
-	p.set_payload((attachment).read())
-	encoders.encode_base64(p)
-	p.add_header('Content-Disposition', "attachment; filename= " + settings.REPORT_NAME + ".pdf")
+	pdf_file = open(filepath, "rb")
+	attachment = MIMEBase('application', 'octet-stream')
+	attachment.set_payload((pdf_file).read())
+	encoders.encode_base64(attachment)
+	attachment.add_header('Content-Disposition', "attachment; filename= " + settings.REPORT_NAME + ".pdf")
 
 	#construct mail object
 	msg = MIMEMultipart()
 	msg['From'] = fromaddr
 	msg['To'] = to_address
 	msg['Subject'] = subject
+	# TODO: Can be changed to html for better styling
 	msg.attach(MIMEText(body, 'plain'))
-	msg.attach(p)
+	msg.attach(attachment)
 
 
 	# creates SMTP session
-	s = smtplib.SMTP('smtp02.hostnet.nl', 587)
-	s.starttls()
-	s.login(fromaddr, password)
+	mail_server = cfg.get('email_settings', 'mail_server')
+	mail_port = cfg.get('email_settings', 'mail_port')
+	use_tls = cfg.getint('email_settings', 'mail_use_tls')
+
+	server = smtplib.SMTP(mail_server, mail_port)
+	if use_tls:
+		server.starttls()
+	server.login(fromaddr, password)
 	text = msg.as_string()
 
 	# sending the mail
-	s.sendmail(fromaddr, to_address, text)
+	server.sendmail(fromaddr, to_address, text)
