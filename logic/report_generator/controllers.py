@@ -10,11 +10,10 @@ report_generator = flask.Blueprint('report_generator', __name__)
 def email_report():
     """Email a report of the simulation of the session_id."""
 
-    # request_json = flask.request.get_json(force=True)
-
     # Testing
     request_json = flask.request.args.to_dict()
 
+    # request_json = flask.request.get_json(force=True)
     session_id = request_json['session_id']
     email = request_json['email']
 
@@ -24,23 +23,20 @@ def email_report():
     except:
         flask.abort(404)
 
-# FIXME: Fix this problem
 # @report_generator.route('/download', methods=['POST'])
 @report_generator.route('/download')
 def download_report():
     """Download a report of the simulation of the session_id."""
 
-    # request_json = request.get_json(force=True)
-
     # Test
     request_json = flask.request.args.to_dict()
-    session_id = request_json['session_id']
 
-    file_path = settings.OUTPUT_DIRECTORY + session_id
-    print(file_path)
-    return flask.send_file(file_path + 'OGTC_Simulation_Results.pdf')
-    # try:
-    #     return flask.send_from_directory(file_path, filename='OGTC_Simulation_Results.pdf',
-    #         as_attachment=True)
-    # except FileNotFoundError:
-    #     flask.abort(404)
+    # request_json = request.get_json(force=True)
+    session_id = request_json['session_id']
+    file_path = settings.BASE_DIR + '/' + \
+        settings.OUTPUT_DIRECTORY + session_id + "/report"
+    try:
+        return flask.send_from_directory(file_path,
+            filename=settings.REPORT_NAME + ".pdf", as_attachment=True)
+    except FileNotFoundError:
+        flask.abort(404)
