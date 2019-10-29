@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.28)  28 OCT 2019 15:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7200 64-bit) (preloaded format=pdflatex 2019.10.28)  29 OCT 2019 14:39
 entering extended mode
 **./OGTC_Simulation_Results.tex
 (OGTC_Simulation_Results.tex
@@ -1219,10 +1219,11 @@ errat-TLF.
 )
 LaTeX Font Info:    Font shape `TS1/Montserrat-TLF/regular/n' will be
 (Font)              scaled to size 10.0pt on input line 89.
-LaTeX Font Info:    Font shape `T1/Montserrat-TLF/regular/n' will be
-(Font)              scaled to size 12.0pt on input line 213.
-LaTeX Font Info:    Font shape `T1/Montserrat-TLF/bold/n' will be
-(Font)              scaled to size 12.0pt on input line 213.
+
+
+LaTeX Font Warning: Font shape `U/eurosym/regular/n' undefined
+(Font)              using `U/eurosym/m/n' instead on input line 139.
+
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/regular/n' will be
 (Font)              scaled to size 17.28pt on input line 217.
 LaTeX Font Info:    Font shape `T1/Montserrat-TLF/regular/sc' will be
@@ -1232,61 +1233,55 @@ File: logo.png Graphic file (type png)
 <use logo.png>
 Package pdftex.def Info: logo.png  used on input line 217.
 (pdftex.def)             Requested size: 139.80547pt x 55.33495pt.
- [1{C:/Users/bindu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+LaTeX Font Info:    Font shape `T1/Montserrat-TLF/regular/n' will be
+(Font)              scaled to size 12.0pt on input line 217.
+[1{C:/Users/bindu/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
  <./logo.png>]
+LaTeX Font Info:    Font shape `T1/Montserrat-TLF/bold/n' will be
+(Font)              scaled to size 12.0pt on input line 225.
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 221.
+Package pdftex.def Info: logo.png  used on input line 233.
 (pdftex.def)             Requested size: 139.80547pt x 55.33495pt.
-
-[2]
-<per_unit_pv_generation.png, id=18, 462.528pt x 346.896pt>
+ [2]
+<per_unit_pv_generation.png, id=19, 462.528pt x 346.896pt>
 File: per_unit_pv_generation.png Graphic file (type png)
 <use per_unit_pv_generation.png>
-Package pdftex.def Info: per_unit_pv_generation.png  used on input line 229.
+Package pdftex.def Info: per_unit_pv_generation.png  used on input line 243.
 (pdftex.def)             Requested size: 241.84843pt x 181.38736pt.
-
-Overfull \hbox (33.73996pt too wide) in paragraph at lines 229--229
- \T1/Montserrat-TLF/regular/n/10 /r/n[]/r/n 
- []
-
-<per_unit_wind_generation.png, id=19, 462.528pt x 346.896pt>
+<per_unit_wind_generation.png, id=20, 462.528pt x 346.896pt>
 File: per_unit_wind_generation.png Graphic file (type png)
 <use per_unit_wind_generation.png>
-Package pdftex.def Info: per_unit_wind_generation.png  used on input line 233.
+Package pdftex.def Info: per_unit_wind_generation.png  used on input line 255.
 (pdftex.def)             Requested size: 241.84843pt x 181.38736pt.
-
-Overfull \hbox (33.73996pt too wide) in paragraph at lines 233--233
- \T1/Montserrat-TLF/regular/n/10 /r/n[]/r/n 
- []
-
 File: logo.png Graphic file (type png)
 <use logo.png>
-Package pdftex.def Info: logo.png  used on input line 239.
+Package pdftex.def Info: logo.png  used on input line 267.
 (pdftex.def)             Requested size: 139.80547pt x 55.33495pt.
-[3 <./per_unit_pv_generation.png> <./per_unit_wind_generation.png>]
+ [3 <./per_unit_pv_generation.png> <./per_unit_wind_generation.png>]
 (OGTC_Simulation_Results.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 29370 strings out of 492452
- 591901 string characters out of 3130303
- 700382 words of memory out of 3000000
- 33341 multiletter control sequences out of 15000+200000
- 578719 words of font info for 45 fonts, out of 3000000 for 9000
+ 29375 strings out of 492452
+ 591987 string characters out of 3130303
+ 702360 words of memory out of 3000000
+ 33345 multiletter control sequences out of 15000+200000
+ 578836 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,17n,96p,834b,1094s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,18n,96p,834b,1092s stack positions out of 5000i,500n,10000p,200000b,50000s
 {D:/Downloads/MiKTeX/MiKTeX/fonts/enc/dvips/montserrat/zmo_r7s5an.enc}{D:/Dow
 nloads/MiKTeX/MiKTeX/fonts/enc/dvips/montserrat/zmo_lzxil3.enc}{D:/Downloads/Mi
 KTeX/MiKTeX/fonts/enc/dvips/montserrat/zmo_ys7mdv.enc}<D:/Downloads/MiKTeX/MiKT
 eX/fonts/type1/public/montserrat/Montserrat-Bold.pfb><D:/Downloads/MiKTeX/MiKTe
-X/fonts/type1/public/montserrat/Montserrat-Regular.pfb>
-Output written on OGTC_Simulation_Results.pdf (3 pages, 189486 bytes).
+X/fonts/type1/public/montserrat/Montserrat-Regular.pfb><D:/Downloads/MiKTeX/MiK
+TeX/fonts/type1/public/eurosym/feymr10.pfb>
+Output written on OGTC_Simulation_Results.pdf (3 pages, 184641 bytes).
 PDF statistics:
- 37 PDF objects out of 1000 (max. 8388607)
+ 41 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
