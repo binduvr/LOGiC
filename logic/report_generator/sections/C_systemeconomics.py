@@ -1,16 +1,19 @@
 enter ='\r\n'
 import os
 from logic.report_generator.functions.L_tablemaker import centertable as table
+from logic.report_generator.functions.L_tablemaker import centermoneytable as moneytable                                                                                      
 def systemeconomics(reportdict):
-    investtable = table(reportdict['investtable'],'|l|r|c|', 'investtable','Investment cost of the system')
-    opextable = table(reportdict['opexinputtable'],'|l|r|c|', 'opextable','Operational expenditure of the main components of the system')
-    econinputtable = table(reportdict['econinputtable'], '|l|r|c|', 'econinputtable', 'Economic input variables')
-
+    investtable = moneytable(reportdict['investtable'],'|l|r|r|', 'investtable','Investment cost of the system')
+    opextable = moneytable(reportdict['opexinputtable'],'|l|r|r|', 'opextable','Operational expenditure of the main components of the system')
+    econinputtable = table(reportdict['econinputtable'], '|l|r|r|', 'econinputtable', 'Economic input variables')
+    investinputtable = moneytable(reportdict['investinputtable'],'|l|r|r|', 'investinputtable', 'Per unit investment cost of the main considered system components')
 	# actual string concatenation
     econ = '\\section*{System economics}' + enter + \
     'In order to assess the economics of the system the following economic ' +\
     'parameters have been assumed: '+enter+\
     econinputtable+enter+\
+    'The investment costs associated with the use of the different main components are assumed to be:' +enter+\
+    investinputtable+enter+\
     'Based on these the investment costs of the main components of the system are estimated as:'+enter+\
     investtable+enter+\
     'The operational expenditure is estimated as:'+ enter+\
