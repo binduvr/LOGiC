@@ -8,11 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 * A python virtual environment manager, such as [Anaconda](https://www.anaconda.com/distribution/).
 
-* [CBC-Solver](https://ampl.com/dl/open/cbc/) must be installed and added to the environment PATH variable in order for the application to make calculations. [How to set environment variables](http://www.computerhope.com/issues/ch000549.htm).
+* [CBC-Solver](https://ampl.com/dl/open/cbc/) must be installed and added to the PATH environment variable in order for the application to make calculations. [How to set environment variables](http://www.computerhope.com/issues/ch000549.htm).
 
-* A LaTeX compiler such as [MiKTeX](https://miktex.org/download) must be installed to allow for report functionality.
-
-Ensure the folder containing latex.exe is also added to the environment variables, the same way the CBC-Solver is added.
+* A LaTeX compiler such as [MiKTeX](https://miktex.org/download) must be installed to allow for report functionality and must also be added to the PATH environment variable, the same way the CBC-Solver is added.
 
 ### Installing
 1. Create a new python environment using Python version 3.6. We will use Anaconda as an example.
