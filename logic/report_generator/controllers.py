@@ -1,10 +1,7 @@
 import flask
 
 import logic.settings as settings
-# import logic.report_generator.importer as importer
-# from logic.report_generator.generator import generator
-# from logic.report_generator.compiler import compiler
-from logic.report_generator.mailer import mailreport
+import logic.report_generator.mailer as mailer
 
 
 report_generator = flask.Blueprint('report_generator', __name__)
@@ -19,22 +16,30 @@ def generate_report(session_id):
     except:
         flask.abort(404)
 
-@report_generator.route('/email', methods=['POST'])
+# @report_generator.route('/email', methods=['POST'])
+@report_generator.route('/email')
 def email_report():
     """Email a report of the simulation of the session_id."""
 
-    request_json = request.get_json(force=True)
+    # request_json = request.get_json(force=True)
 
-    session_id = request_json['session_id']
-    email = request_json['email']
+    # session_id = request_json['session_id']
+    # email = request_json['email']
+
+    # Test
+    session_id = "20191028143512"
+    email = "b.j.vanraak@gmail.com"
+    # mailer.email_report(session_id, email)
+
+# STOPPED WORKING FOR SOME REASON
 
     try:
-        utils.email_report(session_id, email)
-        return True
+        mailer.email_report(session_id, email)
+        return "Success"
     except:
         flask.abort(404)
 
-
+# FIXME: Fix this problem
 @report_generator.route('/download', methods=['POST'])
 def download_report(session_id):
     """Download a report of the simulation of the session_id."""

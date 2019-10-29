@@ -25,6 +25,7 @@ def handle_request():
     input_dict = {
         'project_name': 'hoevelaken',
         'country_code': 'NL',
+        'address': "some random address",
         # NOTE: Make sure they are sent as floats.
         'latitude': 51,
         'longitude': 5,
@@ -37,7 +38,7 @@ def handle_request():
             'wind': True,
             'solar': True,
             'storage': True,
-            'dieselgen': False,
+            'dieselgen': True,
             'grid_connection': False
         },
         'additional_parameters': {'blackout_frequency': 0}

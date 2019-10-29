@@ -8,6 +8,7 @@ INPUT_DIRECTORY = "data/inputs/"
 DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
 
+REPORT_NAME = "OGTC_Simulation_Results"
 # Type of day time series and hour of year they start
 # FIXME: Find the right days (no weekends)
 TYPICAL_DAYS = {
