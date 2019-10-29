@@ -9,3 +9,4 @@ matplotlib==3.0.0
 Flask_Cors==3.0.8
 oemof==0.2.2
 requests==2.22.0
+ConfigParser==4.0.2
