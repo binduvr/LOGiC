@@ -160,6 +160,7 @@ class OffgriddersInput:
         self.project_name = project_name
         self.case_definition = \
             self.set_case_definition(self.project_name, active_components)
+            # TODO: Ensure null values are excluded
         self.parameters_constant_values = \
             {**settings.PARAMETERS_CONSTANT_VALUES, **additional_parameters}
         self.settings = settings.OFFGRIDDERS_SETTINGS
