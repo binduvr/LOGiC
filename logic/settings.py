@@ -1,6 +1,10 @@
-
 import datetime
+import os
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(PROJECT_ROOT)
+
+# TODO: Remove ending slash
 # Directories and file locations
 OUTPUT_DIRECTORY = "data/outputs/"
 INPUT_DIRECTORY = "data/inputs/"
@@ -9,6 +13,9 @@ DEMAND_PROFILE_DIRECTORY = INPUT_DIRECTORY + "demand_profiles/"
 COUNTRY_DB = INPUT_DIRECTORY + "country_db_v1.1.csv"
 
 REPORT_NAME = "OGTC_Simulation_Results"
+
+ADMIN_SETTINGS_FILE = "admin_settings.ini"
+
 # Type of day time series and hour of year they start
 # FIXME: Find the right days (no weekends)
 TYPICAL_DAYS = {
