@@ -59,9 +59,10 @@ def handle_request():
 def get_result(session_id=None):
     """Retrieves simulation results using session ID."""
 
+    # TODO: Handle exception
     file_path = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
-    results = pd.read_csv(file_path)
     try:
+        results = pd.read_csv(file_path)
         webpage_output = {
             'session_id': session_id,
             'nominal_solar_power_installed': results['capacity_pv_kWp'][0],
