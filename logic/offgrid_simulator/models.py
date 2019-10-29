@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import logic.offgrid_simulator.profiles as profiles
 import logic.offgrid_simulator.weather as weather
 import logic.settings as settings
-import logic.offgrid_simulator.windconverters as windconverters
+from logic.offgrid_simulator import windconverters as windconverters
 class ProjectSite:
     """A project site to be used in Offgridders.
 
@@ -70,9 +70,7 @@ class ProjectSite:
     def set_wind_generation(self, latitude, longitude, evaluated_days, demands): # NOTE: added demands as argument for use in turbine selection
         wind_speed = weather.get_wind_standard_year(latitude, longitude,
             evaluated_days)
-        # NOTE: Rough estimate
-        wind_generation = windconverts.rough(wind_speed)
-        # TODO: implement more sophisticated wind turbine selection
+        wind_generation, turbine_type = windconverters.chosen_turbine(wind_speed,demands)
         return wind_generation
 
     def set_pv_generation(self, latitude, longitude, evaluated_days):

@@ -111,7 +111,7 @@ def import_data(session_id):
     units = selectunits(unitlist,it,active_components)
     del unitlist
 
-    titles = ['Component', 'Per unit variable cost']
+    titles = ['Component', 'pu variable cost']
     varinputtable = maketable(names,keys,titles,sets)
     varinputtable['Units'] = units
     varinputtable['pu variable cost'] = varinputtable['pu variable cost'].map('{:,.2f}'.format)

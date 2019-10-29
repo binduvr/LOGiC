@@ -28,6 +28,15 @@ def chosen_turbine(wind_speed, demands):
     windgen = speed_to_power(wind_speed, turbine_type)
     return windgen, turbine_type
 
+def choose_turbine(wind_speed, demands):
+    turbine_matrix = pd.read_csv(settings.INPUT_DIRECTORY+'/wind_turbines/turbine_matrix.csv')
+    windbounds = turbine_matrix['0']
+    powerbounds = list(turbine_matrix.columns[1:len(turbine_matrix.columns)])
+    wind_class = find_wind_class(wind_speed, windbounds)
+    power_class_index = find_power_class(demands, powerbounds)
+    turbine_type = turbine_matrix[power_class_index][wind_class]
+    return turbine_type
+
 def speed_to_power(wind_speed, turbine_type):
     power_curve = pd.read_csv(settings.INPUT_DIRECTORY+'/wind_turbines/power_curves/'+turbine_type+'.csv', header = None)
     power_curve.index = ['wind_speed', 'power']
@@ -38,15 +47,6 @@ def speed_to_power(wind_speed, turbine_type):
     windgen = pd.Series(windgen)
     return windgen
 
-def choose_turbine(wind_speed, demands):
-    turbine_matrix = pd.read_csv(settings.INPUT_DIRECTORY+'/wind_turbines/turbine_matrix.csv')
-    windbounds = turbine_matrix['0']
-    powerbounds = list(turbine_matrix.columns[1:len(turbine_matrix.columns)])
-    wind_class = find_wind_class(wind_speed, windbounds)
-    power_class_index = find_power_class(demands, powerbounds)
-    turbine_type = turbine_matrix[power_class_index][wind_class]
-    return turbine_type
-
 def find_power_class(demands,bounds):
     totaldemand = 0
     for key in demands.keys():
@@ -54,9 +54,9 @@ def find_power_class(demands,bounds):
     estimated_wind_energy = totaldemand*0.4 # NOTE: hard coded estimated fraction of wind power
     estimated_load_hours = 2100 # NOTE: hard coded guess relevant for NL    TODO: some smarter estimation
     estimated_wind_power = estimated_wind_energy/estimated_load_hours
-
+    n_turbines = 10 # NOTE hard coded number of turbines
     cla = 0
-    while float(bounds[cla])<estimated_wind_power:
+    while float(bounds[cla])<estimated_wind_power/n_turbines:
         cla = cla+1
         if cla == len(bounds)-1:
             break
