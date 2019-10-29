@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Set config from config presets
-app.config.from_object('logic.config.TestingConfig')
+app.config.from_object('logic.config.DevelopmentConfig')
 
 # Register the different blueprints
 app.register_blueprint(location_data, url_prefix='/location_data')
