@@ -55,5 +55,6 @@ class Country:
             'electricity_price': self.electricity_price,
             'renewable_share': self.renewable_share,
             'tax': self.tax,
-            'diesel_price': self.diesel_price,
+            # NOTE: Key name changed
+            'fuel_price': self.diesel_price
         }
