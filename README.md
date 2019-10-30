@@ -61,13 +61,12 @@ This URL will retrieve factors which can based on location such as fuel price wh
 This request will out put JSON in the foloowing form:
 ```
 { 
-  'country_code': 'NL',
   'blackout_frequency': None,
   'blackout_duration': None,
-  'electricity_price': 0.22,
-  'renewable_share': 0.05889463078827299,
+  'maingrid_electricity_price': 0.22,
+  'maingrid_renewable_share': 0.05889463078827299,
   'tax': 0.21,
-  'diesel_price': 1.221678
+  'fuel_price': 1.221678
 }
 ```
 
@@ -145,16 +144,16 @@ This URL will retrieve the report in the web browser which was generated for the
 
 ## Testing
 To test the application:
-1. Edit test/tests.py to specify which routes you would like to test. Also change the email to your own email address.
+1. Edit tests/tests.py to specify which routes you would like to test. Also change the email to your own email address.
 
 2. Run run.py to start the application
 ```
 python run.py
 ```
 
-3. Run test/tests.py
+3. Run tests/tests.py
 ```
-python test/tests.py
+python tests/tests.py
 ```
 
 4. Check the output to ensure success.
