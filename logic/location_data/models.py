@@ -66,5 +66,6 @@ class Country:
             'blackout_duration': self.blackout_duration,
             'maingrid_electricity_price': self.electricity_price,
             'maingrid_renewable_share': self.renewable_share,
+            'tax': self.tax,
             'fuel_price': self.diesel_price
         }
