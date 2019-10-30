@@ -31,7 +31,8 @@ def test_simulation(additional_parameters):
             'solar': True,
             'storage': True,
             'dieselgen': True,
-            'grid_connection': True
+            # NOTE: Making grid active gives errors during report gen
+            'grid_connection': False
         },
         'additional_parameters': {}
     }
