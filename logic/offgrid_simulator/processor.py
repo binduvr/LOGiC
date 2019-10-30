@@ -50,14 +50,17 @@ def generate_input(input_dict, session_id):
 
     # Get optimal panel configuration for location
     # TODO: Do this in OSELC app
-    optimal_slope, optimal_azimuth = weather.get_optimal_panel_config(latitude, longitude)
+    optimal_slope, optimal_azimuth = \
+        weather.get_optimal_panel_config(latitude, longitude)
     panel_config = {'optimal_slope': [optimal_slope],
         'optimal_azimuth': [optimal_azimuth]}
+
     df = pd.DataFrame(data=panel_config)
     df.to_csv(output_directory + '/test_results.csv', index=False)
 
     # Create folders for OESMOT output
-    folder_list = ['/lp_files', '/storage', '/electricity_mg', '/inputs', '/oemof','/report']
+    folder_list = ['/lp_files', '/storage', '/electricity_mg',
+        '/inputs', '/oemof','/report']
 
     for folder in folder_list:
         os.mkdir(output_directory + folder)
