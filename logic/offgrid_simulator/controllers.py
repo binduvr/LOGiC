@@ -62,6 +62,10 @@ def get_result(session_id=None):
     file_path = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
     try:
         results = pd.read_csv(file_path)
+
+        diesel_only_C02_production = float(results['total_demand_annual_kWh'][0])\
+            * settings.CO2_PER_KWH_DIESEL
+
         webpage_output = {
             'session_id': session_id,
             'nominal_solar_power_installed': results['capacity_pv_kWp'][0],
@@ -75,11 +79,14 @@ def get_result(session_id=None):
             'storage_unit_cost': results['costs_storage'][0],
             'diesel_generator_cost': results['costs_genset'][0],
 
+            'diesel_only_C02_production': diesel_only_C02_production,
+            'kg_C02_saved': diesel_only_C02_production * results['res_share'][0],
             'optimal_slope': float(results['optimal_slope'][0]),
             'optimal_azimuth': float(results['optimal_azimuth'][0])
         }
         return webpage_output
-    except:
+    except Exception as e:
+        print(e)
         flask.abort(404)
 
 
