@@ -160,9 +160,9 @@ class OffgriddersInput:
         self.project_name = project_name
         self.case_definition = \
             self.set_case_definition(self.project_name, active_components)
-            # TODO: Ensure null values are excluded
+        # TODO: Ensure null values are excluded
         self.parameters_constant_values = \
-            {**settings.PARAMETERS_CONSTANT_VALUES, **additional_parameters}
+            self.set_parameters_constant_values(additional_parameters)
         self.settings = settings.OFFGRIDDERS_SETTINGS
         self.settings['output_folder'] = output_folder
         self.parameters_sensitivity = settings.PARAMETERS_SENSITIVITY
@@ -185,6 +185,12 @@ class OffgriddersInput:
             case_definition['capacity_pcc_feedin_kW'] = 'None'
         return case_definition
 
+    def set_parameters_constant_values(self, additional_parameters):
+        result_params = {}
+        for key in additional_parameters.keys():
+            if additional_parameters[key] != '':
+                result_params[key] = additional_parameters[key]
+        return {**settings.PARAMETERS_CONSTANT_VALUES, **result_params}
 
     def to_dict(self):
         offgridders_data = {

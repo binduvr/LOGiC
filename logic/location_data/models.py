@@ -18,8 +18,6 @@ class Country:
         diesel_price: Current cost of diesel in EURO/L
     """
 
-    # TODO: Make diesel price fuel price
-
     def __init__(self, country_code):
         self.country_code = country_code
         self.set_local_attributes()
@@ -32,6 +30,8 @@ class Country:
 
         # Read country database csv file
         df = pd.read_csv(settings.COUNTRY_DB)
+        # Replace NaN's with empty string
+        df.fillna('', inplace=True)
         # Retrieve series of values for country code
         result_series = df.query('country_code == @self.country_code')
         # Assign attributes
@@ -55,6 +55,16 @@ class Country:
             'electricity_price': self.electricity_price,
             'renewable_share': self.renewable_share,
             'tax': self.tax,
-            # NOTE: Key name changed
+            'diesel_price': self.diesel_price
+        }
+
+    def get_simulation_input(self):
+        """Input for the LOGiC application."""
+
+        return {
+            'blackout_frequency': self.blackout_frequency,
+            'blackout_duration': self.blackout_duration,
+            'maingrid_electricity_price': self.electricity_price,
+            'maingrid_renewable_share': self.renewable_share,
             'fuel_price': self.diesel_price
         }
