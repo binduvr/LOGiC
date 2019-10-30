@@ -49,11 +49,11 @@ def test_get_results(session_id):
     trying = True
     static_results = ''
     while trying:
-        try:
-            request_json = requests.get(BASE_URL + static_result_url)
+        request_json = requests.get(BASE_URL + static_result_url)
+        if request_json:
             static_results = request_json.text
             trying = False
-        except Exception as e:
+        else:
             time.sleep(1)
     return static_results
 
@@ -102,8 +102,8 @@ def test_application():
     additional_parameters = test_location_data("NL")
     print(additional_parameters)
 
-    # session_id = test_simulation(additional_parameters)
-    session_id = "20191029133752"
+    session_id = test_simulation(additional_parameters)
+    # session_id = "20191029133752"
     print(session_id)
 
     static_results = test_get_results(session_id)
