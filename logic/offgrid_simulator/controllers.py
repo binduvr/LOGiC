@@ -59,7 +59,6 @@ def handle_request():
 def get_result(session_id=None):
     """Retrieves simulation results using session ID."""
 
-    # TODO: Handle exception
     file_path = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
     try:
         results = pd.read_csv(file_path)
@@ -81,7 +80,7 @@ def get_result(session_id=None):
         }
         return webpage_output
     except:
-        flask.abort(500)
+        flask.abort(404)
 
 
 @offgrid_simulator.route('/daily_time_series/<session_id>/<series_type>', methods=['GET'])
