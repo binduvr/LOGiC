@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 import logic.offgrid_simulator.profiles as profiles
@@ -104,13 +105,13 @@ class ProjectSite:
 
         default_data = settings.PROJECT_SITE
 
-        additional_parameters = {
+        demand_parameters = {
             'demand_ac': self.demand_ac,
             'wind_generation_per_kW': self.wind_generation_per_kW,
             'pv_generation_per_kWp': self.pv_generation_per_kWp,
             'demand_dc': self.demand_dc
         }
-        return {'test_site': {**default_data, **additional_parameters}}
+        return {'test_site': {**default_data, **demand_parameters}}
 
 
 class OffgriddersInput:
@@ -188,7 +189,7 @@ class OffgriddersInput:
     def set_parameters_constant_values(self, additional_parameters):
         result_params = {}
         for key in additional_parameters.keys():
-            if additional_parameters[key] != '':
+            if additional_parameters[key] != '' and additional_parameters[key] != 0:
                 result_params[key] = additional_parameters[key]
         return {**settings.PARAMETERS_CONSTANT_VALUES, **result_params}
 
