@@ -4,7 +4,8 @@ Collect all functions regarding outputs in this file
 import pandas as pd
 import pprint as pp
 import matplotlib
-
+# NOTE: Imported to avoid tkinter threading problems
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import logging
 
