@@ -55,7 +55,7 @@ def test_get_results(session_id):
             static_results = request_json.text
             trying = False
         else:
-            time.sleep(1)
+            time.sleep(5)
     return static_results
 
 # Retrieve daily time series for typical day
