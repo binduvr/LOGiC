@@ -1,0 +1,147 @@
+******************************************************
+2019-11-01 10:18:29,164 - INFO - logger - Path for logging: data/outputs/20191101091800\micro_grid_design_logfile.log
+2019-11-01 10:18:29,165 - INFO - logger - Used oemof version: 0.2.2
+2019-11-01 10:18:29,165 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-11-01 10:18:29,167 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-11-01 10:18:29,169 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-11-01 10:18:29,343 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-11-01 10:18:29,384 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-11-01 10:18:29,396 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 2.5 hrs, blackout frequency 4 per month
+2019-11-01 10:18:29,396 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 48
+2019-11-01 10:18:29,404 - DEBUG - E_blackouts_central_grid - Blackouts events occur on following dates: 2019-01-15 21:00:00, 2019-01-25 04:00:00, 2019-01-27 09:00:00, 2019-01-27 12:00:00, 2019-01-31 13:00:00, 2019-02-08 08:00:00, 2019-02-09 12:00:00, 2019-02-10 07:00:00, 2019-02-23 19:00:00, 2019-03-29 13:00:00, 2019-03-30 18:00:00, 2019-04-06 08:00:00, 2019-04-18 00:00:00, 2019-04-21 01:00:00, 2019-05-01 14:00:00, 2019-05-03 14:00:00, 2019-05-10 21:00:00, 2019-05-15 16:00:00, 2019-06-03 14:00:00, 2019-06-09 10:00:00, 2019-06-10 06:00:00, 2019-06-17 20:00:00, 2019-06-19 20:00:00, 2019-06-21 21:00:00, 2019-06-22 08:00:00, 2019-06-25 21:00:00, 2019-07-02 03:00:00, 2019-07-09 14:00:00, 2019-07-22 12:00:00, 2019-07-29 07:00:00, 2019-07-31 03:00:00, 2019-08-04 01:00:00, 2019-08-04 10:00:00, 2019-08-05 11:00:00, 2019-08-23 05:00:00, 2019-08-27 00:00:00, 2019-08-31 19:00:00, 2019-09-01 21:00:00, 2019-09-30 15:00:00, 2019-10-01 03:00:00, 2019-10-13 16:00:00, 2019-10-19 13:00:00, 2019-10-24 16:00:00, 2019-10-28 05:00:00, 2019-10-28 08:00:00, 2019-12-05 05:00:00, 2019-12-12 14:00:00, 2019-12-23 12:00:00
+2019-11-01 10:18:29,405 - INFO - E_blackouts_central_grid - Accumulated blackout duration: 120.0
+2019-11-01 10:18:29,406 - INFO - E_blackouts_central_grid - Accumulated blackout duration (rounded to timestep): 96.0
+2019-11-01 10:18:30,756 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:30] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:18:33,215 - INFO - E_blackouts_central_grid - Grid is not operational for 96 hours, with a reliability of 98.9 percent. 
+
+2019-11-01 10:18:33,217 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-11-01 10:18:33,251 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-11-01 10:18:33,252 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-11-01 10:18:33,252 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-11-01 10:18:33,252 - DEBUG - G1_oemof_create_model - {'case_name': 'hoevelaken', 'filename': 'hoevelaken', 'total_demand_ac': 35000.00000000003, 'total_demand_dc': 0.0, 'peak_demand': 5.665948672643064, 'evaluated_days': 365, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': False, 'storage_fixed_power': False, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': None, 'pcc_feedin_fixed_capacity': None, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-11-01 10:18:33,252 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-11-01 10:18:33,253 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-11-01 10:18:33,253 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-11-01 10:18:33,254 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-11-01 10:18:33,254 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-11-01 10:18:33,254 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-11-01 10:18:33,255 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-11-01 10:18:33,257 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-11-01 10:18:33,257 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-11-01 10:18:33,258 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-11-01 10:18:33,259 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: storage oem
+2019-11-01 10:18:33,259 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-11-01 10:18:33,260 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-11-01 10:18:33,260 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-11-01 10:18:33,261 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-11-01 10:18:33,261 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-11-01 10:18:35,876 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:35] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:18:41,022 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:41] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:18:46,294 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:46] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:18:50,679 - INFO - G1_oemof_create_model - Added constraint: Stability though actual generation of diesel generators and backup through batteries.
+2019-11-01 10:18:51,427 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:51] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:18:55,094 - INFO - G1_oemof_create_model - Simulating...
+2019-11-01 10:18:56,583 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:18:56] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:01,672 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:01] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:06,821 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:06] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:11,854 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:11] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:16,862 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:16] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:21,870 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:21] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:26,878 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:26] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:31,888 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:31] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:36,895 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:36] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:41,904 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:41] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:47,044 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:47] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:47,816 - INFO - models - Optimization successful...
+2019-11-01 10:19:47,835 - DEBUG - G1_oemof_create_model - Problem solved
+2019-11-01 10:19:52,123 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:52] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:52,160 - DEBUG - energy_system - Attributes dumped to: data/outputs/20191101091800/oemof\hoevelaken.oemof
+2019-11-01 10:19:52,160 - DEBUG - G1_oemof_create_model - Stored results in data/outputs/20191101091800/oemof/hoevelaken.oemof
+2019-11-01 10:19:52,160 - DEBUG - G1_oemof_create_model - Restore the energy system and the results.
+2019-11-01 10:19:52,160 - INFO - energy_system - Restoring attributes will overwrite existing attributes.
+2019-11-01 10:19:52,177 - DEBUG - energy_system - Attributes restored from: data/outputs/20191101091800/oemof\hoevelaken.oemof
+2019-11-01 10:19:52,182 - DEBUG - G3_oemof_evaluate - Evaluate flow: demand
+2019-11-01 10:19:52,197 - DEBUG - G3_oemof_evaluate - Evaluate flow: shortage
+2019-11-01 10:19:52,215 - DEBUG - G3_oemof_evaluate - Evaluate excess: 
+2019-11-01 10:19:52,228 - DEBUG - G3_oemof_evaluate - Evaluate flow: fuel
+2019-11-01 10:19:52,229 - DEBUG - G3_oemof_evaluate - Evaluate flow: genset
+2019-11-01 10:19:52,234 - DEBUG - G3_oemof_evaluate - Evaluate flow: main grid
+2019-11-01 10:19:52,245 - DEBUG - G3_oemof_evaluate - Evaluate flow: wind
+2019-11-01 10:19:52,247 - DEBUG - G3_oemof_evaluate - Evaluate flow: pv
+2019-11-01 10:19:52,251 - DEBUG - G3_oemof_evaluate - Evaluate flow: storage
+2019-11-01 10:19:52,269 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-11-01 10:19:52,275 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-11-01 10:19:52,279 - DEBUG - G3_oemof_evaluate - Evaluate: res share
+2019-11-01 10:19:52,280 - DEBUG - G3b_plausability_tests - Plausibility test: Charge/Discharge
+2019-11-01 10:19:52,364 - DEBUG - G3b_plausability_tests - Plausibility test: Demand/Supply/Shortage
+2019-11-01 10:19:52,593 - DEBUG - G3b_plausability_tests - Plausibility test: Feedin/Consumption
+2019-11-01 10:19:52,593 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability consumption
+2019-11-01 10:19:52,593 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability/Feedin
+2019-11-01 10:19:52,593 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/shortage
+2019-11-01 10:19:52,593 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/Feedin
+2019-11-01 10:19:54,063 - WARNING - G2b_constraints_custom - Stability criterion is strictly not fullfilled, but deviation is less then e6.
+2019-11-01 10:19:54,063 - DEBUG - G4_output_functions - Saving flows MG.
+2019-11-01 10:19:54,687 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:54,812 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:54,911 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:54,967 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,074 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,136 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,170 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,288 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,374 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,499 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,679 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,719 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,754 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,772 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,804 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,820 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,833 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,870 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,909 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:55,947 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,007 - DEBUG - G4_output_functions - Saving flows storage.
+2019-11-01 10:19:56,268 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,407 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,496 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,536 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,662 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,840 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,905 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,931 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:56,948 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:57,017 - DEBUG - _base - update_title_pos
+2019-11-01 10:19:57,102 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating investment costs over analysed timeframe.
+2019-11-01 10:19:57,102 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating O&M costs over analysed timeframe.
+2019-11-01 10:19:57,103 - DEBUG - G3a_economic_evaluation - Economic evaluation. Scaling investment costs and O&M to year.
+2019-11-01 10:19:57,103 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating present costs.
+2019-11-01 10:19:57,103 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating fuel consumption and expenditures.
+2019-11-01 10:19:57,103 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating shortage and expenditures.
+2019-11-01 10:19:57,103 - INFO - G0_oemof_simulate - Simulation of case "hoevelaken" resulted in : 
+                  0.608 currency/kWh, at a renewable share of 20.16 percent with a reliability of 100.0 percent
+2019-11-01 10:19:57,103 - INFO - G0_oemof_simulate -     Initial simulation time (s): 36.44 / Actual evaluation time (s): 83.85
+2019-11-01 10:19:57,103 - DEBUG - G0_oemof_simulate -     Exact OEM results of case "hoevelaken" : 
+                  1.646 kWh battery, 8.028 kWp PV, 0.0 kW wind, 5.033 kW genset at a renewable share of 20.16 percent with a reliability of 100.0 percent
+2019-11-01 10:19:57,103 - DEBUG - G0_oemof_simulate -     Simulation of case hoevelaken complete.
+2019-11-01 10:19:57,103 - DEBUG - G0_oemof_simulate - 
+
+2019-11-01 10:19:57,169 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:19:57] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:19:57,235 - INFO - A_offgridders_wrapper -     Estimated simulation time left: 0.0 minutes.
+2019-11-01 10:19:57,235 - INFO - A_offgridders_wrapper - 
+ Simulation complete. Resulting parameters saved in "results.csv". 
+ Overview over results:
+2019-11-01 10:20:02,177 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:02] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 404 -
+2019-11-01 10:20:07,188 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:07] "GET /offgrid_simulator/get_result/20191101091800 HTTP/1.1" 200 -
+2019-11-01 10:20:07,277 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:07] "GET /offgrid_simulator/daily_time_series/20191101091800/mid_summer HTTP/1.1" 200 -
+2019-11-01 10:20:07,471 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:07] "GET /offgrid_simulator/monthly_time_series/20191101091800 HTTP/1.1" 200 -
+2019-11-01 10:20:07,578 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:07] "GET /offgrid_simulator/demand_series/20191101091800 HTTP/1.1" 200 -
+2019-11-01 10:20:08,203 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:08] "POST /report/email HTTP/1.1" 200 -
+2019-11-01 10:20:08,209 - INFO - _internal - 127.0.0.1 - - [01/Nov/2019 10:20:08] "GET /report/download/20191101091800 HTTP/1.1" 200 -
