@@ -3,6 +3,7 @@ import threading
 import pandas as pd
 import time
 import pprint as pp
+import simplejson
 
 import logic.settings as settings
 import logic.offgrid_simulator.processor as processor
@@ -68,25 +69,25 @@ def get_result(session_id=None):
 
         webpage_output = {
             'session_id': session_id,
-            'nominal_solar_power_installed': results['capacity_pv_kWp'][0],
-            'nominal_wind_power_installed': results['capacity_wind_kW'][0],
-            'nominal_diesel_generator_power': results['capacity_genset_kW'][0],
-            'storage_capacity': results['capacity_storage_kWh'][0],
-            'renewable_energy_share': (results['res_share'][0])*100,
-            'levelised_cost_of_electricity': results['lcoe'][0],
-            'solar_system_cost': results['costs_pv'][0],
-            'wind_system_cost': results['costs_wind'][0],
-            'storage_unit_cost': results['costs_storage'][0],
-            'diesel_generator_cost': results['costs_genset'][0],
+            'nominal_solar_power_installed': float(results['capacity_pv_kWp'][0]),
+            'nominal_wind_power_installed': float(results['capacity_wind_kW'][0]),
+            'nominal_diesel_generator_power': float(results['capacity_genset_kW'][0]),
+            'storage_capacity': float(results['capacity_storage_kWh'][0]),
+            'renewable_energy_share': float((results['res_share'][0])*100),
+            'levelised_cost_of_electricity': float(results['lcoe'][0]),
+            'solar_system_cost': float(results['costs_pv'][0]),
+            'wind_system_cost': float(results['costs_wind'][0]),
+            'storage_unit_cost': float(results['costs_storage'][0]),
+            'diesel_generator_cost': float(results['costs_genset'][0]),
 
-            'diesel_only_C02_production': diesel_only_C02_production,
-            'kg_C02_saved': diesel_only_C02_production * results['res_share'][0],
+            'diesel_only_C02_production': float(diesel_only_C02_production),
+            'kg_C02_saved': float(diesel_only_C02_production * results['res_share'][0]),
             'optimal_slope': float(results['optimal_slope'][0]),
             'optimal_azimuth': float(results['optimal_azimuth'][0])
         }
-        return webpage_output
+        return simplejson.dumps(webpage_output, ignore_nan=True)
     except Exception as e:
-        print(e)
+        # print(e)
         flask.abort(404)
 
 
