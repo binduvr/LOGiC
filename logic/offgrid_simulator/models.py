@@ -189,7 +189,7 @@ class OffgriddersInput:
     def set_parameters_constant_values(self, additional_parameters):
         result_params = {}
         for key in additional_parameters.keys():
-            if additional_parameters[key] != '' and additional_parameters[key] != 0:
+            if additional_parameters[key] != '':
                 result_params[key] = additional_parameters[key]
         return {**settings.PARAMETERS_CONSTANT_VALUES, **result_params}
 
