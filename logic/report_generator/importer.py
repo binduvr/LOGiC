@@ -14,9 +14,18 @@ def import_data(session_id):
     folder = settings.OUTPUT_DIRECTORY + session_id #for local use
     reportdict = {'folder' : folder}
 
-    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/inputs/input.json'))['additional_parameters']}
     with open(folder+'/inputs/input.json') as file:
         inputs = json.load(file)
+
+    # Replace empty values with defaults
+    additional_parameters = {}
+    for key in inputs['additional_parameters'].keys():
+        current_parameter = inputs['additional_parameters'][key]
+        if current_parameter != '':
+            additional_parameters[key] = inputs['additional_parameters'][key]
+
+    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**additional_parameters}
+
     active_components = inputs['active_components']
 
     # make percentages from fractions
