@@ -61,7 +61,7 @@ def import_data(session_id):
     # MAKE INVESTMENT INPUT TABLE check order
     namelist = ['Solar','Wind', 'Backup generator','Storage capacity', 'Storage power',]
     keylist  = ['pv_cost_investment', 'wind_cost_investment', 'genset_cost_investment', 'storage_capacity_cost_investment','storage_power_cost_investment']
-    unitlist = ['kW','kWp','kW','kWh','kW']
+    unitlist = ['kWp','kW','kW','kWh','kW']
     it = ['solar','wind','dieselgen','storage','storage','grid_connection']
 
     names,keys = selectvariables(namelist,keylist,it,active_components)
@@ -73,7 +73,7 @@ def import_data(session_id):
     titles = ['Component', 'Investment costs']
     investinputtable = maketable(names,keys,titles,sets)
     investinputtable['Units'] = units
-    investinputtable['Investment costs'] = investinputtable['Investment costs'].map('{:,.2f}'.format)
+    investinputtable['Investment costs'] = abs(investinputtable['Investment costs']).map('{:,.2f}'.format)
 
     del names, keys, titles, units
 
@@ -96,7 +96,7 @@ def import_data(session_id):
     titles = ['Component', 'Annual pu OPEX']
     opexinputtable = maketable(names,keys,titles, sets)
     opexinputtable['Units'] = units
-    opexinputtable['Annual pu OPEX'] = opexinputtable['Annual pu OPEX'].map('{:,.2f}'.format)
+    opexinputtable['Annual pu OPEX'] = abs(opexinputtable['Annual pu OPEX']).map('{:,.2f}'.format)
     del names, keys, titles
 
     # MAKE VAR COST INPUT TABLE check order,
@@ -114,7 +114,7 @@ def import_data(session_id):
     titles = ['Component', 'pu variable cost']
     varinputtable = maketable(names,keys,titles,sets)
     varinputtable['Units'] = units
-    varinputtable['pu variable cost'] = varinputtable['pu variable cost'].map('{:,.2f}'.format)
+    varinputtable['pu variable cost'] = abs(varinputtable['pu variable cost']).map('{:,.2f}'.format)
     del names, keys, titles
 
     # MAKE REQUIREMENT TABLE
@@ -146,7 +146,7 @@ def import_data(session_id):
     titles = ['Component','Capacity']
     systemtable = maketable(names,keys,titles,results)
     del names,keys,titles
-    systemtable['Capacity'] = systemtable['Capacity'].map('{:,.2f}'.format)
+    systemtable['Capacity'] = abs(systemtable['Capacity']).map('{:,.2f}'.format)
     systemtable['Unit'] = units
 
     # MAKE INVEST TABLE
@@ -156,7 +156,7 @@ def import_data(session_id):
     names,keys = selectvariables(namelist,keylist, it, active_components)
     titles = ['Component', 'Investment cost']
     investtable = maketable(names,keys,titles,results)
-    investtable['Investment cost'] = investtable['Investment cost'].map('{:,.2f}'.format)
+    investtable['Investment cost'] = abs(investtable['Investment cost']).map('{:,.2f}'.format)
 
     ################################
     # order all the report stuff in the report dictionary
