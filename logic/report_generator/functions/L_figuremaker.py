@@ -15,7 +15,8 @@ def multicolfigure(figurepath, caption ,label):
     figurecode = \
     '\\begin{center}' + enter + \
     '\\includegraphics[width=\\linewidth]{'+figurepath+'}' + enter + \
-    '\\end{center}' +enter+\
-    '\\captionof{figure}{'+caption+'}' + enter
-
+    '\\end{center}'
+    if caption != None:
+        figurecode = figurecode +enter+\
+        '\\captionof{figure}{'+caption+'}' + enter
     return figurecode

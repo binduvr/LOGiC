@@ -14,6 +14,7 @@ from logic.report_generator.sections.C_systemeconomics import systemeconomics
 from logic.report_generator.sections.D_qualitativesection import qualitativeproperties
 from logic.report_generator.sections.E_conclusion import conclusion
 from logic.report_generator.sections.F_appendix import appendix
+from logic.report_generator.sections.H_contributors import contributors
 
 def generate_report(session_id, reportdict):
     enter = '\r\n'
@@ -35,7 +36,7 @@ def generate_report(session_id, reportdict):
 
     apps = appendix(reportdict)
 
-
+    conts = contributors(reportdict)
     f = open(settings.OUTPUT_DIRECTORY+session_id+'/report/'+reportdict['reportname']+'.tex', 'w+')
     f.write(preamble)
     f.write(enter)
@@ -53,6 +54,8 @@ def generate_report(session_id, reportdict):
     f.write(enter)
     f.write('\\newpage '+enter)
     f.write(apps)
+    f.write(enter)
+    f.write(conts)
     f.write(enter)
     f.write('\\end{multicols*}')
     f.write(enter)
