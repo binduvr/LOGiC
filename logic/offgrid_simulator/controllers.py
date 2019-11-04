@@ -4,6 +4,7 @@ import pandas as pd
 import time
 import pprint as pp
 import simplejson
+import numpy as np
 
 import logic.settings as settings
 import logic.offgrid_simulator.processor as processor
@@ -105,15 +106,22 @@ def get_daily_time_series(session_id, series_type):
         start_index = time_series.loc[time_series['timestep'] == \
             typical_days[series_type]].index[0]
 
-        relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
+        # relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
+        relevant_data = pd.DataFrame(time_series)
 
-        column_names = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
+        relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
 
-        relevant_data.rename(columns=column_names, inplace=True)
+        # Make empty arrays
+        for key in relevant_column_dict.keys():
+            if key not in relevant_data.columns:
+                relevant_data[key] = [0] * len(time_series)
+
+        relevant_data.rename(columns=relevant_column_dict, inplace=True)
 
         day_series = relevant_data[start_index:start_index + 24]
+        new = day_series.filter(relevant_column_dict.values(), axis=1)
 
-        response = flask.make_response(day_series.reset_index().to_json())
+        response = flask.make_response(new.reset_index().to_json())
         return flask.jsonify(response.get_json(force=True))
 
     else:
@@ -131,6 +139,7 @@ def get_monthly_time_series(session_id):
         errors='coerce')
 
     month_list = []
+    # columns = time_series.columns
 
     for i in range(1, 13):
         month_series = time_series.loc[(time_series['timestep'].dt.month == i)]
@@ -139,12 +148,21 @@ def get_monthly_time_series(session_id):
     # Dope one liner ayy lmao
     # month_list = [time_series.loc[(time_series['timestep'].dt.month == i)].sum() for i in range(1, 13)]
 
-    monthly_dataframe = pd.DataFrame(month_list, columns=settings.RELEVANT_COLUMNS)
+    # monthly_dataframe = pd.DataFrame(month_list, columns=settings.RELEVANT_COLUMNS)
+    monthly_dataframe = pd.DataFrame(month_list)
+    relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
 
-    column_names = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
-    monthly_dataframe.rename(columns=column_names, inplace=True)
+    # TODO: Make sure everything works
+    # Make empty arrays
+    for key in relevant_column_dict.keys():
+        if key not in monthly_dataframe.columns:
+            monthly_dataframe[key] = [0] * len(month_list)
 
-    response = flask.make_response(monthly_dataframe.reset_index().to_json())
+    monthly_dataframe.rename(columns=relevant_column_dict, inplace=True)
+
+    new = monthly_dataframe.filter(relevant_column_dict.values(), axis=1)
+
+    response = flask.make_response(new.reset_index().to_json())
     return flask.jsonify(response.get_json(force=True))
 
 

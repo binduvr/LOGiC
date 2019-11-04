@@ -31,11 +31,13 @@ CO2_PER_KWH_DIESEL = 1.05564
 # Relevant output from test_results.csv to be used in time series
 RELEVANT_COLUMNS = ['Demand', 'PV generation', 'Wind generation',
     'Excess generation', 'Storage charge', 'Storage discharge',
-    'Genset generation']
+    'Storage SOC', 'Genset generation',
+    'Consumption from main grid', 'Feed into main grid']
 
 FORMATTED_COLUMN_NAMES = ['demand', 'pv_generation', 'wind_generation',
     'excess_generation', 'storage_charge', 'storage_discharge',
-    'genset_generation']
+    'storage_soc', 'genset_generation',
+    'maingrid_consumption', 'feed_into_maingrid']
 
 # Default values for the Offgridders tool
 CASE_DEFINITION = {'perform_simulation': True,
