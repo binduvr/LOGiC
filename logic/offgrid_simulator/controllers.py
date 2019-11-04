@@ -107,6 +107,10 @@ def get_daily_time_series(session_id, series_type):
 
         relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
 
+        column_names = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
+
+        relevant_data.rename(columns=column_names, inplace=True)
+
         day_series = relevant_data[start_index:start_index + 24]
 
         response = flask.make_response(day_series.reset_index().to_json())
@@ -136,6 +140,9 @@ def get_monthly_time_series(session_id):
     # month_list = [time_series.loc[(time_series['timestep'].dt.month == i)].sum() for i in range(1, 13)]
 
     monthly_dataframe = pd.DataFrame(month_list, columns=settings.RELEVANT_COLUMNS)
+
+    column_names = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
+    monthly_dataframe.rename(columns=column_names, inplace=True)
 
     response = flask.make_response(monthly_dataframe.reset_index().to_json())
     return flask.jsonify(response.get_json(force=True))

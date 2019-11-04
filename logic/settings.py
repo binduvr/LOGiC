@@ -33,6 +33,10 @@ RELEVANT_COLUMNS = ['Demand', 'PV generation', 'Wind generation',
     'Excess generation', 'Storage charge', 'Storage discharge',
     'Genset generation']
 
+FORMATTED_COLUMN_NAMES = ['demand', 'pv_generation', 'wind_generation',
+    'excess_generation', 'storage_charge', 'storage_discharge',
+    'genset_generation']
+
 # Default values for the Offgridders tool
 CASE_DEFINITION = {'perform_simulation': True,
     'based_on_case': True,
