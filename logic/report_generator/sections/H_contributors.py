@@ -3,7 +3,7 @@ import os
 from logic.report_generator.functions.L_figuremaker import multicolfigure as figure
 
 def contributors(reportdict):
-	conts = '\\section*{Contributors}' + \
+	conts = '\\end{multicols}\\section*{Contributors}\\begin{multicols}{2}\\setlength{\\parindent}{0pt}' + \
 	enter + \
 	'The Microgrid Assessment Tool has been developed by the LOGiC Team at the Off Grid Test Center. ' + enter +\
 	'The tool is based on the Offgridders tool, initially developed by Martha Hoffmann at the Reinier Lemoin Instute in Berlin, Germany. ' + enter+\

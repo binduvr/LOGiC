@@ -5,9 +5,8 @@ enter = '\r\n'
 
 def introduction(reportdict):
 	res = str(reportdict['residential_demand'])
-	intro = 'This document shortly reports the results of the use of the LOGiC ' + \
-	'sizing tool. This introduction describes the input values used to perform the calculations.' + \
-	'The system is assumed to be located at or close to ' + udec(reportdict['address']) + '.'
+	intro = '\\begin{large} \\noindent {\\setstretch{1.0}\\color{primblue} This document shortly reports the results of the use of the OGTC ' + \
+	'Microgrid Assessment Tool. The tool has been used to assess a possible microgrid located at or close to ' + udec(reportdict['address']) + '.} \\end{large}'
 	return intro
 
 def generalinfo(reportdict):
@@ -36,7 +35,7 @@ def generalinfo(reportdict):
         storage = ' combined with a storage facility.'
     else:
         storage = '.'
-    geninfo = '\\section*{Microgrids}' +enter+\
+    geninfo = '\\section*{Microgrids}\\begin{multicols}{2}\\setlength{\\parindent}{0pt}'+enter+\
     'In order to make this report comprehendable to the user the '+\
     'general properties of a microgrid are shortly discussed.\\\ '+\
     'A microgrid is a local energy system that is capable of generating, '+\
@@ -44,14 +43,14 @@ def generalinfo(reportdict):
     'connected to the main grid (grid-connected microgrids) as well as '+\
     'being completely isolated (off-grid microgrids). The microgrid '+\
     'considered in this assessment is a ' + griddescription +\
-    'There multpile possible reasons to apply a microgrid: '+\
+    'There are multiple possible reasons to apply a microgrid: '+\
     '\\begin{itemize}'+enter+' '+\
     '\\item No grid is available (remote location) ' + enter +\
     '\\item There is a grid availble, but is is not reliable (enough)  ' + enter +\
     '\\item The wish to generate the own energy locally as a stakeholder or a community ' + enter +\
     '\\end{itemize}' + enter +\
     'In all cases renewable sources are often considered as a possible source '+\
-    'of energy for the microgrid, either from an economic or a sustainable driver. ' +\
+    'of energy for the microgrid, either from an economic or a sustainable drive. ' +\
     'In the case of this microgrid the following sources are considered: '+\
     sources +storage+\
     ''

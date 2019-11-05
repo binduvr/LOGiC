@@ -14,6 +14,7 @@ from logic.report_generator.sections.C_systemeconomics import systemeconomics
 from logic.report_generator.sections.D_qualitativesection import qualitativeproperties
 from logic.report_generator.sections.E_conclusion import conclusion
 from logic.report_generator.sections.F_appendix import appendix
+from logic.report_generator.sections.G_method import method
 from logic.report_generator.sections.H_contributors import contributors
 
 def generate_report(session_id, reportdict):
@@ -26,11 +27,13 @@ def generate_report(session_id, reportdict):
     intro = introduction(reportdict)
     gen = generalinfo(reportdict)
 
-    sys = systemlayout(reportdict)
+    yourmg, sys = systemlayout(reportdict)
 
     econ = systemeconomics(reportdict)
 
     qual = qualitativeproperties(reportdict)
+
+    meth = method(reportdict)
 
     con = conclusion(reportdict)
 
@@ -44,20 +47,23 @@ def generate_report(session_id, reportdict):
     f.write(enter)
     f.write(gen)
     f.write(enter)
+    f.write(yourmg)
+    f.write(enter)
     f.write(sys)
     f.write(enter)
     f.write(econ)
     f.write(enter)
-    f.write(qual)
-    f.write(enter)
-    f.write(con)
-    f.write(enter)
-    f.write('\\newpage '+enter)
+    #f.write(qual)
+    #f.write(enter)
+    #f.write(con)
+    #f.write(enter)
+    #f.write('\\newpage '+enter)
+    f.write(meth)
     f.write(apps)
     f.write(enter)
     f.write(conts)
     f.write(enter)
-    f.write('\\end{multicols*}')
+    f.write('\\end{multicols}')
     f.write(enter)
     f.write('\\end{document}')
 

@@ -12,7 +12,7 @@ def appendix(reportdict):
     indus = str(reportdict['industrial_demand'])
 
     app = '\\appendix'+enter+\
-    '\\section*{Used input data and method}'+enter+\
+    '\\subsection*{Used input data and method}'+enter+\
     'The timeseries used in and resulting from the calculations are '+\
     'listed on this page.'+enter+\
     figure('per_unit_pv_generation.png', 'Time series of the solar '+\
