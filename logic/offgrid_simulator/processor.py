@@ -3,6 +3,7 @@ import json
 import os
 import pandas as pd
 import pprint as pp
+import time
 
 import logic.offgrid_simulator.offgridders.A_offgridders_wrapper as og
 import logic.offgrid_simulator.models as models
@@ -27,9 +28,16 @@ def generate_simulation_results(input_dict, session_id):
     results = og.run_simulation(offgridders_input)
 
     # Create report
-    reportdict = importer.import_data(session_id)
-    generator.generate_report(session_id, reportdict)
-    compiler.compile(session_id, reportdict)
+    # FIXME: Find better threading solution, this is horrible
+    while True:
+        try:
+            reportdict = importer.import_data(session_id)
+            generator.generate_report(session_id, reportdict)
+            compiler.compile(session_id, reportdict)
+        except:
+            time.sleep(5)
+            continue
+        break
 
 def generate_input(input_dict, session_id):
     """This function gets the input ready to be run through OESMOT"""
