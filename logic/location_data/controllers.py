@@ -13,7 +13,7 @@ def get_offgridders_data(country_code):
     if len(country_code) == 2:
         country = models.Country(country_code.upper())
         country_data = country.get_simulation_input()
-        print(country_data)
+
         # TODO: Replaces NaN's with defaults in settings, do another way
         # TODO: Check which defaults were change by checking if they equal
 
