@@ -53,7 +53,9 @@ def handle_request():
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
     input_dict = flask.request.get_json(force=True)
 
-    process_request(input_dict, session_id)
+    processor.generate_simulation_results(input_dict, session_id)
+
+    # process_request(input_dict, session_id)
     return session_id
 
 

@@ -28,16 +28,6 @@ def generate_simulation_results(input_dict, session_id):
     results = og.run_simulation(offgridders_input)
 
     # Create report
-    # FIXME: Find better threading solution, this is horrible
-    # while True:
-    #     try:
-    #         reportdict = importer.import_data(session_id)
-    #         generator.generate_report(session_id, reportdict)
-    #         compiler.compile(session_id, reportdict)
-    #     except:
-    #         time.sleep(5)
-    #         continue
-    #     break
     reportdict = importer.import_data(session_id)
     generator.generate_report(session_id, reportdict)
     compiler.compile(session_id, reportdict)
