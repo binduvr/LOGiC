@@ -105,16 +105,18 @@ def run_simulation(offgridders_input):
 		# 	print('sleeping')
 		# 	time.sleep(1)
 
+		oemof_results = oemof_simulate.run(sensitivity_experiment_s[experiment], experiment_case_dict)
+
 		# FIXME: Find better threading solution, this is horrible
-		while True:
-			try:
-				logging.info("Attempting simulation.")
-				oemof_results = oemof_simulate.run(sensitivity_experiment_s[experiment], experiment_case_dict)
-			except:
-				logging.info("Simulation attempt failed, retrying in 5 seconds.")
-				time.sleep(5)
-				continue
-			break
+		# while True:
+		# 	try:
+		# 		logging.info("Attempting simulation.")
+		# 		oemof_results = oemof_simulate.run(sensitivity_experiment_s[experiment], experiment_case_dict)
+		# 	except:
+		# 		logging.info("Simulation attempt failed, retrying in 5 seconds.")
+		# 		time.sleep(5)
+		# 		continue
+		# 	break
 
 		# Extend base capacities for cases utilizing these values, only valid for specific experiment
 		if case_definition['based_on_case'] == False:

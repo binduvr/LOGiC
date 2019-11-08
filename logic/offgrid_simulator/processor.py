@@ -29,15 +29,18 @@ def generate_simulation_results(input_dict, session_id):
 
     # Create report
     # FIXME: Find better threading solution, this is horrible
-    while True:
-        try:
-            reportdict = importer.import_data(session_id)
-            generator.generate_report(session_id, reportdict)
-            compiler.compile(session_id, reportdict)
-        except:
-            time.sleep(5)
-            continue
-        break
+    # while True:
+    #     try:
+    #         reportdict = importer.import_data(session_id)
+    #         generator.generate_report(session_id, reportdict)
+    #         compiler.compile(session_id, reportdict)
+    #     except:
+    #         time.sleep(5)
+    #         continue
+    #     break
+    reportdict = importer.import_data(session_id)
+    generator.generate_report(session_id, reportdict)
+    compiler.compile(session_id, reportdict)
 
 def generate_input(input_dict, session_id):
     """This function gets the input ready to be run through OESMOT"""
