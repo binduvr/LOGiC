@@ -1,7 +1,11 @@
 import flask
+import os.path
 
 import logic.settings as settings
 import logic.report_generator.mailer as mailer
+import logic.report_generator.importer as importer
+import logic.report_generator.generator as generator
+import logic.report_generator.compiler as compiler
 
 report_generator = flask.Blueprint('report_generator', __name__)
 
@@ -17,11 +21,21 @@ def email_report():
     session_id = request_json['session_id']
     email = request_json['email']
 
-    try:
-        mailer.email_report(session_id, email)
-        return "Success"
-    except:
-        flask.abort(404)
+    # Check if document has already been generated
+    file_path = settings.OUTPUT_DIRECTORY + session_id \
+        + "/report/" + settings.REPORT_NAME + ".pdf"
+
+    if not os.path.exists(file_path):
+        reportdict = importer.import_data(session_id)
+        generator.generate_report(session_id, reportdict)
+        compiler.compile(session_id, reportdict)
+
+    # Mail report
+    # try:
+    mailer.email_report(session_id, email)
+    return "Success"
+    # except:
+    #     flask.abort(404)
 
 @report_generator.route('/download/<session_id>', methods=['GET'])
 def download_report(session_id):
