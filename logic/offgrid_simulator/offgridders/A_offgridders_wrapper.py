@@ -27,11 +27,6 @@ def run_simulation(offgridders_input):
         #screen_level=logging.DEBUG,
         file_level=logging.DEBUG)
 
-	logging.info('\n \n MICRO GRID TOOL 3.0'
-        '\n Version: 19.06.2019 '
-        '\n Coded by: Martha M. Hoffmann '
-        '\n Reiner Lemoine Institute (Berlin) \n \n ')
-
 	#---- Define all sensitivity_experiment_s, define result parameters ----------#
 	sensitivity_experiment_s, blackout_experiment_s, overall_results, names_sensitivities = \
 		sens.generate_sensitvitiy_experiments.get(settings, parameters_constant_values,
@@ -129,12 +124,6 @@ def run_simulation(offgridders_input):
 		final_results = output_df.join(overall_results, how='outer')
 		final_results.to_csv(output_file)
 
-		logging.info('    Estimated simulation time left: '
-			+ str(round(sum(overall_results['evaluation_time'][:])
-			* (1-experiment_count)/experiment_count/60,1))
-			+ ' minutes.')
-		print('\n')
-
 		if settings['display_experiment'] == True:
 			logging.info('The experiment with following parameters has been analysed:')
 			pp.pprint(sensitivity_experiment_s[experiment])
@@ -143,10 +132,7 @@ def run_simulation(offgridders_input):
 	output_names = ['case']
 	output_names.extend(names_sensitivities)
 	output_names.extend(['lcoe', 'res_share'])
-	logging.info('\n Simulation complete. Resulting parameters saved in "results.csv". \n Overview over results:')
+	logging.info('Simulation complete.')
 	logging.shutdown()
-
-	print('\n Warnings or errors might have occurred. \n'
-		  + 'Please check terminal output or saved log-file to make sure they do not influence your simulation results.')
 
 	return final_results
