@@ -18,7 +18,7 @@ def email_report():
     # request_json = flask.request.args.to_dict()
 
     request_json = flask.request.get_json(force=True)
-    session_id = request_json['session_id']
+    session_id = str(request_json['session_id'])
     email = request_json['email']
 
     # Check if document has already been generated
@@ -31,18 +31,18 @@ def email_report():
         compiler.compile(session_id, reportdict)
 
     # Mail report
-    # try:
-    mailer.email_report(session_id, email)
-    return "Success"
-    # except:
-    #     flask.abort(404)
+    try:
+        mailer.email_report(session_id, email)
+        return "Success"
+    except:
+        flask.abort(404)
 
 @report_generator.route('/download/<session_id>', methods=['GET'])
 def download_report(session_id):
     """Download a report of the simulation of the session_id."""
 
     file_path = settings.BASE_DIR + '/' + \
-        settings.OUTPUT_DIRECTORY + session_id + "/report"
+        settings.OUTPUT_DIRECTORY + str(session_id) + "/report"
     try:
         return flask.send_from_directory(file_path,
             filename=settings.REPORT_NAME + ".pdf", as_attachment=True)
