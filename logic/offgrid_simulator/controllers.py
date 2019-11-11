@@ -82,6 +82,10 @@ def get_result(session_id=None):
             'wind_system_cost': float(results['costs_wind'][0]),
             'storage_unit_cost': float(results['costs_storage'][0]),
             'diesel_generator_cost': float(results['costs_genset'][0]),
+            'annuity_pv': float(results['annuity_pv'][0]),
+            'annuity_wind': float(results['annuity_wind'][0]),
+            'annuity_genset': float(results['annuity_genset'][0]),
+
 
             'diesel_only_C02_production': float(diesel_only_C02_production),
             'kg_C02_saved': float(diesel_only_C02_production * results['res_share'][0]),
