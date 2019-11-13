@@ -1,20 +1,20 @@
 enter = '\r\n'
 import os
 from logic.report_generator.functions.L_figuremaker import multicolfigure as figure
-
+from logic.report_generator.functions.L_figuremaker import rightsmallfigure as rightfigure
 def contributors(reportdict):
-	conts = '\\end{multicols}\\section*{Contributors}\\begin{multicols}{2}\\setlength{\\parindent}{0pt}' + \
+	conts = '\\subsection*{Development}' + \
 	enter + \
 	'The Microgrid Assessment Tool has been developed by the LOGiC Team at the Off Grid Test Center. ' + enter +\
 	'The tool is based on the Offgridders tool, initially developed by Martha Hoffmann at the Reinier Lemoin Instute in Berlin, Germany. ' + enter+\
-	'Based on this work and with financial support by LOGiC the team was able to succesfully developt this implementation. ' +enter+\
-	'Other contributers to the tool are: '+enter+\
+	'Based on this work and with financial support by LOGiC the team was able to succesfully develop this implementation. ' +enter+\
+	'Sources and tools utilised by the tool include: '+enter+\
 	'\\begin{itemize}' +enter+\
-	'\\item Alex and Stan Bankras at Stalex (web development)' +enter+\
-	'\\item Ewout van der Beek at NEDU (data interpretation)' +enter+\
-	'\\item Wind Energy Solutions BV (general support)' +enter+\
+	'\\item PVGIS weather database' +enter+\
+	'\\item ENTSO-E (load profiles)' +enter+\
+	'\\item NASA Surface Meteorology and Solar Energy' +enter+\
+	'\\item World Bank (socio-ecenomic parameters)' +enter+\
 	'\\end{itemize}' +enter+\
 	'\\vfill'+enter+\
-    figure('logiclogo.png', None,'logiclogo')+enter+\
-	'\\centering \\small{The OGTC MAT is powered by LOGiC}'
+    rightfigure('logiclogo.png', None,'logiclogo')
 	return conts

@@ -11,6 +11,7 @@ import os
 from logic.report_generator.sections.A_introduction import introduction, generalinfo
 from logic.report_generator.sections.B_system import systemlayout
 from logic.report_generator.sections.C_systemeconomics import systemeconomics
+from logic.report_generator.sections.C2_carbondioxide import co2saving
 from logic.report_generator.sections.D_qualitativesection import qualitativeproperties
 from logic.report_generator.sections.E_conclusion import conclusion
 from logic.report_generator.sections.F_appendix import appendix
@@ -27,9 +28,11 @@ def generate_report(session_id, reportdict):
     intro = introduction(reportdict)
     gen = generalinfo(reportdict)
 
-    yourmg, sys = systemlayout(reportdict)
+    yourmg, sys, demand = systemlayout(reportdict)
 
     econ = systemeconomics(reportdict)
+
+    carbon = co2saving(reportdict)
 
     qual = qualitativeproperties(reportdict)
 
@@ -49,17 +52,22 @@ def generate_report(session_id, reportdict):
     f.write(enter)
     f.write(yourmg)
     f.write(enter)
+    f.write(demand)
+    f.write(enter)
     f.write(sys)
     f.write(enter)
     f.write(econ)
     f.write(enter)
+    f.write(carbon)
+    f.write(enter+'\\newpage'+enter)
     #f.write(qual)
     #f.write(enter)
     #f.write(con)
     #f.write(enter)
     #f.write('\\newpage '+enter)
+    #f.write(apps)
+    #f.write(enter)
     f.write(meth)
-    f.write(apps)
     f.write(enter)
     f.write(conts)
     f.write(enter)

@@ -21,7 +21,7 @@ def test_simulation(additional_parameters):
         'address': "some random address",
         # NOTE: Make ure they are sent as floats.
         'latitude': 58.979,
-        'longitude': -3,
+        'longitude': -2.98,
         'demands': {
             'residential_demand': 365250,
             'commercial_demand': 0,

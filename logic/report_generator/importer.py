@@ -170,21 +170,36 @@ def import_data(session_id):
     reportdict['investtable'] = investtable # as centermoneytable
     reportdict['varinputtable'] = varinputtable # as centermoneytable
     reportdict['investinputtable'] = investinputtable #as centermoneytable
-    ## PUT OTHER VALUES IN REPORTDICT
+    ## PUT DEMAND VALUES IN REPORTDICT
     reportdict['residential_demand'] = inputs['demands']['residential_demand']
     reportdict['commercial_demand'] = inputs['demands']['commercial_demand']
     reportdict['industrial_demand'] = inputs['demands']['industrial_demand']
-    reportdict['address'] = 'dumadr'
-    reportdict['active_components'] = active_components
+
+    ## PUT INPUT VALUES IN REPORTDICT
+    list = ['address','longitude','latitude']
+    for key in list:
+        reportdict[key] = inputs[key]
+    del list
+
+    ## PUT RESULT VALUES IN REPORTDICT
+    list =['capacity_pv_kWp','capacity_wind_kW','lcoe','res_share', 'CO2_mg_per_kWh']
+    for key in list:
+        reportdict[key] = results[key]
+    del list
+    reportdict['res_share']=reportdict['res_share']*100
     reportdict['PVinst'] = results['capacity_pv_kWp']
     reportdict['windinst'] = results['capacity_wind_kW']
+
+    reportdict['active_components'] = active_components
     #reportdict['windprod'] = results['fulload_hours_wind']
     #reportdict['PVprod'] = results['fulload_hours_PV']
     reportdict['PVprod'] = 900
     reportdict['windprod'] = 2100
 
-    reportdict['lcoe'] = float("%.2f" % results['lcoe'])
-    reportdict['res_share'] = float("%.1f" % (results['res_share']*100))
-
+    ## PUT SETTINGS VALUES IN REPORTDICT
+    reportdict['co2_pv_per_kwh'] = settings.CO2_PV_PER_KWH
+    reportdict['co2_grid_per_kwh'] = settings.CO2_GRID_PER_KWH
+    reportdict['co2_wind_per_kwh'] = settings.CO2_WIND_PER_KWH
+    reportdict['co2_diesel_per_kwh'] = settings.CO2_DIESEL_PER_KWH
     reportdict['reportname'] = settings.REPORT_NAME
     return reportdict

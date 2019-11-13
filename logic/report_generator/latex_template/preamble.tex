@@ -15,6 +15,7 @@
 \usepackage[defaultfam,tabular,lining]{montserrat} 
 \usepackage{geometry}
  \geometry{a4paper, total={170mm,257mm}, left=15mm, right = 15mm, top=40mm, bottom =30mm}
+\usepackage{makecell}
 \usepackage{multicol} % multiple columns
 \usepackage{fancyhdr} % header and footer
 \usepackage{titlesec} % remove spacing around section titles, underline section titles
@@ -62,7 +63,7 @@
 \titlespacing*{\section}{0pt}{2.5mm}{0mm} % make spacing smaller
 
 \titleformat{\section}
-    {\vspace{20pt}\color{primblue}\titlerule[6pt]\normalfont\LARGE\bfseries\color{primblue}}{\thesection}{1em}{}[\color{primblue}\titlerule\vspace*{4pt}]
+    {\vspace{20pt}\color{primblue}{\setlength{\titlewidth}{\textwidth}\titlerule[4pt]}\normalfont\LARGE\bfseries\color{primblue}}{\thesection}{1em}{}[\color{primblue}\titlerule\vspace*{4pt}]
 \let\oldtitleline\titleline
 
 
