@@ -132,8 +132,7 @@ def import_data(session_id):
     cols = res.columns[1:len(res.columns)]
     for col in cols:
         results[col] = res[col][0]
-        print(cols)
-        print(results)
+
     ##########################################
     #  END OF IMPORT COMMAND
     ##########################################
