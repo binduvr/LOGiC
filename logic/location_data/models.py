@@ -66,6 +66,8 @@ class Country:
             'blackout_duration': self.blackout_duration,
             'maingrid_electricity_price': self.electricity_price,
             'maingrid_renewable_share': self.renewable_share,
-            'tax': self.tax,
+            # TODO: Remove tax and make additional factors not be overwritten by defaults
+            # 'tax': self.tax,
+            'tax': 0,
             'fuel_price': self.diesel_price
         }

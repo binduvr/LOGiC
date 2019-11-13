@@ -61,6 +61,8 @@ def get_solar_standard_year(lat, lon, runtime):
     base_url = "http://re.jrc.ec.europa.eu/pvgis5/seriescalc.php?lat={}&lon={}&peakpower={}&loss={}\
         &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}&raddatabase={}"
 
+
+    # TODO: Iterate over all databases and change the years accordingly
     url = base_url.format(lat, lon,
         peakpower, loss,
         startyear, endyear, optimalangles, pvtechchoice,database)

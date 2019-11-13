@@ -27,6 +27,7 @@ TYPICAL_DAYS = {
 }
 
 CO2_PER_KWH_DIESEL = 1.05564
+CO2_PER_KWH_GRID = 0.4
 
 # Relevant output from test_results.csv to be used in time series
 RELEVANT_COLUMNS = ['Demand', 'PV generation', 'Wind generation',
@@ -91,7 +92,7 @@ PARAMETERS_CONSTANT_VALUES = {'blackout_duration': 0,
     'maingrid_extension_cost_investment': 0,
     'maingrid_extension_cost_opex': 0,
     'maingrid_extension_lifetime': 40,
-    'maingrid_feedin_tariff': 0.09,
+    'maingrid_feedin_tariff': 0.05,
     'maingrid_renewable_share': 0,
     'min_renewable_share': 0,
     'pcoupling_batch': 1,
