@@ -90,7 +90,6 @@ def get_average_C02(session_id):
 
     time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
         + '/electricity_mg/electricity_mg.csv')
-    print(time_series.columns)
 
     if 'Consumption from main grid' not in time_series.columns:
         time_series['Consumption from main grid'] = [0] * len(time_series)
