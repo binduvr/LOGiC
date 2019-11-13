@@ -56,13 +56,14 @@ def get_solar_standard_year(lat, lon, runtime):
     loss = 14
     optimalangles = 1
     pvtechchoice = 'crystSi'
+    database = 'PVGIS-SARAH'
 
     base_url = "http://re.jrc.ec.europa.eu/pvgis5/seriescalc.php?lat={}&lon={}&peakpower={}&loss={}\
-        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}"
+        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}&raddatabase={}"
 
     url = base_url.format(lat, lon,
         peakpower, loss,
-        startyear, endyear, optimalangles, pvtechchoice)
+        startyear, endyear, optimalangles, pvtechchoice,database)
 
     # Request the data
     r = req.get(url)
