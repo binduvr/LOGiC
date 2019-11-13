@@ -54,7 +54,7 @@ def import_data(session_id):
 
         titles = ['Property', 'Value']
         gridpropertytable = maketable(names,keys,titles,sets)
-        gridpropertytable['Value'] = gridpropertytable['Value'].map('{:,.2f}'.format)
+        #gridpropertytable['Value'] = gridpropertytable['Value'].map('{:,.2f}'.format)
         gridpropertytable['Unit'] = units
         del names,keys,units
 

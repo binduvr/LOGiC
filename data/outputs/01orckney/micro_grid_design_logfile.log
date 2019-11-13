@@ -1,0 +1,210 @@
+******************************************************
+2019-11-11 21:57:49,328 - INFO - logger - Path for logging: data/outputs/20191111205733\micro_grid_design_logfile.log
+2019-11-11 21:57:49,328 - INFO - logger - Used oemof version: 0.2.2
+2019-11-11 21:57:49,329 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-11-11 21:57:49,331 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-11-11 21:57:49,335 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-11-11 21:57:49,661 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-11-11 21:57:49,713 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-11-11 21:57:49,726 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 2.5 hrs, blackout frequency 4 per month
+2019-11-11 21:57:49,728 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 48
+2019-11-11 21:57:49,747 - DEBUG - E_blackouts_central_grid - Blackouts events occur on following dates: 2019-01-01 00:00:00, 2019-01-01 06:00:00, 2019-01-08 16:00:00, 2019-01-10 17:00:00, 2019-01-22 14:00:00, 2019-01-29 16:00:00, 2019-01-30 13:00:00, 2019-02-26 05:00:00, 2019-03-02 02:00:00, 2019-03-03 13:00:00, 2019-03-07 07:00:00, 2019-03-07 14:00:00, 2019-03-23 13:00:00, 2019-04-12 23:00:00, 2019-04-20 16:00:00, 2019-04-21 19:00:00, 2019-05-03 21:00:00, 2019-05-07 12:00:00, 2019-05-22 18:00:00, 2019-05-25 02:00:00, 2019-05-30 08:00:00, 2019-05-30 19:00:00, 2019-06-15 09:00:00, 2019-06-20 10:00:00, 2019-06-28 10:00:00, 2019-06-30 14:00:00, 2019-06-30 18:00:00, 2019-07-20 02:00:00, 2019-07-25 09:00:00, 2019-07-26 19:00:00, 2019-08-12 18:00:00, 2019-08-21 22:00:00, 2019-08-22 16:00:00, 2019-08-29 10:00:00, 2019-09-09 07:00:00, 2019-09-30 02:00:00, 2019-10-05 08:00:00, 2019-10-10 11:00:00, 2019-10-17 04:00:00, 2019-10-23 05:00:00, 2019-11-07 19:00:00, 2019-11-09 19:00:00, 2019-11-23 04:00:00, 2019-12-01 10:00:00, 2019-12-16 16:00:00, 2019-12-21 02:00:00, 2019-12-26 07:00:00, 2019-12-31 11:00:00
+2019-11-11 21:57:49,748 - INFO - E_blackouts_central_grid - Accumulated blackout duration: 120.0
+2019-11-11 21:57:49,750 - INFO - E_blackouts_central_grid - Accumulated blackout duration (rounded to timestep): 96.0
+2019-11-11 21:57:50,533 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:57:50] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:57:53,570 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:57:53] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:57:55,356 - INFO - E_blackouts_central_grid - Grid is not operational for 96 hours, with a reliability of 98.9 percent. 
+
+2019-11-11 21:57:55,367 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-11-11 21:57:55,465 - DEBUG - core - Creating PluginEnvironment 'pca'
+2019-11-11 21:57:55,465 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 21:57:56,208 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 21:57:56,224 - DEBUG - core - Popping environment 'pca' from the PluginGlobals stack
+2019-11-11 21:57:56,226 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 21:57:56,597 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:57:56] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:57:59,621 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:57:59] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:02,639 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:02] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:02,692 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-11-11 21:58:02,692 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-11-11 21:58:02,693 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-11-11 21:58:02,693 - DEBUG - G1_oemof_create_model - {'case_name': 'Orckney', 'filename': 'Orckney', 'total_demand_ac': 14864999.999999963, 'total_demand_dc': 0.0, 'peak_demand': 2406.409343395404, 'evaluated_days': 365, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': None, 'storage_fixed_power': None, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': False, 'pcc_feedin_fixed_capacity': False, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-11-11 21:58:02,693 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-11-11 21:58:02,694 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-11-11 21:58:02,695 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-11-11 21:58:02,701 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-11-11 21:58:02,703 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-11-11 21:58:02,706 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-11-11 21:58:02,708 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-11-11 21:58:02,711 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: maingrid consumption
+2019-11-11 21:58:02,712 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: maingrid feedin
+2019-11-11 21:58:02,713 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pcc consumption oem
+2019-11-11 21:58:02,713 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pcc feedin oem
+2019-11-11 21:58:02,714 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-11-11 21:58:02,714 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-11-11 21:58:02,715 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-11-11 21:58:02,716 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-11-11 21:58:02,716 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-11-11 21:58:02,716 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-11-11 21:58:02,717 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-11-11 21:58:02,717 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-11-11 21:58:05,816 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:05] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:09,005 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:09] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:12,197 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:12] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:15,383 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:15] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:18,573 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:18] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:21,777 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:21] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:24,972 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:24] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:28,146 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:28] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:31,332 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:31] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:31,850 - INFO - G1_oemof_create_model - Added constraint: Stability though actual generation of diesel generators and backup through batteries.
+2019-11-11 21:58:34,522 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:34] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:36,458 - INFO - G1_oemof_create_model - Simulating...
+2019-11-11 21:58:37,751 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:37] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:40,901 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:40] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:44,062 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:44] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:47,226 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:47] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:50,373 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:50] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:53,523 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:53] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:56,637 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:56] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:58:59,678 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:58:59] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:02,696 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:02] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:05,716 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:05] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:08,737 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:08] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:11,758 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:11] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:14,778 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:14] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:17,801 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:17] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:20,821 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:20] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:23,841 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:23] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:26,882 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:26] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:30,004 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:30] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:31,852 - INFO - models - Optimization successful...
+2019-11-11 21:59:31,881 - DEBUG - G1_oemof_create_model - Problem solved
+2019-11-11 21:59:33,195 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:33] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:36,732 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:36] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:39,796 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:39] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:40,340 - DEBUG - energy_system - Attributes dumped to: data/outputs/20191111205733/oemof\Orckney.oemof
+2019-11-11 21:59:40,341 - DEBUG - G1_oemof_create_model - Stored results in data/outputs/20191111205733/oemof/Orckney.oemof
+2019-11-11 21:59:40,341 - DEBUG - G1_oemof_create_model - Restore the energy system and the results.
+2019-11-11 21:59:40,342 - INFO - energy_system - Restoring attributes will overwrite existing attributes.
+2019-11-11 21:59:40,388 - DEBUG - energy_system - Attributes restored from: data/outputs/20191111205733/oemof\Orckney.oemof
+2019-11-11 21:59:40,414 - DEBUG - G3_oemof_evaluate - Evaluate flow: demand
+2019-11-11 21:59:40,449 - DEBUG - G3_oemof_evaluate - Evaluate flow: shortage
+2019-11-11 21:59:40,486 - DEBUG - G3_oemof_evaluate - Evaluate excess: 
+2019-11-11 21:59:40,518 - DEBUG - G3_oemof_evaluate - Evaluate flow: fuel
+2019-11-11 21:59:40,521 - DEBUG - G3_oemof_evaluate - Evaluate flow: genset
+2019-11-11 21:59:40,528 - DEBUG - G3_oemof_evaluate - Evaluate flow: main grid
+2019-11-11 21:59:40,564 - DEBUG - G3_oemof_evaluate - Evaluate flow: wind
+2019-11-11 21:59:40,569 - DEBUG - G3_oemof_evaluate - Evaluate flow: pv
+2019-11-11 21:59:40,578 - DEBUG - G3_oemof_evaluate - Evaluate flow: storage
+2019-11-11 21:59:40,609 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-11-11 21:59:40,618 - DEBUG - G3_oemof_evaluate - Evaluate flow: rectifier
+2019-11-11 21:59:40,627 - DEBUG - G3_oemof_evaluate - Evaluate: res share
+2019-11-11 21:59:40,627 - DEBUG - G3b_plausability_tests - Plausibility test: Charge/Discharge
+2019-11-11 21:59:40,628 - DEBUG - G3b_plausability_tests - Plausibility test: Demand/Supply/Shortage
+2019-11-11 21:59:41,120 - DEBUG - G3b_plausability_tests - Plausibility test: Feedin/Consumption
+2019-11-11 21:59:41,120 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability consumption
+2019-11-11 21:59:41,120 - DEBUG - G3b_plausability_tests - Plausibility test: Grid availability/Feedin
+2019-11-11 21:59:41,121 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/shortage
+2019-11-11 21:59:41,121 - DEBUG - G3b_plausability_tests - Plausibility test: Excess/Feedin
+2019-11-11 21:59:42,959 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:42] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:43,858 - WARNING - G2b_constraints_custom - Stability criterion is strictly not fullfilled, but deviation is less then e6.
+2019-11-11 21:59:43,858 - DEBUG - G4_output_functions - Saving flows MG.
+2019-11-11 21:59:45,185 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:45,310 - DEBUG - font_manager - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('C:\\Users\\marie\\Anaconda3\\envs\\logic\\lib\\site-packages\\matplotlib\\mpl-data\\fonts\\ttf\\DejaVuSans.ttf') with score of 0.050000.
+2019-11-11 21:59:45,353 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:45,782 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:45,919 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:46,072 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:46] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:46,187 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:46,378 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:46,483 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:46,839 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,453 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,533 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,615 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,647 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,741 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,789 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,813 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:48,884 - DEBUG - _base - update_title_pos
+2019-11-11 21:59:49,103 - DEBUG - G4_output_functions - Saving flows storage.
+2019-11-11 21:59:49,104 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating investment costs over analysed timeframe.
+2019-11-11 21:59:49,104 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating O&M costs over analysed timeframe.
+2019-11-11 21:59:49,105 - DEBUG - G3a_economic_evaluation - Economic evaluation. Scaling investment costs and O&M to year.
+2019-11-11 21:59:49,106 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating present costs.
+2019-11-11 21:59:49,106 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating fuel consumption and expenditures.
+2019-11-11 21:59:49,109 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating shortage and expenditures.
+2019-11-11 21:59:49,110 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating main grid consumption and expenditures.
+2019-11-11 21:59:49,110 - DEBUG - G3a_economic_evaluation - Economic evaluation. Calculating feeding and revenues.
+2019-11-11 21:59:49,111 - INFO - G0_oemof_simulate - Simulation of case "Orckney" resulted in : 
+                  0.147 currency/kWh, at a renewable share of 94.96 percent with a reliability of 100.0 percent
+2019-11-11 21:59:49,112 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:49] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:49,119 - INFO - G0_oemof_simulate -     Initial simulation time (s): 28.2 / Actual evaluation time (s): 106.42
+2019-11-11 21:59:49,128 - DEBUG - G0_oemof_simulate -     Exact OEM results of case "Orckney" : 
+                  0 kWh battery, -0.0 kWp PV, 20411.056 kW wind, 2061.232 kW genset at a renewable share of 94.96 percent with a reliability of 100.0 percent
+2019-11-11 21:59:49,128 - DEBUG - G0_oemof_simulate -     Simulation of case Orckney complete.
+2019-11-11 21:59:49,128 - DEBUG - G0_oemof_simulate - 
+
+2019-11-11 21:59:49,403 - INFO - A_offgridders_wrapper -     Estimated simulation time left: 0.0 minutes.
+2019-11-11 21:59:49,609 - INFO - A_offgridders_wrapper - 
+ Simulation complete. Resulting parameters saved in "results.csv". 
+ Overview over results:
+2019-11-11 21:59:52,141 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:52] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:55,173 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:55] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 21:59:58,185 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 21:59:58] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 22:00:01,203 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:01] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 22:00:04,330 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:04] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 22:00:07,436 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:07] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 22:00:10,455 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:10] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 404 -
+2019-11-11 22:00:13,482 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:13] "GET /offgrid_simulator/get_result/20191111205733 HTTP/1.1" 200 -
+2019-11-11 22:00:15,570 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:15] "GET /offgrid_simulator/daily_time_series/20191111205733/mid_summer HTTP/1.1" 500 -
+2019-11-11 22:00:15,630 - ERROR - _internal - Error on request:
+Traceback (most recent call last):
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\werkzeug\serving.py", line 303, in run_wsgi
+    execute(self.server.app)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\werkzeug\serving.py", line 291, in execute
+    application_iter = app(environ, start_response)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 2463, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 2449, in wsgi_app
+    response = self.handle_exception(e)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask_cors\extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 1866, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask_cors\extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\flask\app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\repositories\LOGiC\logic\offgrid_simulator\controllers.py", line 107, in get_daily_time_series
+    relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\pandas\core\frame.py", line 2682, in __getitem__
+    return self._getitem_array(key)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\pandas\core\frame.py", line 2726, in _getitem_array
+    indexer = self.loc._convert_to_indexer(key, axis=1)
+  File "C:\Users\marie\Anaconda3\envs\logic\lib\site-packages\pandas\core\indexing.py", line 1327, in _convert_to_indexer
+    .format(mask=objarr[mask]))
+KeyError: "['Storage charge' 'Storage discharge'] not in index"
+2019-11-11 22:00:17,793 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:17] "GET /offgrid_simulator/monthly_time_series/20191111205733 HTTP/1.1" 200 -
+2019-11-11 22:00:20,044 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:20] "GET /offgrid_simulator/demand_series/20191111205733 HTTP/1.1" 200 -
+2019-11-11 22:00:33,750 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:33] "POST /report/email HTTP/1.1" 404 -
+2019-11-11 22:00:35,777 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 22:00:35] "GET /report/download/20191111205733 HTTP/1.1" 200 -

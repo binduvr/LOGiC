@@ -16,8 +16,8 @@ def powercurve(windspeed):
     import pandas as pd
 
     #WES 100 power curve
-    pcspeed = np.arange(25)
-    pcpower = [0,0,0,1,2.9,6,11,17.7,27.3,39.2,53.8,68.4,82.8,89.1,95.9,98.7,99.5,100,100,100,100,100,100,100,100]
+    pcspeed = np.arange(30)
+    pcpower = [0,0,0,1,2.9,6,11,17.7,27.3,39.2,53.8,68.4,82.8,89.1,95.9,98.7,99.5,100,100,100,100,100,100,100,100,100,100,100,100,100,100]
     pcpower[:] = [x/100 for x in pcpower]
     windgen = np.interp(windspeed, pcspeed,pcpower)
     windgen = pd.Series(windgen)

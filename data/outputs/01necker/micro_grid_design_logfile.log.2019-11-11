@@ -1,0 +1,51 @@
+******************************************************
+2019-11-11 23:59:39,948 - INFO - logger - Path for logging: data/outputs/20191111225921\micro_grid_design_logfile.log
+2019-11-11 23:59:39,950 - INFO - logger - Used oemof version: 0.2.2
+2019-11-11 23:59:39,952 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-11-11 23:59:39,959 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-11-11 23:59:39,969 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-11-11 23:59:40,753 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-11-11 23:59:40,910 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-11-11 23:59:40,955 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 0 hrs, blackout frequency 0 per month
+2019-11-11 23:59:40,963 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 0
+2019-11-11 23:59:40,976 - INFO - E_blackouts_central_grid - Grid is not operational for 0 hours, with a reliability of 100.0 percent. 
+
+2019-11-11 23:59:40,989 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-11-11 23:59:41,128 - DEBUG - core - Creating PluginEnvironment 'pca'
+2019-11-11 23:59:41,129 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 23:59:41,886 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 23:59:41,898 - DEBUG - core - Popping environment 'pca' from the PluginGlobals stack
+2019-11-11 23:59:41,900 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-11 23:59:42,484 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:42] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -
+2019-11-11 23:59:45,600 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:45] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -
+2019-11-11 23:59:48,628 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:48] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -
+2019-11-11 23:59:52,044 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:52] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -
+2019-11-11 23:59:53,121 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-11-11 23:59:53,122 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-11-11 23:59:53,122 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-11-11 23:59:53,122 - DEBUG - G1_oemof_create_model - {'case_name': 'hoevelaken', 'filename': 'hoevelaken', 'total_demand_ac': 365250.00000000105, 'total_demand_dc': 0.0, 'peak_demand': 59.12822150522512, 'evaluated_days': 365, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': False, 'storage_fixed_power': False, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': None, 'pcc_feedin_fixed_capacity': None, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-11-11 23:59:53,123 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-11-11 23:59:53,125 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-11-11 23:59:53,126 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-11-11 23:59:53,140 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-11-11 23:59:53,145 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-11-11 23:59:53,148 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-11-11 23:59:53,156 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-11-11 23:59:53,161 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-11-11 23:59:53,162 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-11-11 23:59:53,163 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-11-11 23:59:53,165 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: storage oem
+2019-11-11 23:59:53,166 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-11-11 23:59:53,177 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-11-11 23:59:53,178 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-11-11 23:59:53,179 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-11-11 23:59:53,180 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-11-11 23:59:55,360 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:55] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -
+2019-11-11 23:59:58,931 - INFO - _internal - 127.0.0.1 - - [11/Nov/2019 23:59:58] "GET /offgrid_simulator/get_result/20191111225921 HTTP/1.1" 404 -

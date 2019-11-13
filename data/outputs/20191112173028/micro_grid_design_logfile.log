@@ -1,0 +1,119 @@
+******************************************************
+2019-11-12 18:30:43,166 - INFO - logger - Path for logging: data/outputs/20191112173028\micro_grid_design_logfile.log
+2019-11-12 18:30:43,166 - INFO - logger - Used oemof version: 0.2.2
+2019-11-12 18:30:43,166 - INFO - A_offgridders_wrapper - 
+ 
+ MICRO GRID TOOL 3.0
+ Version: 19.06.2019 
+ Coded by: Martha M. Hoffmann 
+ Reiner Lemoine Institute (Berlin) 
+ 
+ 
+2019-11-12 18:30:43,182 - INFO - C_sensitivity_experiments - Parameters of sensitivity analysis
+2019-11-12 18:30:43,182 - INFO - C_sensitivity_experiments - Randomized blackout timeseries for all combinations of blackout duration and frequency (1 experiments) will be generated.
+2019-11-12 18:30:43,396 - DEBUG - C_sensitivity_experiments - Generating header for results.csv
+2019-11-12 18:30:43,473 - INFO - C_sensitivity_experiments - For 1 project sites with 1 scenarios each, 1 sensitivity_experiment_s will be performed for each case.
+2019-11-12 18:30:43,489 - INFO - E_blackouts_central_grid - Blackout experiment 1: Blackout duration 0 hrs, blackout frequency 0 per month
+2019-11-12 18:30:43,493 - INFO - E_blackouts_central_grid - Number of blackouts in simulated timeframe: 0
+2019-11-12 18:30:43,493 - INFO - E_blackouts_central_grid - Grid is not operational for 0 hours, with a reliability of 100.0 percent. 
+
+2019-11-12 18:30:43,493 - INFO - E_blackouts_central_grid - Missing blackout timeseries added through auto-generation.
+2019-11-12 18:30:43,571 - DEBUG - core - Creating PluginEnvironment 'pca'
+2019-11-12 18:30:43,571 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-12 18:30:44,334 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-12 18:30:44,350 - DEBUG - core - Popping environment 'pca' from the PluginGlobals stack
+2019-11-12 18:30:44,350 - DEBUG - core - Pushing environment 'pca' on the PluginGlobals stack
+2019-11-12 18:30:53,936 - DEBUG - A_offgridders_wrapper - Using grid availability timeseries that was randomly generated.
+2019-11-12 18:30:53,936 - INFO - A_offgridders_wrapper - Starting simulation, project site test_site.
+2019-11-12 18:30:53,936 - DEBUG - G1_oemof_create_model - Complete case dictionary:
+2019-11-12 18:30:53,936 - DEBUG - G1_oemof_create_model - {'case_name': 'Guernsey', 'filename': 'Guernsey', 'total_demand_ac': 365250.00000000105, 'total_demand_dc': 0.0, 'peak_demand': 59.12822150522512, 'evaluated_days': 365, 'genset_with_minimal_loading': False, 'storage_fixed_capacity': None, 'storage_fixed_power': None, 'genset_fixed_capacity': False, 'pv_fixed_capacity': False, 'pcc_consumption_fixed_capacity': False, 'pcc_feedin_fixed_capacity': False, 'wind_fixed_capacity': False, 'rectifier_ac_dc_fixed_capacity': False, 'inverter_dc_ac_fixed_capacity': False, 'allow_shortage': True, 'max_shortage': 0, 'stability_constraint': 'share_hybrid', 'renewable_share_constraint': False, 'number_of_equal_generators': 1, 'evaluation_perspective': 'AC_system', 'force_charge_from_maingrid': False, 'discharge_only_when_blackout': False, 'enable_inverter_only_at_backout': False}
+2019-11-12 18:30:53,936 - DEBUG - G1_oemof_create_model - Create oemof model by adding case-specific busses and components.
+2019-11-12 18:30:53,936 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, AC
+2019-11-12 18:30:53,936 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand AC
+2019-11-12 18:30:53,967 - DEBUG - G1_oemof_create_model - Added to oemof model: Fuel bus
+2019-11-12 18:30:53,967 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source fuel
+2019-11-12 18:30:53,983 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: genset oem no minload
+2019-11-12 18:30:53,998 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: wind
+2019-11-12 18:30:53,998 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: maingrid consumption
+2019-11-12 18:30:53,998 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: maingrid feedin
+2019-11-12 18:30:53,998 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pcc consumption oem
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pcc feedin oem
+2019-11-12 18:30:54,014 - DEBUG - G1_oemof_create_model - Added to oemof model: Electricity bus of energy system, DC
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: demand DC
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: pv oem
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: rectifier oem
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: inverter_dc_ac oem
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: excess
+2019-11-12 18:30:54,014 - DEBUG - G2a_oemof_busses_and_componets - Added to oemof model: source shortage
+2019-11-12 18:30:54,030 - DEBUG - G1_oemof_create_model - Create oemof model based on created components and busses.
+2019-11-12 18:31:25,217 - INFO - G1_oemof_create_model - Added constraint: Stability though actual generation of diesel generators and backup through batteries.
+2019-11-12 18:31:29,217 - INFO - G1_oemof_create_model - Simulating...
+2019-11-12 18:32:15,738 - ERROR - solvers - Solver (cbc) returned non-zero return code (3221225786)
+2019-11-12 18:32:15,753 - ERROR - solvers - Solver log:
+Welcome to the CBC MILP Solver 
+Version: 2.9.7 
+Build Date: Nov 24 2015 
+
+command line - C:\Solver\cbc.exe -ratioGap 0.03 -printingOptions all -import C:\repositories\LOGiC\tmp1h84da64.pyomo.lp -stat=1 -solve -solu C:\repositories\LOGiC\tmp1h84da64.pyomo.soln (default strategy 1)
+ratioGap was changed from 0 to 0.03
+Option for printingOptions changed from normal to all
+Presolve 47959 (-171044) rows, 34603 (-149367) columns and 125603 (-438885) elements
+Statistics for presolved model
+
+
+Problem has 47959 rows, 34603 columns (26285 with objective) and 125603 elements
+Column breakdown:
+34603 of type 0.0->inf, 0 of type 0.0->up, 0 of type lo->inf, 
+0 of type lo->up, 0 of type free, 0 of type fixed, 
+0 of type -inf->0.0, 0 of type -inf->up, 0 of type 0.0->1.0 
+Row breakdown:
+0 of type E 0.0, 0 of type E 1.0, 0 of type E -1.0, 
+4159 of type E other, 4159 of type G 0.0, 0 of type G 1.0, 
+13361 of type G other, 26280 of type L 0.0, 0 of type L 1.0, 
+0 of type L other, 0 of type Range 0.0->1.0, 0 of type Range other, 
+0 of type Free 
+Presolve 47959 (-171044) rows, 34603 (-149367) columns and 125603 (-438885) elements
+Perturbing problem by 0.001 % of 713.3108 - largest nonzero change 0.0008122621 (% 5.2186142) - largest zero change 0.00040665305
+0  Obj 0 Primal inf 964554.7 (17520) Dual inf 4663.0212 (8760)
+0  Obj 0 Primal inf 964554.7 (17520) Dual inf 3.0429547e+015 (21680)
+464  Obj 78641.978 Primal inf 739221.75 (14317) Dual inf 2.3149793e+015 (25090)
+928  Obj 141484.37 Primal inf 693249.74 (13517) Dual inf 2.1730516e+015 (24476)
+1392  Obj 143640.62 Primal inf 656468.85 (12792) Dual inf 2.0274174e+015 (23766)
+1856  Obj 286100.19 Primal inf 618587.57 (12112) Dual inf 1.8899142e+015 (23049)
+2320  Obj 288315.36 Primal inf 580547.97 (11419) Dual inf 1.7566207e+015 (22334)
+2784  Obj 291305.82 Primal inf 540189.1 (10704) Dual inf 1.6228115e+015 (21610)
+3248  Obj 293914.84 Primal inf 494246.15 (10025) Dual inf 1.4959269e+015 (20915)
+3712  Obj 296167.98 Primal inf 450766.07 (9399) Dual inf 1.3683582e+015 (20152)
+4176  Obj 298856.48 Primal inf 402908.04 (8747) Dual inf 1.2486097e+015 (19464)
+4640  Obj 301805.77 Primal inf 343608.99 (8075) Dual inf 1.1282906e+015 (18767)
+5104  Obj 304008.55 Primal inf 289122.93 (7509) Dual inf 1.0148843e+015 (17970)
+5568  Obj 630844.43 Primal inf 230578.39 (6845) Dual inf 9.0885977e+014 (17232)
+6032  Obj 672775.44 Primal inf 170666.19 (6185) Dual inf 8.1443303e+014 (16513)
+6496  Obj 698090.31 Primal inf 135359.06 (5456) Dual inf 7.2695502e+014 (15831)
+6960  Obj 750190.73 Primal inf 114781.17 (4987) Dual inf 6.2668659e+014 (15087)
+7424  Obj 769477.11 Primal inf 72382.221 (4377) Dual inf 5.4841287e+014 (14538)
+7888  Obj 785114.63 Primal inf 49389.666 (3881) Dual inf 4.8301802e+014 (13982)
+8352  Obj 785828.89 Primal inf 44926.353 (3409) Dual inf 4.1002661e+014 (13283)
+8816  Obj 790996.44 Primal inf 40029.366 (2836) Dual inf 3.4161738e+014 (12612)
+9280  Obj 792306.87 Primal inf 34870.783 (2296) Dual inf 2.8087035e+014 (11942)
+9744  Obj 770539.06 Primal inf 29600.136 (1667) Dual inf 2.2022854e+014 (11270)
+10208  Obj 769689.11 Primal inf 24488.069 (1228) Dual inf 1.6303334e+014 (10576)
+10672  Obj 768715.76 Primal inf 19851.429 (895) Dual inf 1.0843178e+014 (9975)
+11136  Obj 767460.74 Primal inf 15349.771 (566) Dual inf 5.2523463e+013 (9392)
+11600  Obj 765844.77 Primal inf 8544.7596 (246) Dual inf 1.743332e+013 (8841)
+12064  Obj 660551.52 Dual inf 358983.44 (8377)
+12528  Obj 155804.5 Dual inf 11137.638 (8135)
+12992  Obj 130714.98 Dual inf 9358.023 (7885)
+13456  Obj 118621.47 Dual inf 8609.2675 (7591)
+13920  Obj 111094.59 Dual inf 9704.6053 (7324)
+14384  Obj 105140.67 Dual inf 22611.453 (7008)
+14848  Obj 101051.88 Dual inf 7406.7786 (6659)
+15312  Obj 98001.53 Dual inf 6724.9167 (6343)
+15776  Obj 95363.697 Dual inf 9122.8922 (6112)
+16240  Obj 93071.824 Dual inf 6215.5201 (5883)
+16704  Obj 90890.803 Dual inf 4955.6318 (5664)
+17168  Obj 88782.092 Dual inf 4860.7689 (5421)
+17632  Obj 86763.508 Dual inf 5862.1604 (5230)
+18096  Obj 84816.009 Dual inf 4901.253 (5003)
+18560  Obj 82841.155 Dual inf 7630.7608 (4808)
+19024  O

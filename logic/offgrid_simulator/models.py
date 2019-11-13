@@ -61,17 +61,30 @@ class ProjectSite:
         # TODO: Finish DC demand assignment (now on 0)
         self.demand_dc = self.demand_ac - self.demand_ac
 
-        self.wind_generation_per_kW = self.set_wind_generation(latitude,
+        self.wind_generation_per_kW, self.wind_speed = self.set_wind_generation(latitude,
             longitude, settings.OFFGRIDDERS_SETTINGS['evaluated_days'], demands) # NOTE: added demands as argument for use in turbine selection
         self.pv_generation_per_kWp = self.set_pv_generation(latitude,
             longitude, settings.OFFGRIDDERS_SETTINGS['evaluated_days'])
-
+        self.temperature = self.set_temperature(latitude,
+            longitude, settings.OFFGRIDDERS_SETTINGS['evaluated_days'])
+        self.GHI = self.set_GHI(latitude,
+            longitude, settings.OFFGRIDDERS_SETTINGS['evaluated_days'])
 
     def set_wind_generation(self, latitude, longitude, evaluated_days, demands): # NOTE: added demands as argument for use in turbine selection
         wind_speed = weather.get_wind_standard_year(latitude, longitude,
             evaluated_days)
         wind_generation, turbine_type = windconverters.chosen_turbine(wind_speed,demands)
-        return wind_generation
+        wind_generation = wind_generation/1.01
+        return wind_generation, wind_speed
+
+    def set_temperature(self, latitude, longitude, evaluated_days):
+        temperature = weather.get_temperature_standard_year(latitude, longitude, evaluated_days)
+        return temperature
+
+    def set_GHI(self, latitude, longitude, evaluated_days):
+        GHI = weather.get_temperature_standard_year(latitude, longitude, evaluated_days)
+        return GHI
+
 
     def set_pv_generation(self, latitude, longitude, evaluated_days):
         typicalpv = weather.get_solar_standard_year(latitude, longitude, evaluated_days)
@@ -86,7 +99,11 @@ class ProjectSite:
                 'per_unit_wind_generation': list(self.wind_generation_per_kW),
                 'residential_demand': list(self.residential_demand),
                 'commercial_demand': list(self.commercial_demand),
-                'industrial_demand': list(self.industrial_demand)
+                'commercial_dummy': list(self.commercial_demand),
+                'industrial_demand': list(self.industrial_demand),
+                'temperature': list(self.temperature),
+                'wind_speed': list(self.wind_speed),
+                'GHI': list(self.GHI)
             })
 
         df.to_csv(directory + '/demands.csv')

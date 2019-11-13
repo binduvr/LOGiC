@@ -56,13 +56,15 @@ def get_solar_standard_year(lat, lon, runtime):
     loss = 14
     optimalangles = 1
     pvtechchoice = 'crystSi'
+    database = 'PVGIS-SARAH'
+
 
     base_url = "http://re.jrc.ec.europa.eu/pvgis5/seriescalc.php?lat={}&lon={}&peakpower={}&loss={}\
-        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}"
+        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}&raddatabase={}"
 
     url = base_url.format(lat, lon,
         peakpower, loss,
-        startyear, endyear, optimalangles, pvtechchoice)
+        startyear, endyear, optimalangles, pvtechchoice,database)
 
     # Request the data
     r = req.get(url)
@@ -103,12 +105,63 @@ def get_optimal_panel_config(lat, lon):
 
     base_url = "http://re.jrc.ec.europa.eu/pvgis5/PVcalc.php?lat={}&lon={}\
         &loss=14&peakpower=1&outputformatchoice=basic&optimalinclination=1\
-        &optimalangles=1&inclined_optimum=1&vertical_optimum=1"
+        &optimalangles=1&inclined_optimum=1&vertical_optimum=1&raddatabase={}"
 
-    url = base_url.format(lat, lon)
+    url = base_url.format(lat, lon,'PVGIS-SARAH')
     r = req.get(url)
 
     slope = [int(k) for k in re.findall(r'\b\d+\b', r.text.splitlines()[5])][0]
+    #slope = 40
     azimuth = [int(k) for k in re.findall(r'\b\d+\b', r.text.splitlines()[6])][0]
-
+    #azimuth = 4
     return slope, azimuth
+
+def get_temperature_standard_year(lat, lon, days):
+    """Get wind and solar irradiance standard time for coordinates
+    for certain time period.
+
+    Parameters
+    ----------
+        lat: latitude
+        lon: longitude
+        days: number of standard days requested
+    """
+
+    base_url = "http://re.jrc.ec.europa.eu/pvgis5/tmy.php?lat={}&lon={}&usehorizon={}&outputformat={}"
+    url = base_url.format(lat, lon, 1, "csv")
+    r = req.get(url)
+
+    string_data = r.text
+
+    # Get wind time series'
+    hrs = int(days * 24)
+    df = pd.read_csv(StringIO(string_data), sep=',')
+
+    temperature = df['Tair'].head(hrs)
+
+    return temperature
+
+def get_GHI_standard_year(lat, lon, days):
+    """Get wind and solar irradiance standard time for coordinates
+    for certain time period.
+
+    Parameters
+    ----------
+        lat: latitude
+        lon: longitude
+        days: number of standard days requested
+    """
+
+    base_url = "http://re.jrc.ec.europa.eu/pvgis5/tmy.php?lat={}&lon={}&usehorizon={}&outputformat={}"
+    url = base_url.format(lat, lon, 1, "csv")
+    r = req.get(url)
+
+    string_data = r.text
+
+    # Get wind time series'
+    hrs = int(days * 24)
+    df = pd.read_csv(StringIO(string_data), sep=',')
+
+    GHI = df['Ghor'].head(hrs)
+
+    return GHI
