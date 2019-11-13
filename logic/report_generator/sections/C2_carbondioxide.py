@@ -13,7 +13,7 @@ def co2saving(reportdict):
     str(format(reportdict['co2_pv_per_kwh']*1000,'.0f')) + ' gram per kWh of solar generated energy and '+\
     str(format(reportdict['co2_wind_per_kwh']*1000,'.0f')) + ' gram per kWh of wind generated energy. '+\
     'For the assessed microgrid the emmission is estimated as '+str(format(reportdict['co2_mg_per_kwh']*1000, '.0f')) +\
-    'gram per kWh. This results in an emission reduction of '+\
+    ' gram per kWh. This results in an emission reduction of '+\
      str(format((reportdict['co2_grid_per_kwh']-reportdict['co2_mg_per_kwh'])*1000, '.0f'))+' gram per kWh. '+\
     'At the given energy consumption this results in an annual CO$_{2}$ emission reduction of '+\
     sep('%.2f' % ((reportdict['co2_grid_per_kwh']-reportdict['co2_mg_per_kwh'])*reportdict['residential_demand'])) +\
