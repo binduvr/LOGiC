@@ -51,6 +51,7 @@ def handle_request():
 
 
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
+    # session_id = "20191113154917"
     input_dict = flask.request.get_json(force=True)
 
     processor.generate_simulation_results(input_dict, session_id)
@@ -67,8 +68,8 @@ def get_result(session_id=None):
     try:
         results = pd.read_csv(file_path)
 
-        diesel_only_C02_production = float(results['total_demand_annual_kWh'][0])\
-            * settings.CO2_PER_KWH_DIESEL
+        # diesel_only_C02_production = float(results['total_demand_annual_kWh'][0])\
+        #     * settings.CO2_DIESEL_PER_KWH
 
         webpage_output = {
             'session_id': session_id,
@@ -86,9 +87,7 @@ def get_result(session_id=None):
             'annuity_wind': float(results['annuity_wind'][0]),
             'annuity_genset': float(results['annuity_genset'][0]),
 
-
-            'diesel_only_C02_production': float(diesel_only_C02_production),
-            'kg_C02_saved': float(diesel_only_C02_production * results['res_share'][0]),
+            'kg_C02_saved': float(results['C02_mg_per_kWh'][0]),
             'optimal_slope': float(results['optimal_slope'][0]),
             'optimal_azimuth': float(results['optimal_azimuth'][0])
         }

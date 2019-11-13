@@ -119,10 +119,11 @@ def run_simulation(offgridders_input):
 		# TODO: This will later be fixed
 		# Appending results to output file
 		output_file = sensitivity_experiment_s[experiment]['output_folder'] + '/test_results.csv'
-		output_df = pd.read_csv(output_file)
+		# output_df = pd.read_csv(output_file)
 
-		final_results = output_df.join(overall_results, how='outer')
-		final_results.to_csv(output_file)
+		# final_results = output_df.join(overall_results, how='outer')
+		# final_results.to_csv(output_file)
+		overall_results.to_csv(output_file, index=False)
 
 		if settings['display_experiment'] == True:
 			logging.info('The experiment with following parameters has been analysed:')
@@ -135,4 +136,5 @@ def run_simulation(offgridders_input):
 	logging.info('Simulation complete.')
 	logging.shutdown()
 
-	return final_results
+	# return final_results
+	return overall_results

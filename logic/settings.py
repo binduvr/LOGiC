@@ -26,8 +26,10 @@ TYPICAL_DAYS = {
     'autumn_equinox': "2019-09-21 00:00:00"
 }
 
-CO2_PER_KWH_DIESEL = 1.05564
-CO2_PER_KWH_GRID = 0.4
+CO2_DIESEL_PER_KWH = 1.05564
+CO2_GRID_PER_KWH = 0.4
+CO2_WIND_PER_KWH = 0.011
+CO2_PV_PER_KWH = 0.025
 
 # Relevant output from test_results.csv to be used in time series
 RELEVANT_COLUMNS = ['Demand', 'PV generation', 'Wind generation',

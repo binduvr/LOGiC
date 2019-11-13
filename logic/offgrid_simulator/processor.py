@@ -24,6 +24,12 @@ def generate_simulation_results(input_dict, session_id):
 
     results = og.run_simulation(offgridders_input)
 
+    # TODO: Find better way for lat lon
+    latitude = input_dict['latitude']
+    longitude = input_dict['longitude']
+
+    append_additional_results(session_id, latitude, longitude)
+
 def generate_input(input_dict, session_id):
     """This function gets the input ready to be run through OESMOT"""
 
@@ -42,13 +48,13 @@ def generate_input(input_dict, session_id):
 
     # Get optimal panel configuration for location
     # TODO: Do this in OSELC app
-    optimal_slope, optimal_azimuth = \
-        weather.get_optimal_panel_config(latitude, longitude)
-    panel_config = {'optimal_slope': [optimal_slope],
-        'optimal_azimuth': [optimal_azimuth]}
+    # optimal_slope, optimal_azimuth = \
+    #     weather.get_optimal_panel_config(latitude, longitude)
+    # panel_config = {'optimal_slope': [optimal_slope],
+    #     'optimal_azimuth': [optimal_azimuth]}
 
-    df = pd.DataFrame(data=panel_config)
-    df.to_csv(output_directory + '/test_results.csv', index=False)
+    # df = pd.DataFrame(data=panel_config)
+    # df.to_csv(output_directory + '/test_results.csv', index=False)
 
     # Create folders for OESMOT output
     folder_list = ['/lp_files', '/storage', '/electricity_mg',
@@ -71,3 +77,56 @@ def generate_input(input_dict, session_id):
         active_components, additional_parameters, output_directory)
 
     return offgridders_input
+
+# TODO: Add sums and C02 reductions
+def get_average_C02(session_id):
+
+    variable_tuples = [
+        ('Wind generation', settings.CO2_WIND_PER_KWH),
+        ('PV generation', settings.CO2_PV_PER_KWH),
+        ('Genset generation', settings.CO2_DIESEL_PER_KWH),
+        ('Consumption from main grid', settings.CO2_GRID_PER_KWH)
+    ]
+
+    time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
+        + '/electricity_mg/electricity_mg.csv')
+
+    # sum_variables = wind, pv, diesel, grid
+    average_C02 = 0
+    for variable_set in variable_tuples:
+        if variable_set[0] not in time_series.columns:
+            time_series[key] = [0] * len(time_series)
+
+        variable_type = variable_set[0]
+        c02_type = variable_set[1]
+
+        C02_production = time_series[variable_type].sum() \
+                / (time_series['Wind generation'].sum() \
+                    + time_series['PV generation'].sum() \
+                    + time_series['Genset generation'].sum() \
+                    + time_series['Consumption from main grid'].sum()) \
+                * c02_type
+
+        average_C02 += C02_production
+
+    return average_C02
+
+
+def append_additional_results(session_id, latitude, longitude):
+    output_file = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
+    output_df = pd.read_csv(output_file)
+
+    average_C02_production = get_average_C02(session_id)
+
+    optimal_slope, optimal_azimuth = \
+        weather.get_optimal_panel_config(latitude, longitude)
+
+    additional_data = {
+        'optimal_slope': [optimal_slope],
+        'optimal_azimuth': [optimal_azimuth],
+        'C02_mg_per_kWh': [average_C02_production]}
+
+    additional_data_df = pd.DataFrame.from_dict(additional_data)
+
+    final_results = output_df.join(additional_data_df, how='outer')
+    final_results.to_csv(output_file)
