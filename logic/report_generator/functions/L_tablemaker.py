@@ -23,15 +23,16 @@ def centertable(data,columns,label,caption):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{center}'+ent+\
+    '{\\color{black}'+\
+    '\\begin{flushleft}'+ent+\
     '\\begin{tabular}{'+ columns +'}'+ent+\
     '\\hline '+ title   +ent+\
     body +\
     '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
+    '\\end{flushleft}}'+\
     '\\captionof{table}{'+caption+'}'+\
-    '\\end{center}'+\
     '\\vspace{0.5mm}'
     return tab
 
@@ -63,14 +64,15 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{center}'+\
+    '{\\color{black}'+\
+    '\\begin{flushleft}'+\
     '\\begin{tabular}{'+ columns +'}'+\
     '\\hline '+ title+ent+\
     body +\
     '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
+    '\\end{flushleft}}'+\
     '\\captionof{table}{'+caption+'}'+\
-    '\\end{center}'+\
     '\\vspace{0.5mm}'
     return tab

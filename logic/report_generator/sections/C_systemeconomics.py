@@ -1,14 +1,14 @@
 enter ='\r\n'
 import os
 from logic.report_generator.functions.L_tablemaker import centertable as table
-from logic.report_generator.functions.L_tablemaker import centermoneytable as moneytable                                                                                      
+from logic.report_generator.functions.L_tablemaker import centermoneytable as moneytable
 def systemeconomics(reportdict):
-    investtable = moneytable(reportdict['investtable'],'|l|r|r|', 'investtable','Investment cost of the system')
+    investtable = moneytable(reportdict['investtable'],'|l|r|', 'investtable','Investment cost of the system')
     opextable = moneytable(reportdict['opexinputtable'],'|l|r|r|', 'opextable','Operational expenditure of the main components of the system')
     econinputtable = table(reportdict['econinputtable'], '|l|r|r|', 'econinputtable', 'Economic input variables')
     investinputtable = moneytable(reportdict['investinputtable'],'|l|r|r|', 'investinputtable', 'Per unit investment cost of the main considered system components')
 	# actual string concatenation
-    econ = '\\section*{System economics}' + enter + \
+    econ = '\\subsection*{System economics}' + enter + \
     'In order to assess the economics of the system the following economic ' +\
     'parameters have been assumed: '+enter+\
     econinputtable+enter+\

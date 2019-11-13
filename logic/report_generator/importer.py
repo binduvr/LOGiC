@@ -14,18 +14,9 @@ def import_data(session_id):
     folder = settings.OUTPUT_DIRECTORY + session_id #for local use
     reportdict = {'folder' : folder}
 
+    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/inputs/input.json'))['additional_parameters']}
     with open(folder+'/inputs/input.json') as file:
         inputs = json.load(file)
-
-    # Replace empty values with defaults
-    additional_parameters = {}
-    for key in inputs['additional_parameters'].keys():
-        current_parameter = inputs['additional_parameters'][key]
-        if current_parameter != '':
-            additional_parameters[key] = inputs['additional_parameters'][key]
-
-    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**additional_parameters}
-
     active_components = inputs['active_components']
 
     # make percentages from fractions
@@ -63,7 +54,7 @@ def import_data(session_id):
 
         titles = ['Property', 'Value']
         gridpropertytable = maketable(names,keys,titles,sets)
-        gridpropertytable['Value'] = gridpropertytable['Value'].map('{:,.2f}'.format)
+        #gridpropertytable['Value'] = gridpropertytable['Value'].map('{:,.2f}'.format)
         gridpropertytable['Unit'] = units
         del names,keys,units
 
@@ -141,6 +132,8 @@ def import_data(session_id):
     cols = res.columns[1:len(res.columns)]
     for col in cols:
         results[col] = res[col][0]
+        print(cols)
+        print(results)
     ##########################################
     #  END OF IMPORT COMMAND
     ##########################################
@@ -179,21 +172,38 @@ def import_data(session_id):
     reportdict['investtable'] = investtable # as centermoneytable
     reportdict['varinputtable'] = varinputtable # as centermoneytable
     reportdict['investinputtable'] = investinputtable #as centermoneytable
-    ## PUT OTHER VALUES IN REPORTDICT
+    ## PUT DEMAND VALUES IN REPORTDICT
     reportdict['residential_demand'] = inputs['demands']['residential_demand']
     reportdict['commercial_demand'] = inputs['demands']['commercial_demand']
     reportdict['industrial_demand'] = inputs['demands']['industrial_demand']
-    reportdict['address'] = 'dumadr'
-    reportdict['active_components'] = active_components
+
+    ## PUT INPUT VALUES IN REPORTDICT
+    list = ['address','longitude','latitude']
+    for key in list:
+        reportdict[key] = inputs[key]
+    del list
+
+    ## PUT RESULT VALUES IN REPORTDICT
+    list =['capacity_pv_kWp','capacity_wind_kW','lcoe','res_share']
+    for key in list:
+        reportdict[key] = results[key]
+    reportdict['co2_mg_per_kwh'] = results['C02_mg_per_kWh']
+    del list
+    reportdict['res_share']=reportdict['res_share']*100
     reportdict['PVinst'] = results['capacity_pv_kWp']
     reportdict['windinst'] = results['capacity_wind_kW']
+
+    reportdict['active_components'] = active_components
     #reportdict['windprod'] = results['fulload_hours_wind']
     #reportdict['PVprod'] = results['fulload_hours_PV']
     reportdict['PVprod'] = 900
     reportdict['windprod'] = 2100
 
-    reportdict['lcoe'] = float("%.2f" % results['lcoe'])
-    reportdict['res_share'] = float("%.1f" % (results['res_share']*100))
+    ## PUT SETTINGS VALUES IN REPORTDICT
+    reportdict['co2_pv_per_kwh'] = settings.CO2_PV_PER_KWH
+    reportdict['co2_grid_per_kwh'] = settings.CO2_GRID_PER_KWH
+    reportdict['co2_wind_per_kwh'] = settings.CO2_WIND_PER_KWH
+    reportdict['co2_diesel_per_kwh'] = settings.CO2_DIESEL_PER_KWH
 
     reportdict['reportname'] = settings.REPORT_NAME
     return reportdict

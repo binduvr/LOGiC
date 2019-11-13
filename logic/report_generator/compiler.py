@@ -3,6 +3,7 @@ from logic import settings
 import os
 def compile(session_id,reportdict):
     copyfile('logic/report_generator/latex_template/logo.png', settings.OUTPUT_DIRECTORY+session_id+'/report/logo.png')
+    copyfile('logic/report_generator/latex_template/logiclogo.png', settings.OUTPUT_DIRECTORY+session_id+'/report/logiclogo.png')
     copyfile('data/outputs/'+session_id+'/inputs/per_unit_pv_generation.png', settings.OUTPUT_DIRECTORY+session_id+'/report/per_unit_pv_generation.png')
     copyfile('data/outputs/'+session_id+'/inputs/per_unit_wind_generation.png', settings.OUTPUT_DIRECTORY+session_id+'/report/per_unit_wind_generation.png')
     # copyfile('logic/data/outputs/'+session_id+'/electricity_mg/electricity_mg.png', settings.OUTPUT_DIRECTORY+session_id+'/report/electricity_mg.png')
