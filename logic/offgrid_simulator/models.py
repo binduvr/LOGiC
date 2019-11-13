@@ -72,7 +72,8 @@ class ProjectSite:
         wind_speed = weather.get_wind_standard_year(latitude, longitude,
             evaluated_days)
         wind_generation, turbine_type = windconverters.chosen_turbine(wind_speed,demands)
-        return wind_generation
+        wind_gen = wind_generation / 1.01
+        return wind_gen
 
     def set_pv_generation(self, latitude, longitude, evaluated_days):
         typicalpv = weather.get_solar_standard_year(latitude, longitude, evaluated_days)
