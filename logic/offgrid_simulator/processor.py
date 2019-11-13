@@ -90,13 +90,13 @@ def get_average_C02(session_id):
 
     time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
         + '/electricity_mg/electricity_mg.csv')
+    print(time_series.columns)
 
-    # sum_variables = wind, pv, diesel, grid
+    if 'Consumption from main grid' not in time_series.columns:
+        time_series['Consumption from main grid'] = [0] * len(time_series)
+
     average_C02 = 0
     for variable_set in variable_tuples:
-        if variable_set[0] not in time_series.columns:
-            time_series[key] = [0] * len(time_series)
-
         variable_type = variable_set[0]
         c02_type = variable_set[1]
 
