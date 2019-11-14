@@ -104,7 +104,7 @@ class ProjectSite:
 
     def to_dict(self):
 
-        default_data = settings.PROJECT_SITE
+        default_data = settings.PROJECT_SITE.copy()
 
         demand_parameters = {
             'demand_ac': self.demand_ac,
@@ -165,14 +165,14 @@ class OffgriddersInput:
         # TODO: Ensure null values are excluded
         self.parameters_constant_values = \
             self.set_parameters_constant_values(additional_parameters)
-        self.settings = settings.OFFGRIDDERS_SETTINGS
+        self.settings = settings.OFFGRIDDERS_SETTINGS.copy()
         self.settings['output_folder'] = output_folder
-        self.parameters_sensitivity = settings.PARAMETERS_SENSITIVITY
+        self.parameters_sensitivity = settings.PARAMETERS_SENSITIVITY.copy()
         self.project_site = project_site
 
     def set_case_definition(self, project_name, active_components):
 
-        case_definition = settings.CASE_DEFINITION
+        case_definition = settings.CASE_DEFINITION.copy()
 
         case_definition['case_name'] = project_name
 
@@ -185,6 +185,7 @@ class OffgriddersInput:
         if not active_components['grid_connection']:
             case_definition['capacity_pcc_consumption_kW'] = 'None'
             case_definition['capacity_pcc_feedin_kW'] = 'None'
+        print(case_definition)
         return case_definition
 
     def set_parameters_constant_values(self, additional_parameters):
@@ -192,7 +193,7 @@ class OffgriddersInput:
         for key in additional_parameters.keys():
             if additional_parameters[key] != '':
                 result_params[key] = additional_parameters[key]
-        return {**settings.PARAMETERS_CONSTANT_VALUES, **result_params}
+        return {**settings.PARAMETERS_CONSTANT_VALUES.copy(), **result_params}
 
     def to_dict(self):
         offgridders_data = {

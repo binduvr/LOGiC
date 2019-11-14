@@ -27,7 +27,7 @@ def import_data(session_id):
         if current_parameter != '':
             additional_parameters[key] = inputs['additional_parameters'][key]
 
-    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**additional_parameters}
+    sets = {**settings.PARAMETERS_CONSTANT_VALUES.copy(),**additional_parameters}
 
     active_components = inputs['active_components']
 

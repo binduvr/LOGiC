@@ -88,7 +88,7 @@ def get_result(session_id=None):
 def get_daily_time_series(session_id, series_type):
     """Retrieves a certain time series for 1 day."""
 
-    typical_days = settings.TYPICAL_DAYS
+    typical_days = settings.TYPICAL_DAYS.copy()
 
     # TODO: Use same method as monthly time series
     if series_type in typical_days.keys():
@@ -101,7 +101,7 @@ def get_daily_time_series(session_id, series_type):
         # relevant_data = time_series[settings.RELEVANT_COLUMNS].copy()
         relevant_data = pd.DataFrame(time_series)
 
-        relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
+        relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS.copy(), settings.FORMATTED_COLUMN_NAMES.copy()))
 
         # Make empty arrays
         for key in relevant_column_dict.keys():
@@ -142,7 +142,7 @@ def get_monthly_time_series(session_id):
 
     # monthly_dataframe = pd.DataFrame(month_list, columns=settings.RELEVANT_COLUMNS)
     monthly_dataframe = pd.DataFrame(month_list)
-    relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS, settings.FORMATTED_COLUMN_NAMES))
+    relevant_column_dict = dict(zip(settings.RELEVANT_COLUMNS.copy(), settings.FORMATTED_COLUMN_NAMES.copy()))
 
     # TODO: Make sure everything works
     # Make empty arrays
