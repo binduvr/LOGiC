@@ -47,7 +47,7 @@ def generalinfo(reportdict):
     'There are multiple possible reasons to apply a microgrid: '+\
     '\\begin{itemize}'+enter+' '+\
     '\\item No grid is available (remote location) ' + enter +\
-    '\\item There is a grid available, but is is not reliable (enough)  ' + enter +\
+    '\\item There is a grid available, but it is not reliable (enough)  ' + enter +\
     '\\item The wish to generate the own energy locally as a stakeholder or a community ' + enter +\
     '\\end{itemize}' + enter +\
     'In all cases renewable sources are often considered as a possible source '+\

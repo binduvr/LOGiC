@@ -18,7 +18,7 @@ def systemlayout(reportdict):
     'The calculation described above has resulted in the following system:' + enter +\
     layouttable+enter+\
     'The system defined by the parameters above realises a levelised cost of electricity ' +\
-    'of \\texteuro '+ str(format(reportdict['lcoe'],'.2f'))+' per kWh. the system does ' +\
+    'of \\texteuro '+ str(format(reportdict['lcoe'],'.2f'))+' per kWh. The system does ' +\
     'this at a renewable energy share of '+ str(format(reportdict['res_share'],'.2f')) + ' \%. '
 	#maybe some comparison to a full diesel mg and buying fro the grid, including blackout numbers and res share comparison?
 

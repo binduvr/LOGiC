@@ -5,7 +5,7 @@ import re
 from logic.report_generator.functions.L_tablemaker import centertable as table
 def co2saving(reportdict):
     co2 = '\\subsection*{Carbon emission reduction}' + enter + \
-    'As mentioned, sustainability is one of the incentives for consiering microgrids. ' + enter +\
+    'As mentioned, sustainability is one of the incentives for considering microgrids. ' + enter +\
     'Therefore the amount of CO$_{2}$ emission that is reduced with respect to the alternative ' +enter+\
     'is an interesting number to study. For this assessment the CO$_{2}$ emissions are assumed as '+\
     str(format(reportdict['co2_grid_per_kwh']*1000,'.0f')) + ' gram per kWh of grid energy, '+\
