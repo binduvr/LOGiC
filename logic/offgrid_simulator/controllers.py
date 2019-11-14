@@ -4,6 +4,7 @@ import pandas as pd
 import time
 import pprint as pp
 import simplejson
+import json
 import numpy as np
 
 import logic.settings as settings
@@ -23,33 +24,6 @@ def process_request(input_dict, session_id):
 def handle_request():
     """Runs a simulation using supplied values."""
 
-    # Testing #######################
-    # input_dict = {
-    #     'project_name': 'hoevelaken',
-    #     'country_code': 'NL',
-    #     'address': "some random address",
-    #     # NOTE: Make sure they are sent as floats.
-    #     'latitude': 51,
-    #     'longitude': 5,
-    #     'demands': {
-    #         'residential_demand': 35000,
-    #         'commercial_demand': 0,
-    #         'industrial_demand': 0
-    #     },
-    #     'active_components': {
-    #         'wind': True,
-    #         'solar': True,
-    #         'storage': True,
-    #         'dieselgen': True,
-    #         'grid_connection': False
-    #     },
-    #     'additional_parameters': {'blackout_frequency': 0}
-    # }
-    #######################
-
-
-
-
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
     # session_id = "20191113154917"
     input_dict = flask.request.get_json(force=True)
@@ -68,8 +42,20 @@ def get_result(session_id=None):
     try:
         results = pd.read_csv(file_path)
 
-        # diesel_only_C02_production = float(results['total_demand_annual_kWh'][0])\
-        #     * settings.CO2_DIESEL_PER_KWH
+        with open(settings.OUTPUT_DIRECTORY + session_id \
+                + "/inputs/input.json", encoding='utf-8') as f:
+            inputs = json.loads(f.read())
+
+        annual_demand = float(results['total_demand_annual_kWh'][0])
+        CO2_mg_per_kWh = float(results['CO2_mg_per_kWh'][0])
+
+        # If grid not active use diesel co2 production
+        if inputs['active_components']['grid_connection']:
+            baseline_CO2 = settings.CO2_GRID_PER_KWH
+        else:
+            baseline_CO2 = settings.CO2_DIESEL_PER_KWH
+
+        kg_CO2_saved = (baseline_CO2 - CO2_mg_per_kWh) * annual_demand
 
         webpage_output = {
             'session_id': session_id,
@@ -87,13 +73,14 @@ def get_result(session_id=None):
             'annuity_wind': float(results['annuity_wind'][0]),
             'annuity_genset': float(results['annuity_genset'][0]),
 
-            'kg_C02_saved': float(results['C02_mg_per_kWh'][0]),
+            # TODO: Change 0 to O
+            'kg_C02_saved': float(kg_CO2_saved),
             'optimal_slope': float(results['optimal_slope'][0]),
             'optimal_azimuth': float(results['optimal_azimuth'][0])
         }
         return simplejson.dumps(webpage_output, ignore_nan=True)
     except Exception as e:
-        # print(e)
+        print(e)
         flask.abort(404)
 
 
