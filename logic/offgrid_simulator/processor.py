@@ -27,7 +27,7 @@ def generate_simulation_results(input_dict, session_id):
     # TODO: Find better way for lat lon
     latitude = input_dict['latitude']
     longitude = input_dict['longitude']
-
+    # session_id = '20191114100723'
     append_additional_results(session_id, latitude, longitude)
 
 def generate_input(input_dict, session_id):
@@ -91,31 +91,32 @@ def get_average_C02(session_id):
     time_series = pd.read_csv(settings.OUTPUT_DIRECTORY + session_id \
         + '/electricity_mg/electricity_mg.csv')
 
-    if 'Consumption from main grid' not in time_series.columns:
-        time_series['Consumption from main grid'] = [0] * len(time_series)
+    for var_set in variable_tuples:
+        if var_set[0] not in time_series.columns:
+            time_series[var_set[0]] = [0] * len(time_series)
 
-    average_C02 = 0
+    average_CO2 = 0
     for variable_set in variable_tuples:
         variable_type = variable_set[0]
-        c02_type = variable_set[1]
+        co2_type = variable_set[1]
 
-        C02_production = time_series[variable_type].sum() \
+        CO2_production = time_series[variable_type].sum() \
                 / (time_series['Wind generation'].sum() \
                     + time_series['PV generation'].sum() \
                     + time_series['Genset generation'].sum() \
                     + time_series['Consumption from main grid'].sum()) \
-                * c02_type
+                * co2_type
 
-        average_C02 += C02_production
+        average_CO2 += CO2_production
 
-    return average_C02
+    return average_CO2
 
 
 def append_additional_results(session_id, latitude, longitude):
     output_file = settings.OUTPUT_DIRECTORY + session_id + '/test_results.csv'
     output_df = pd.read_csv(output_file)
 
-    average_C02_production = get_average_C02(session_id)
+    average_CO2_production = get_average_C02(session_id)
 
     optimal_slope, optimal_azimuth = \
         weather.get_optimal_panel_config(latitude, longitude)
@@ -123,7 +124,7 @@ def append_additional_results(session_id, latitude, longitude):
     additional_data = {
         'optimal_slope': [optimal_slope],
         'optimal_azimuth': [optimal_azimuth],
-        'C02_mg_per_kWh': [average_C02_production]}
+        'CO2_mg_per_kWh': [average_CO2_production]}
 
     additional_data_df = pd.DataFrame.from_dict(additional_data)
 

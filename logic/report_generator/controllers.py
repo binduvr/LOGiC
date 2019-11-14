@@ -30,12 +30,9 @@ def email_report():
         generator.generate_report(session_id, reportdict)
         compiler.compile(session_id, reportdict)
 
-    # Mail report
-    try:
-        mailer.email_report(session_id, email)
-        return "Success"
-    except:
-        flask.abort(404)
+
+    mailer.email_report(session_id, email)
+    return "Success"
 
 @report_generator.route('/download/<session_id>', methods=['GET'])
 def download_report(session_id):

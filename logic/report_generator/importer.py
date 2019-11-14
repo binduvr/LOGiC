@@ -14,9 +14,21 @@ def import_data(session_id):
     folder = settings.OUTPUT_DIRECTORY + session_id #for local use
     reportdict = {'folder' : folder}
 
-    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/inputs/input.json'))['additional_parameters']}
+    # sets = {**settings.PARAMETERS_CONSTANT_VALUES,**json.load(open(folder+'/inputs/input.json'))['additional_parameters']}
+    # with open(folder+'/inputs/input.json') as file:
+    #     inputs = json.load(file)
     with open(folder+'/inputs/input.json') as file:
         inputs = json.load(file)
+
+    # Replace empty values with defaults
+    additional_parameters = {}
+    for key in inputs['additional_parameters'].keys():
+        current_parameter = inputs['additional_parameters'][key]
+        if current_parameter != '':
+            additional_parameters[key] = inputs['additional_parameters'][key]
+
+    sets = {**settings.PARAMETERS_CONSTANT_VALUES,**additional_parameters}
+
     active_components = inputs['active_components']
 
     # make percentages from fractions
@@ -186,7 +198,7 @@ def import_data(session_id):
     list =['capacity_pv_kWp','capacity_wind_kW','lcoe','res_share']
     for key in list:
         reportdict[key] = results[key]
-    reportdict['co2_mg_per_kwh'] = results['C02_mg_per_kWh']
+    reportdict['co2_mg_per_kwh'] = results['CO2_mg_per_kWh']
     del list
     reportdict['res_share']=reportdict['res_share']*100
     reportdict['PVinst'] = results['capacity_pv_kWp']
