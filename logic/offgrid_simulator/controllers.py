@@ -24,18 +24,16 @@ def process_request(input_dict, session_id):
 def handle_request():
     """Runs a simulation using supplied values."""
 
-    # session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
+    session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
 
-    # input_dict = flask.request.get_json(force=True)
+    input_dict = flask.request.get_json(force=True)
 
-    # processor.generate_simulation_results(input_dict, session_id)
-    # session_id = "20191114154054"
+    processor.generate_simulation_results(input_dict, session_id)
 
+    # # THIS IS THE ORKNEY ISLANDS ID TO USE IF PANIC BUTTON, NO GRID
+    # session_id = "20191115083605"
+    # time.sleep(60)
 
-    # THIS IS THE ORKNEY ISLANDS ID TO USE IF PANIC BUTTON, NO GRID
-    session_id = "20191115083605"
-    time.sleep(60)
-    # process_request(input_dict, session_id)
     return session_id
 
 
