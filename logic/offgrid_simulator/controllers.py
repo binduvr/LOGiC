@@ -34,7 +34,7 @@ def handle_request():
 
     # THIS IS THE ORKNEY ISLANDS ID TO USE IF PANIC BUTTON, NO GRID
     session_id = "20191115083605"
-    # time.sleep(60)
+    time.sleep(60)
     # process_request(input_dict, session_id)
     return session_id
 
