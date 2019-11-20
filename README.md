@@ -39,6 +39,12 @@ cd LOGiC
 pip install -r requirements.txt
 ```
 
+6. Create a copy of admin_settings.sample.ini called admin_settings.ini and change the email settings to your own email and password
+```
+email_address=companyemail
+email_password=password
+```
+
 ## Running the application
 To run the application:
 1. Change the values in admin_settings.ini to suit your needs.
@@ -58,14 +64,14 @@ The application has various routes (or URLs) which have different functions. All
 location_data/offgridders_data/<country_code>
 ```
 This URL will retrieve factors which can based on location such as fuel price which can be used the the Offgridders tool.
-This request will output JSON in the foloowing form:
+This request will output JSON in the folowing form:
 ```
 { 
-  'blackout_frequency': None,
-  'blackout_duration': None,
+  'blackout_frequency': "",
+  'blackout_duration': "",
   'maingrid_electricity_price': 0.22,
   'maingrid_renewable_share': 0.05889463078827299,
-  'tax': 0.21,
+  'tax': 0,
   'fuel_price': 1.221678
 }
 ```
@@ -75,7 +81,7 @@ This request will output JSON in the foloowing form:
 ```
 offgrid_simulator/simulate
 ```
-This URL will start a simulation and return a session ID which is used to retrieve information in the other routes. This route must be requested using a POST request using JSON in the following form where *additional_parameters* becomes the output of the previous request:
+This URL will run a simulation and return a session ID which is used to retrieve information in the other routes. This route must be requested using a POST request using JSON in the following form where *additional_parameters* becomes the output of the previous request:
 ```
 {
   'project_name': 'hoevelaken',
@@ -104,7 +110,7 @@ This URL will start a simulation and return a session ID which is used to retrie
 ```
 offgrid_simulator/get_result/<session_id>
 ```
-This URL will retrieve the single output values from the simulation where *<session_id>* is the result of the simulation route such as *20191029133752*. The simulation takes some time, therefore it may take a while before this route successfully retrieves the results.
+This URL will retrieve the single output values from the simulation where *<session_id>* is the result of the simulation route such as *20191029133752*.
 
 
 * Get typical day time series
