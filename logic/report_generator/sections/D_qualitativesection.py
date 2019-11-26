@@ -1,5 +1,4 @@
-enter = '\r\n'
-import os
+enter = '\n'
 
 def qualitativeproperties(reportdict):
 	qual = '\\section*{Societal environment}' + enter + \

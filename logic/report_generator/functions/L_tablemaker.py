@@ -1,9 +1,9 @@
 '''
-makes a table from an ented dataframe
+makes a table from an entered dataframe
 columns should be string in the format of latex code (ie. 'c|rr|l' for centered, right right and left aligned columns
 with vertical line after first and third column (number of columns must be equal to dataframe columns)
 '''
-ent = '\r\n'
+ent = '\n'
 
 def centertable(data,columns,label,caption):
 
@@ -13,7 +13,7 @@ def centertable(data,columns,label,caption):
     title = ''
     for head in data.columns:
         title = title + head + '&'
-    title = title[0:(len(title)-1)] + '\\\ \hline '
+    title = title[0:(len(title)-1)] + '\\\ \\hline '
 
     body = ''
 
@@ -23,6 +23,7 @@ def centertable(data,columns,label,caption):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
+    '\\begin{minipage}[t]{\\textwidth}'+ent+\
     '{\\color{black}'+\
     '\\begin{flushleft}'+ent+\
     '\\begin{tabular}{'+ columns +'}'+ent+\
@@ -30,10 +31,11 @@ def centertable(data,columns,label,caption):
     body +\
     '\\hline'+ent+\
     '\\end{tabular}'+ent+\
+    '\\captionof{table}{'+caption+'}'+\
     '\\label{tab:'+label+'}'+ent+\
     '\\end{flushleft}}'+\
-    '\\captionof{table}{'+caption+'}'+\
-    '\\vspace{0.5mm}'
+    '\\vspace{0.5mm}'+\
+    '\\end{minipage}'
     return tab
 
 #only two columned tables.
@@ -51,7 +53,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
     title = ''
     for head in data.columns:
         title = title + head + '&'
-    title = title[0:(len(title)-1)] + '\\\ \hline '
+    title = title[0:(len(title)-1)] + '\\\ \\hline '
 
     body = ''
 
@@ -64,6 +66,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
+    '\\begin{minipage}[t]{\\textwidth}'
     '{\\color{black}'+\
     '\\begin{flushleft}'+\
     '\\begin{tabular}{'+ columns +'}'+\
@@ -72,7 +75,8 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
     '\\hline'+ent+\
     '\\end{tabular}'+ent+\
     '\\label{tab:'+label+'}'+ent+\
-    '\\end{flushleft}}'+\
     '\\captionof{table}{'+caption+'}'+\
-    '\\vspace{0.5mm}'
+    '\\end{flushleft}}'+\
+    '\\vspace{0.5mm}'+\
+    '\\end{minipage}'
     return tab

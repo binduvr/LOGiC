@@ -22,12 +22,12 @@ def email_report(session_id, to_address):
 	# print(body)
 
 	body = "Dear reader, " + ent + ent +\
-	'This E-mail contains the report of a microgrid sizing using the LOGiC tool by the Offgrid Test Centre. You receive this E-mail ' + \
-	'because this E-mail address was input as the receiver for this report. The inputs for the simulation ' + \
-	'will be saved for 30 days. I you want to have more information on the simulation and the microgrid in ' + \
-	'general, please contact the team at at info@offgridtestcenter.nl'+ent+ent+\
+    'This E-mail contains the report of a microgrid sizing using the OGTC microgrid assessment tool. \n' +\
+    'You receive this E-mail because this E-mail address was input as the receiver for this report. \n' +\
+    'The results for your simulation will be stored for 30 days.  \n'+\
+    'If you would like more information on the simulation and the microgrid in general, please contact the team at at info@offgridtestcenter.nl. \n\n' +\
 	'Best regards,'+ent+\
-	'On behalf of the LOGiC team,'+ent+\
+	'On behalf of the team,'+ent+\
 	'Our computer'
 
 
