@@ -28,7 +28,7 @@ def handle_request():
 
     input_dict = flask.request.get_json(force=True)
 
-    processor.generate_simulation_results(input_dict, session_id)
+    processor.start_simulation_thread(input_dict, session_id)
 
     # # THIS IS THE ORKNEY ISLANDS ID TO USE IF PANIC BUTTON, NO GRID
     # session_id = "20191115083605"

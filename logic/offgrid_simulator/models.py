@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import json
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -106,11 +107,12 @@ class ProjectSite:
 
         default_data = settings.PROJECT_SITE.copy()
 
+        # NOTE: Changed all values from Series to json
         demand_parameters = {
-            'demand_ac': self.demand_ac,
-            'wind_generation_per_kW': self.wind_generation_per_kW,
-            'pv_generation_per_kWp': self.pv_generation_per_kWp,
-            'demand_dc': self.demand_dc
+            'demand_ac': json.loads(self.demand_ac.to_json()),
+            'wind_generation_per_kW': json.loads(self.wind_generation_per_kW.to_json()),
+            'pv_generation_per_kWp': json.loads(self.pv_generation_per_kWp.to_json()),
+            'demand_dc': json.loads(self.demand_dc.to_json())
         }
         return {'test_site': {**default_data, **demand_parameters}}
 
@@ -185,7 +187,6 @@ class OffgriddersInput:
         if not active_components['grid_connection']:
             case_definition['capacity_pcc_consumption_kW'] = 'None'
             case_definition['capacity_pcc_feedin_kW'] = 'None'
-        print(case_definition)
         return case_definition
 
     def set_parameters_constant_values(self, additional_parameters):
