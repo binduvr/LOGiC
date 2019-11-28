@@ -14,12 +14,16 @@ report_generator = flask.Blueprint('report_generator', __name__)
 def email_report():
     """Email a report of the simulation of the session_id."""
 
-    # Testing
-    # request_json = flask.request.args.to_dict()
-
     request_json = flask.request.get_json(force=True)
     session_id = str(request_json['session_id'])
     email = request_json['email']
+
+    # TODO: Add checkbox if storage allowed, for now set here when testing
+    # storage_permission = request_json['receive_updates']
+    storage_permission = False
+    if storage_permission:
+        with open('data/local/addresses.csv','a') as fd:
+            fd.write(email + ",\n")
 
     # Check if document has already been generated
     file_path = settings.OUTPUT_DIRECTORY + session_id \

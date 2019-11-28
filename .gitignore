@@ -1,4 +1,6 @@
 __pycache__
 data/outputs/*
 !data/outputs/.gitkeep
+data/local/*
+!data/local/.gitkeep
 admin_settings.ini
