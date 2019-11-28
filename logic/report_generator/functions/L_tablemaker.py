@@ -66,7 +66,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{minipage}[t]{\\textwidth}'
+    '\\begin{minipage}[t]{\\textwidth}'+\
     '{\\color{black}'+\
     '\\begin{flushleft}'+\
     '\\begin{tabular}{'+ columns +'}'+\
