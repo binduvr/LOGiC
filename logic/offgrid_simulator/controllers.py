@@ -1,5 +1,4 @@
 import flask
-import threading
 import pandas as pd
 import time
 import pprint as pp
@@ -9,25 +8,17 @@ import numpy as np
 
 import logic.settings as settings
 import logic.offgrid_simulator.processor as processor
+from logic import limiter
 
 offgrid_simulator = flask.Blueprint('offgrid_simulator', __name__)
 
-def process_request(input_dict, session_id):
-    """Run the simulation with the given data."""
-
-    x = threading.Thread(target=processor.generate_simulation_results,
-       args=(input_dict, session_id))
-    x.start()
-
 @offgrid_simulator.route('/simulate', methods=['POST'])
-# @offgrid_simulator.route('/simulate')
+@limiter.limit("1/3minute")
 def handle_request():
     """Runs a simulation using supplied values."""
 
     session_id = time.strftime("%Y%m%d%H%M%S", time.gmtime())
-
     input_dict = flask.request.get_json(force=True)
-
     processor.generate_simulation_results(input_dict, session_id)
 
     # # THIS IS THE ORKNEY ISLANDS ID TO USE IF PANIC BUTTON, NO GRID

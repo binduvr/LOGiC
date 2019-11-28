@@ -12,3 +12,4 @@ requests==2.22.0
 Unidecode==1.1.1
 ConfigParser==4.0.2
 simplejson==3.16.0
+flask_limiter==1.1.0
