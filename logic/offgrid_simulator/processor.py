@@ -10,14 +10,6 @@ import logic.offgrid_simulator.models as models
 import logic.offgrid_simulator.weather as weather
 import logic.settings as settings
 
-# TODO:
-
-# MAKE OUTPUT INCLUDE HOW MANY SOLAR PANELS AND TYPE ETC AND WIND TURBINES AND COSTS
-# MAKE THE FUNCTION RETURN ESTIMATED TIME OR SOMETHING
-
-# PUT PICTURE OF LOCATION IN REPORT
-# IMPORT TAX OVER THE MACHINARY ORDERED OR SOMETHING remove tax for now
-
 def generate_simulation_results(input_dict, session_id):
 
     offgridders_input = generate_input(input_dict, session_id)
@@ -45,16 +37,6 @@ def generate_input(input_dict, session_id):
     # Make directory for the ID of this simulation
     output_directory = settings.OUTPUT_DIRECTORY + session_id
     os.mkdir(output_directory)
-
-    # Get optimal panel configuration for location
-    # TODO: Do this in OSELC app
-    # optimal_slope, optimal_azimuth = \
-    #     weather.get_optimal_panel_config(latitude, longitude)
-    # panel_config = {'optimal_slope': [optimal_slope],
-    #     'optimal_azimuth': [optimal_azimuth]}
-
-    # df = pd.DataFrame(data=panel_config)
-    # df.to_csv(output_directory + '/test_results.csv', index=False)
 
     # Create folders for OESMOT output
     folder_list = ['/lp_files', '/storage', '/electricity_mg',
