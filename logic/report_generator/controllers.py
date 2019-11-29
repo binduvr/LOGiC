@@ -19,9 +19,9 @@ def email_report():
     email = request_json['email']
 
     # TODO: Add checkbox if storage allowed, for now set here when testing
-    # storage_permission = request_json['receive_updates']
-    storage_permission = False
-    if storage_permission:
+    # email_opt_in = request_json['email_opt_in']
+    email_opt_in = False
+    if email_opt_in:
         with open('data/local/addresses.csv','a') as fd:
             fd.write(email + ",\n")
 
