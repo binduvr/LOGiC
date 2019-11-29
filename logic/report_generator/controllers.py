@@ -1,5 +1,5 @@
 import flask
-import os.path
+import os
 
 import logic.settings as settings
 import logic.report_generator.mailer as mailer

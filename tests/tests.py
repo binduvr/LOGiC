@@ -2,7 +2,7 @@ import requests
 import time
 import json
 
-BASE_URL = 'https://assessment-backend.offgridtestcenter.nl'
+BASE_URL = 'http://localhost:5000'
 headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
 
 # Request location based additional factors
