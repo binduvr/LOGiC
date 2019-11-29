@@ -1,10 +1,11 @@
 import numpy as np
 import json
-import os
 import sys
 import pandas as pd
-import pprint as pp
 import time
+import requests as req
+import re
+import traceback
 
 import offgridders.A_offgridders_wrapper as og
 import output_settings as settings
@@ -85,7 +86,8 @@ def get_optimal_panel_config(lat, lon):
         azimuth = [int(k) for k in re.findall(r'\b\d+\b', r.text.splitlines()[6])][0]
 
         return slope, azimuth
-    except:
+    except Exception:
+        traceback.print_exc()
         return 0, 0
 
 def append_additional_results(session_id, latitude, longitude):
