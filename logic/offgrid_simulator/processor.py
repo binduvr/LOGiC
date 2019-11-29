@@ -6,7 +6,7 @@ import pprint as pp
 import time
 import subprocess
 
-import logic.offgrid_simulator.offgridders.A_offgridders_wrapper as og
+# import logic.offgrid_simulator.offgridders.A_offgridders_wrapper as og
 import logic.offgrid_simulator.models as models
 import logic.offgrid_simulator.weather as weather
 import logic.settings as settings
@@ -25,10 +25,8 @@ def start_simulation_thread(input_dict, session_id):
 
     sim_input_file = os.path.abspath(settings.OUTPUT_DIRECTORY + session_id + '/inputs/sim_input.json')
     output_folder = offgridders_input['settings']['output_folder']
-    # simulator_script = os.path.abspath("logic/offgrid_simulator/simulator_threader/simulator.py")
     simulator_script = "logic/offgrid_simulator/simulation_threader/simulator.py"
 
-    # pp.pprint(sim_input_json)
     # Dump offgridders json to the directory for use as input in simulator script
     with open(sim_input_file, 'w') as fp:
         json.dump(sim_input_json, fp)
@@ -38,14 +36,7 @@ def start_simulation_thread(input_dict, session_id):
     subprocess.Popen("python " + simulator_script + " " \
         + sim_input_file + " " + output_folder, shell=True)
 
-    # print(os.system("python " + simulator_script + " " \
-    #     + sim_input_file + " " + output_folder))
-
-    # print(os.system("dir"))
-
     return session_id
-    # results = og.run_simulation(offgridders_input)
-
 
 
 def generate_input(input_dict, session_id):

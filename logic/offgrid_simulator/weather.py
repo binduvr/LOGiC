@@ -100,21 +100,3 @@ def get_solar_standard_year(lat, lon, runtime):
     pvaveragecut = pvaverage.head(hrs)
 
     return pvaveragecut
-
-# TODO: Move this to OSELC app
-def get_optimal_panel_config(lat, lon):
-
-    try:
-        base_url = "http://re.jrc.ec.europa.eu/pvgis5/PVcalc.php?lat={}&lon={}\
-            &loss=14&peakpower=1&outputformatchoice=basic&optimalinclination=1\
-            &optimalangles=1&inclined_optimum=1&vertical_optimum=1"
-
-        url = base_url.format(lat, lon)
-        r = req.get(url)
-
-        slope = [int(k) for k in re.findall(r'\b\d+\b', r.text.splitlines()[5])][0]
-        azimuth = [int(k) for k in re.findall(r'\b\d+\b', r.text.splitlines()[6])][0]
-
-        return slope, azimuth
-    except:
-        return 0, 0

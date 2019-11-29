@@ -100,12 +100,6 @@ def run_simulation(offgridders_input):
 		logging.info('Starting simulation, ' + 'project site ' \
 			+ sensitivity_experiment_s[experiment]['project_site_name'] + '.')
 
-		# Run simulation, evaluate results
-		# TODO: Multithreading
-		# while not pyomo.environ.SolverFactory('cbc').available():
-		# 	print('sleeping')
-		# 	time.sleep(1)
-
 		oemof_results = oemof_simulate.run(sensitivity_experiment_s[experiment], experiment_case_dict)
 
 		# Extend base capacities for cases utilizing these values, only valid for specific experiment
