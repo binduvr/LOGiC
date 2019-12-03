@@ -70,7 +70,7 @@ def get_solar_standard_year(lat, lon, runtime):
 
     # Request the data
     r = req.get(url)
-    print(r.text)
+
     df = pd.read_csv(StringIO(r.text), sep=',', skiprows=10)
     hrs = int(runtime * 24)
 
