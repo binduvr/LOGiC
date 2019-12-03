@@ -33,7 +33,7 @@ def get_wind_standard_year(lat, lon, days):
         days: number of standard days requested
     """
 
-    base_url = "http://re.jrc.ec.europa.eu/pvgis5/tmy.php?lat={}&lon={}&usehorizon={}&outputformat={}"
+    base_url = "http://re.jrc.ec.europa.eu/api/tmy?lat={}&lon={}&usehorizon={}&outputformat={}"
     url = base_url.format(lat, lon, 1, "csv")
     r = req.get(url)
 
@@ -41,9 +41,9 @@ def get_wind_standard_year(lat, lon, days):
 
     # Get wind time series'
     hrs = int(days * 24)
-    df = pd.read_csv(StringIO(string_data), sep=',')
+    df = pd.read_csv(StringIO(string_data), sep=',', skiprows=16)
 
-    wind_speed = df['Ws'].head(hrs)
+    wind_speed = df['WS10m'].head(hrs)
 
     return wind_speed
 
@@ -57,35 +57,36 @@ def get_solar_standard_year(lat, lon, runtime):
     optimalangles = 1
     pvtechchoice = 'crystSi'
     database = 'PVGIS-SARAH'
+    pvcalculation = 1
 
-    base_url = "http://re.jrc.ec.europa.eu/pvgis5/seriescalc.php?lat={}&lon={}&peakpower={}&loss={}\
-        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}&raddatabase={}"
-
+    base_url = "http://re.jrc.ec.europa.eu/api/seriescalc?lat={}&lon={}&peakpower={}&loss={}\
+        &startyear={}&endyear={}&optimalangles={}&pvtechchoice={}&pvcalculation={}"
 
     # TODO: Iterate over all databases and change the years accordingly
     url = base_url.format(lat, lon,
         peakpower, loss,
-        startyear, endyear, optimalangles, pvtechchoice,database)
+        startyear, endyear, optimalangles,
+        pvtechchoice, pvcalculation)
 
     # Request the data
     r = req.get(url)
-
-    df = pd.read_csv(StringIO(r.text), sep=',', header = 8)
+    print(r.text)
+    df = pd.read_csv(StringIO(r.text), sep=',', skiprows=10)
     hrs = int(runtime * 24)
 
     # forge first line because the database starts at 4 minutes to 1 rater than at 00:00. This also implies a 4 minute shift between timeseries.
     # It is in the opinion of the developer that this is affordable.
     firstline = pd.DataFrame({'Date':'20061231:2356',
-                            'EPV':[0],
-                            'W10': [df['W10'][0]]})
+                            'P':[0],
+                            'W10': [df['WS10m'][0]]})
 
-    df.drop(['G_i', 'As', 'Tamb', 'int.'], axis = 1, inplace = True)
+    df.drop(['G(i)', 'H_sun', 'T2m', 'Int'], axis = 1, inplace = True)
     df = df.head(87671)
     appended = firstline.append(df)
     appended.index = pd.DatetimeIndex(start = '1/1/2007', freq = 'H', periods = 87672)
     newdf = appended[~((appended.index.month ==2)&(appended.index.day ==29))]
 
-    pvyield = newdf['EPV']
+    pvyield = newdf['P']
     pvaverage = pd.DataFrame({'pvaverage': np.arange (8760)-np.arange (8760)})
     pvaverage.index = pd.DatetimeIndex(start = '1/1/2010', freq = 'H', periods = 8760)
 
@@ -105,7 +106,7 @@ def get_solar_standard_year(lat, lon, runtime):
 def get_optimal_panel_config(lat, lon):
 
     try:
-        base_url = "http://re.jrc.ec.europa.eu/pvgis5/PVcalc.php?lat={}&lon={}\
+        base_url = "http://re.jrc.ec.europa.eu/api/PVcalc?lat={}&lon={}\
             &loss=14&peakpower=1&outputformatchoice=basic&optimalinclination=1\
             &optimalangles=1&inclined_optimum=1&vertical_optimum=1"
 
