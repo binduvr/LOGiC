@@ -2,7 +2,10 @@ import requests
 import time
 import json
 
+
+# BASE_URL = 'https://assessment-backend.offgridtestcenter.nl'
 BASE_URL = 'http://localhost:5000'
+
 headers = {'content-type': 'application/json', 'Accept-Charset': 'UTF-8'}
 
 # Request location based additional factors
@@ -107,23 +110,23 @@ def test_application():
     # session_id = "20191029133752"
     print(session_id)
 
-    # static_results = test_get_results(session_id)
-    # print(static_results)
+    static_results = test_get_results(session_id)
+    print(static_results)
 
-    # daily_time_series = test_daily_series(session_id)
-    # print(daily_time_series)
+    daily_time_series = test_daily_series(session_id)
+    print(daily_time_series)
 
-    # monthly_time_series = test_monthly_series(session_id)
-    # print(monthly_time_series)
+    monthly_time_series = test_monthly_series(session_id)
+    print(monthly_time_series)
 
-    # demand_time_series = test_demand_series(session_id)
-    # print(demand_time_series)
+    demand_time_series = test_demand_series(session_id)
+    print(demand_time_series)
 
-    # # ENTER EMAIL HERE
-    # email = "test@gmail.com"
-    # email_status = test_email_report(session_id, email)
-    # print(email_status)
+    # ENTER EMAIL HERE
+    email = "test@gmail.com"
+    email_status = test_email_report(session_id, email)
+    print(email_status)
 
-    # test_download_report(session_id)
+    test_download_report(session_id)
 
 test_application()

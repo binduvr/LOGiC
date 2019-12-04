@@ -187,6 +187,7 @@ class OffgriddersInput:
         if not active_components['grid_connection']:
             case_definition['capacity_pcc_consumption_kW'] = 'None'
             case_definition['capacity_pcc_feedin_kW'] = 'None'
+
         return case_definition
 
     def set_parameters_constant_values(self, additional_parameters):
