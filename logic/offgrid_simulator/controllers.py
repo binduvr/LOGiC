@@ -13,7 +13,7 @@ from logic import limiter
 offgrid_simulator = flask.Blueprint('offgrid_simulator', __name__)
 
 @offgrid_simulator.route('/simulate', methods=['POST'])
-@limiter.limit("1/3minute")
+@limiter.limit("1/5minute")
 def handle_request():
     """Runs a simulation using supplied values."""
 
