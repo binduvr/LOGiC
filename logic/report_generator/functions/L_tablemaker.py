@@ -23,7 +23,7 @@ def centertable(data,columns,label,caption):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{minipage}[t]{\\textwidth}'+ent+\
+    '\n\\begin{minipage}[t]{0.5\\textwidth}'+ent+\
     '{\\color{black}'+\
     '\\begin{flushleft}'+ent+\
     '\\begin{tabular}{'+ columns +'}'+ent+\
@@ -66,7 +66,7 @@ def centermoneytable(data,columns,label,caption,moneycolumn=1):
         body = body[0:(len(body)-1)] + '\\\ '+ ent
 
     tab = \
-    '\\begin{minipage}[t]{\\textwidth}'+\
+    '\n\\begin{minipage}[t]{0.5\\textwidth}'+\
     '{\\color{black}'+\
     '\\begin{flushleft}'+\
     '\\begin{tabular}{'+ columns +'}'+\
