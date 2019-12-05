@@ -10,7 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 * [CBC-Solver](https://ampl.com/dl/open/cbc/) must be installed and added to the PATH environment variable in order for the application to make calculations. [How to set environment variables](http://www.computerhope.com/issues/ch000549.htm).
 
-* A LaTeX compiler such as [MiKTeX](https://miktex.org/download) must be installed to allow for report functionality and must also be added to the PATH environment variable, the same way the CBC-Solver is added.
+* A LaTeX compiler must be installed to allow for report functionality. 
+  * For Windows, a LaTeX compiler such as [MiKTeX](https://miktex.org/download) can be used and must also be added to the PATH environment variable, the same way the CBC-Solver is added.
+  * For most Linux distributions, to avoid common issues with MiKTeX on Linux, pdflatex should be installed directly using: 
+``sudo apt-get install texlive-latex-base``
 
 ### Installing
 1. Create a new python environment using Python version 3.6. We will use Anaconda as an example.
